@@ -12,48 +12,48 @@ requireNamespace("magrittr")
 devtools::load_all("../biomod2/") 
 
 tic("Test_BIOMOD_FormatingData.R")
-source("R/MethodsTesting/Test_BIOMOD_FormatingData.R")
+source("R/Test_BIOMOD_FormatingData.R")
 toc()
 
 tic("Test_bm_PseudoAbsences.R")
-source("R/MethodsTesting/Test_bm_PseudoAbsences.R")
+source("R/Test_bm_PseudoAbsences.R")
 toc()
 
 tic("Test_BIOMOD_Modeling.R")
-source("R/MethodsTesting/Test_BIOMOD_Modeling.R")
+source("R/Test_BIOMOD_Modeling.R")
 toc()
 
 tic("Test_BIOMOD_EnsembleModeling.R")
-source("R/MethodsTesting/Test_BIOMOD_EnsembleModeling.R")
+source("R/Test_BIOMOD_EnsembleModeling.R")
 toc()
 
 tic("Test_bm_BinaryTransformation.R")
-source("R/MethodsTesting/Test_bm_binaryTransformation.R")
+source("R/Test_bm_binaryTransformation.R")
 toc()
 
 tic("Test_bm_plotResponseCurves.R")
-source("R/MethodsTesting/Test_bm_plotResponseCurves.R")
+source("R/Test_bm_plotResponseCurves.R")
 toc()
 
 tic("Test_BIOMOD_Projection.R")
-source("R/MethodsTesting/Test_BIOMOD_Projection.R")
+source("R/Test_BIOMOD_Projection.R")
 toc()
 
 tic("Test_BIOMOD_EnsembleForecasting.R")
-source("R/MethodsTesting/Test_BIOMOD_EnsembleForecasting.R")
+source("R/Test_BIOMOD_EnsembleForecasting.R")
 toc()
 
 tic("Test_get_predictions.R")
-source("R/MethodsTesting/Test_get_predictions.R")
+source("R/Test_get_predictions.R")
 toc()
 
 
 tic("Test_BIOMOD_RangeSize.R")
-source("R/MethodsTesting/Test_BIOMOD_RangeSize.R")
+source("R/Test_BIOMOD_RangeSize.R")
 toc()
 
 tic("Test_BIOMOD_PresenceOnly.R")
-source("R/MethodsTesting/Test_BIOMOD_PresenceOnly.R")
+source("R/Test_BIOMOD_PresenceOnly.R")
 toc()
 
 
