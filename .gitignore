@@ -27,3 +27,5 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 biomod2_devtest.Rproj
+
+GuloGulo/
