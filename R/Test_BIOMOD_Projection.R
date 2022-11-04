@@ -624,3 +624,4 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+graphics.off()

@@ -1838,7 +1838,7 @@ if(inherits(this_try, "try-error")){
 
 # Categorical + PA.strategy = random  ----------------------------
 
-cli::cli_h2("PA.strategy = random")
+cli::cli_h2("Categorical + PA.strategy = random")
 
 ## resp.var = vector -------------------------------------------------------
 cli::cli_h3("resp.var = vector")
@@ -2311,7 +2311,7 @@ if(inherits(this_try, "try-error")){
 # Categorical + PA.strategy = SRE ------------------------
 # SRE should always fail with categorical variables
 # 
-cli::cli_h2("PA.strategy = SRE")
+cli::cli_h2("Categorical + PA.strategy = SRE")
 
 ## resp.var = vector -------------------------------------------------------
 cli::cli_h3("resp.var = vector")
@@ -2846,7 +2846,7 @@ if(!this_try){
 
 # Categorical + PA.strategy = disk ---------------------------------------
 
-cli::cli_h2("PA.strategy = disk")
+cli::cli_h2("Categorical + PA.strategy = disk")
 
 ## resp.var = vector -------------------------------------------------------
 cli::cli_h3("resp.var = vector")
@@ -3322,3 +3322,105 @@ if(inherits(this_try, "try-error")){
 
 
 
+
+# User-defined Pseudo Absences --------------------------------------------
+cli::cli_h2("User-defined Pseudo Absences")
+
+
+set.seed(42)
+myRespTF <- as.numeric(DataSpecies[, myRespName])
+
+myPAtable <- data.frame(PA1 = ifelse(myRespTF == 1, TRUE, FALSE),
+                        PA2 = ifelse(myRespTF == 1, TRUE, FALSE))
+for (i in 1:ncol(myPAtable)){
+   myPAtable[sample(which(myPAtable[, i] == FALSE), 500), i] <-  TRUE
+}
+
+# expl.var = SpatRaster --------------------------------------------
+cli::cli_process_start(c("expl.var = SpatRaster"))
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData.u <- BIOMOD_FormatingData(resp.var = myResp,
+                                             expl.var = myExpl,
+                                             resp.xy = myRespXY,
+                                             resp.name = myRespName,
+                                             PA.strategy = 'user.defined',
+                                             PA.user.table = myPAtable)
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+# expl.var = SpatVector --------------------------------------------
+cli::cli_process_start(c("expl.var = SpatVector"))
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData.u <- BIOMOD_FormatingData(resp.var = myResp,
+                                             expl.var = myExpl.SpatVector,
+                                             resp.xy = myRespXY,
+                                             resp.name = myRespName,
+                                             PA.strategy = 'user.defined',
+                                             PA.user.table = myPAtable)
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+# expl.var = Categorical SpatRaster ---------------------------------
+cli::cli_process_start(c("expl.var = Categorical SpatRaster"))
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData.u <- BIOMOD_FormatingData(resp.var = myResp,
+                                             expl.var = myExpl.cat,
+                                             resp.xy = myRespXY,
+                                             resp.name = myRespName,
+                                             PA.strategy = 'user.defined',
+                                             PA.user.table = myPAtable)
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+# expl.var = Categorical SpatVector ------------------------------------
+cli::cli_process_start(c("expl.var = Categorical SpatVector"))
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData.u <- BIOMOD_FormatingData(resp.var = myResp,
+                                             expl.var = myExpl.cat.SpatVector,
+                                             resp.xy = myRespXY,
+                                             resp.name = myRespName,
+                                             PA.strategy = 'user.defined',
+                                             PA.user.table = myPAtable)
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}

@@ -298,6 +298,7 @@ this_try <- try({
     capture.output(suppressWarnings({
       myBiomodPO <- BIOMOD_PresenceOnly(bm.mod = myBiomodModelOut_noEval,
                                         bm.em = myBiomodEnsembleOut_noEval)
+
       myBiomodPO <- BIOMOD_PresenceOnly(bm.mod = myBiomodModelOut_noEval)
       myBiomodPO <- BIOMOD_PresenceOnly(bm.em = myBiomodEnsembleOut_noEval)
     }))

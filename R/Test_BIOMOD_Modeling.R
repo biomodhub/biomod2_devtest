@@ -1131,7 +1131,6 @@ this_try <- try({
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat1_Eval_PA2',
           nb.rep = 2,
-          models = c("MAXENT.Phillips"),
           data.split.perc = 80,
           var.import = 3,
           metric.eval = c('TSS','ROC'),

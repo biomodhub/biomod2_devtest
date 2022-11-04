@@ -124,7 +124,7 @@ try({
     capture.output(suppressWarnings(suppressMessages({
       myBiomodEnsembleOut_noCat <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut_Eval,
-        models.chosen =model_subset,
+        models.chosen = model_subset,
         em.by = 'PA_dataset+repet',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
@@ -418,7 +418,7 @@ cli::cli_process_start("full.name = subset")
 this_try <- try({
   invisible(
     capture.output(suppressWarnings(suppressMessages({
-      my_subset <- get_projected_models(myBiomodProjOut_Eval)[1:11]
+      my_subset <- get_projected_models(myBiomodProjOut_Eval)[1:10]
       myPred <- get_predictions(myBiomodProjOut_Eval, as.data.frame = FALSE, full.name = my_subset)
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "array"))

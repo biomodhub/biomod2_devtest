@@ -56,6 +56,9 @@ tic("Test_BIOMOD_PresenceOnly.R")
 source("R/Test_BIOMOD_PresenceOnly.R")
 toc()
 
+tic("Test_BIOMOD_Parallel.R")
+source("R/Test_BIOMOD_Parallel.R")
+toc()
 
 cli::cli_h1("Error Summary")
 
@@ -71,7 +74,8 @@ dfres <- data.frame(
     "BIOMOD_EnsembleForecasting", 
     "get_predictions(bm.proj.out)",
     "BIOMOD_RangeSize",
-    "BIOMOD_PresenceOnly"
+    "BIOMOD_PresenceOnly",
+    "BIOMOD_Parallel"
   ),
   Error = c(
     Error_Formating, 
@@ -84,7 +88,8 @@ dfres <- data.frame(
     Error_EnsembleForecasting,
     Error_get_pred, 
     Error_RangeSize,
-    Error_PresenceOnly
+    Error_PresenceOnly,
+    Error_Parallel
   )
 )
 print(dfres)
