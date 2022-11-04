@@ -60,6 +60,10 @@ tic("Test_BIOMOD_Parallel.R")
 source("R/Test_BIOMOD_Parallel.R")
 toc()
 
+
+tic("Test_build_clamping_mask.R")
+source("R/Test_build_clamping_mask.R")
+toc()
 cli::cli_h1("Error Summary")
 
 dfres <- data.frame(
@@ -75,7 +79,8 @@ dfres <- data.frame(
     "get_predictions(bm.proj.out)",
     "BIOMOD_RangeSize",
     "BIOMOD_PresenceOnly",
-    "BIOMOD_Parallel"
+    "BIOMOD_Parallel",
+    "build_clamping_mask"
   ),
   Error = c(
     Error_Formating, 
@@ -89,7 +94,8 @@ dfres <- data.frame(
     Error_get_pred, 
     Error_RangeSize,
     Error_PresenceOnly,
-    Error_Parallel
+    Error_Parallel,
+    Error_Clamping
   )
 )
 print(dfres)
