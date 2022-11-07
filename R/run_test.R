@@ -10,6 +10,8 @@ requireNamespace("magrittr")
 # to run on development package
 # (to be adjusted depending on where the dev version is)
 devtools::load_all("../biomod2/") 
+# devtools::load_all("../biomod2_release/biomod2/")
+# terraVersion <- FALSE
 
 tic("Test_BIOMOD_FormatingData.R")
 source("R/Test_BIOMOD_FormatingData.R")

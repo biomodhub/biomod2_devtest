@@ -1461,3 +1461,75 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+
+
+# Only one ensemble model ------------------------------------------------
+
+cli::cli_h2("Only one ensemble model")
+
+### Presence-Only with NA ------------
+cli::cli_process_start("Presence-Only with NA")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings({
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp_PO_NA,
+          expl.var = stack(myExpl),
+          resp.xy = myRespXY_PO_NA,
+          resp.name = myRespName,
+          PA.nb.rep = 2,
+          PA.nb.absences = 500, 
+          PA.strategy = 'random',
+          eval.resp.var = myResp,
+          eval.expl.var = stack(myExpl),
+          eval.resp.xy = myRespXY)
+      
+      file.out <- paste0(myRespName, "/", myRespName, ".NoCat_Eval_Presence-Only_with_NA.models.out")
+      if (file.exists(file.out)) {
+        myBiomodModelOut <- get(load(file.out))
+      } else {
+        myBiomodModelOut <- 
+          BIOMOD_Modeling(
+            bm.format = myBiomodData,
+            bm.options = BIOMOD_ModelingOptions(),
+            modeling.id = 'NoCat_Eval_Presence-Only_with_NA',
+            nb.rep = 2,
+            data.split.perc = 80,
+            var.import = 3,
+            metric.eval = c('TSS','ROC'),
+            do.full.models = FALSE,
+            seed.val = 42
+          )
+      }
+      myBiomodEM <- BIOMOD_EnsembleModeling(
+        bm.mod = myBiomodModelOut,
+        models.chosen = 'all',
+        em.by = 'all',
+        metric.select = c('TSS'),
+        metric.select.thresh = c(0.7),
+        var.import = 3,
+        metric.eval = c('TSS', 'ROC'),
+        prob.mean = TRUE,
+        prob.median = FALSE,
+        prob.cv = FALSE,
+        prob.ci = FALSE,
+        prob.ci.alpha = 0.05,
+        committee.averaging = FALSE,
+        prob.mean.weight = FALSE,
+        prob.mean.weight.decay = 'proportional',
+        seed.val = 42)
+      get_predictions(myBiomodEM)
+      get_evaluations(myBiomodEM)
+      get_built_models(myBiomodEM)
+      get_formal_data(myBiomodEM)
+    }))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_EnsembleModeling <- Error_EnsembleModeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
