@@ -311,19 +311,6 @@ invisible(
 )
 
 
-# remove NA in df ---------------------------------------------------------
-
-ProjCurrent.df <- ProjCurrent.df 
-ProjFuture.df <- ProjFuture.df
-
-
-ProjCurrent.df
-ProjFuture.df
-
-ProjCurrent.1.df
-ProjFuture.1.df
-
-ProjFuture.2.df
 
 
 # Check that non binary output fails ------------------------------------------
