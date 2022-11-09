@@ -59,6 +59,14 @@ myResp_PA2 <- myResp
 myResp_PA2[tmpindex] <- NA
 myRespXY_PA2 <- myRespXY
 
+## myExpl.df ---------------------------------------------------------------
+
+myResp.SpatVector <- vect(x = data.frame("presence" = myResp, 
+                                         "x" = DataSpecies[,'X_WGS84'], 
+                                         "y" = DataSpecies[,'Y_WGS84']), 
+                          geom = c('x', 'y') )
+myExpl.df <- extract(myExpl, y = myResp.SpatVector, ID = FALSE)
+
 
 # No Categorical Variables ------------------------------------------------
 
@@ -1153,3 +1161,381 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+# cross-validation ------------------------------------------------------------------
+cli::cli_h2("Crossvalidation tests")
+
+cli::cli_h3("Generate cross-validation table")
+
+## Without stratification --------------------------------------------------
+cli::cli_process_start("No stratification")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
+          eval.resp.var = myResp,
+          eval.expl.var = myExpl,
+          eval.resp.xy = myRespXY)
+      
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = FALSE)
+      
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 2,
+                                           nb.rep = 1,
+                                           do.stratification = FALSE)
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 2,
+                                           do.stratification = FALSE,
+                                           do.full.models = FALSE)
+      
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+## With stratification - method = 'x' ------------------------------------
+
+cli::cli_process_start("With stratification - method = 'x'")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
+          eval.resp.var = myResp,
+          eval.expl.var = myExpl,
+          eval.resp.xy = myRespXY)
+      
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("x"))
+      
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("x"),
+                                           balance = "presences")
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("x"),
+                                           balance = "absences")
+      
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+## With stratification - method = 'y' ------------------------------------
+cli::cli_process_start("With stratification - method = 'y'")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
+          eval.resp.var = myResp,
+          eval.expl.var = myExpl,
+          eval.resp.xy = myRespXY)
+      
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("y"))
+      
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("y"),
+                                           balance = "presences")
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("y"),
+                                           balance = "absences")
+      
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+
+## With stratification - method = 'both' ------------------------------------
+cli::cli_process_start("With stratification - method = 'both'")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
+          eval.resp.var = myResp,
+          eval.expl.var = myExpl,
+          eval.resp.xy = myRespXY)
+      
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("both"))
+      
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("both"),
+                                           balance = "presences")
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("both"),
+                                           balance = "absences")
+      
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+
+## With stratification - method = 'block' ------------------------------------
+cli::cli_process_start("With stratification - method = 'block'")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
+          eval.resp.var = myResp,
+          eval.expl.var = myExpl,
+          eval.resp.xy = myRespXY)
+      
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("block"))
+      
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("block"),
+                                           balance = "presences")
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("block"),
+                                           balance = "absences")
+      
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+cli::cli_process_start("With stratification and expl.var as data.frame")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl.df,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
+          eval.resp.var = myResp,
+          eval.expl.var = myExpl.df,
+          eval.resp.xy = myRespXY)
+      
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("x"))
+      
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("block"),
+                                           balance = "presences")
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("both"),
+                                           balance = "absences")
+      
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+cli::cli_h3("Modeling with Cross-validation")
+## BIOMOD_Modeling with Cross-validation - matrix -------------------------
+cli::cli_process_start("Modeling with Cross-validation - matrix")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
+          eval.resp.var = myResp,
+          eval.expl.var = myExpl,
+          eval.resp.xy = myRespXY)
+      
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("block"))
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          bm.options = BIOMOD_ModelingOptions(),
+          models = c("GLM","SRE","RF"),
+          modeling.id = 'CV_matrix',
+          data.split.table = myBiomodCV,
+          var.import = 3,
+          metric.eval = c('TSS','ROC'),
+          do.full.models = FALSE,
+          seed.val = 42
+        )
+      get_predictions(myBiomodModelOut)
+      get_evaluations(myBiomodModelOut)
+      get_built_models(myBiomodModelOut)
+      get_formal_data(myBiomodModelOut)
+      
+      
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+## BIOMOD_Modeling with Cross-validation  - data.frame ---------------------
+cli::cli_process_start("Modeling with Cross-validation - data.frame")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
+          eval.resp.var = myResp,
+          eval.expl.var = myExpl,
+          eval.resp.xy = myRespXY)
+      
+      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
+                                           k = 5,
+                                           nb.rep = 3,
+                                           do.stratification = TRUE,
+                                           method = c("both"))
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          bm.options = BIOMOD_ModelingOptions(),
+          models = c("GLM","SRE","RF"),
+          modeling.id = 'CV_matrix',
+          data.split.table = as.data.frame(myBiomodCV),
+          var.import = 3,
+          metric.eval = c('TSS','ROC'),
+          do.full.models = FALSE,
+          seed.val = 42
+        )
+      get_predictions(myBiomodModelOut)
+      get_evaluations(myBiomodModelOut)
+      get_built_models(myBiomodModelOut)
+      get_formal_data(myBiomodModelOut)
+      
+      
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
