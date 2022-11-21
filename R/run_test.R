@@ -1,4 +1,3 @@
-terraVersion <- TRUE
 library(tictoc)
 requireNamespace("cli")
 requireNamespace("tinytest")
@@ -9,9 +8,15 @@ requireNamespace("magrittr")
 # library(biomod2) 
 # to run on development package
 # (to be adjusted depending on where the dev version is)
-devtools::load_all("../biomod2/") 
+
+# Development version
+devtools::load_all("../biomod2/")
+terraVersion <- TRUE
+# Released version
+# terraVersion <- TRUE # if you need to use pre 4.2-0 data
 # devtools::load_all("../biomod2_release/biomod2/")
-# terraVersion <- FALSE
+# terraVersion <- FALSE # if you need to use 4.1-3
+# devtools::load_all("../biomod2_oldraster/biomod2/")
 
 tic("Test_BIOMOD_FormatingData.R")
 source("R/Test_BIOMOD_FormatingData.R")
