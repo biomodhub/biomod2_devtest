@@ -595,10 +595,9 @@ this_try <- try({
       myRangeSize <- BIOMOD_RangeSize(proj.current = ProjCurrent.df,
                                       proj.future = ProjFuture.df)
       
-      # myPlotRangeSize <- bm_PlotRangeSize(myRangeSize)
-      # stopifnot(inherits(myPlotRangeSize$plot.ca, "ggplot"))
-      # stopifnot(inherits(myPlotRangeSize$plot.count, "ggplot"))
-      # stopifnot(inherits(myPlotRangeSize$plot.perc, "ggplot"))
+      myPlotRangeSize <- bm_PlotRangeSize(myRangeSize, do.maps = FALSE, do.mean = FALSE, do.plot = FALSE)
+      stopifnot(inherits(myPlotRangeSize$plot.count, "ggplot"))
+      stopifnot(inherits(myPlotRangeSize$plot.perc, "ggplot"))
       
     })))
   )
@@ -623,10 +622,9 @@ this_try <- try({
       myRangeSize <- BIOMOD_RangeSize(proj.current = ProjCurrent.1.df,
                                       proj.future = ProjFuture.2.df)
       
-      # myPlotRangeSize <- bm_PlotRangeSize(myRangeSize)
-      # stopifnot(inherits(myPlotRangeSize$plot.ca, "ggplot"))
-      # stopifnot(inherits(myPlotRangeSize$plot.count, "ggplot"))
-      # stopifnot(inherits(myPlotRangeSize$plot.perc, "ggplot"))
+      myPlotRangeSize <- bm_PlotRangeSize(myRangeSize, do.maps = FALSE, do.mean = FALSE, do.plot = FALSE)
+      stopifnot(inherits(myPlotRangeSize$plot.count, "ggplot"))
+      stopifnot(inherits(myPlotRangeSize$plot.perc, "ggplot"))
       
     })))
   )
@@ -652,10 +650,9 @@ this_try <- try({
       myRangeSize <- BIOMOD_RangeSize(proj.current = ProjCurrent.1.df,
                                       proj.future = ProjFuture.1.df)
       
-      # myPlotRangeSize <- bm_PlotRangeSize(myRangeSize)
-      # stopifnot(inherits(myPlotRangeSize$plot.ca, "ggplot"))
-      # stopifnot(inherits(myPlotRangeSize$plot.count, "ggplot"))
-      # stopifnot(inherits(myPlotRangeSize$plot.perc, "ggplot"))
+      myPlotRangeSize <- bm_PlotRangeSize(myRangeSize, do.maps = FALSE, do.mean = FALSE, do.plot = FALSE)
+      stopifnot(inherits(myPlotRangeSize$plot.count, "ggplot"))
+      stopifnot(inherits(myPlotRangeSize$plot.perc, "ggplot"))
       
     })))
   )
