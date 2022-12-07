@@ -163,6 +163,36 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+## SpatRaster & do.stack = FALSE ------------
+cli::cli_process_start("SpatRaster & do.stack = FALSE")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodProj <-
+        BIOMOD_Projection(
+          bm.mod = myBiomodModelOut_noCat,
+          proj.name = 'Current',
+          new.env = myExpl,
+          metric.binary = 'all',
+          metric.filter = 'all',
+          build.clamping.mask = FALSE,
+          do.stack = FALSE
+        )
+      pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
+      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      dev.off()
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Projection <- Error_Projection + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
 ## SpatRaster1 ------------
 cli::cli_process_start("SpatRaster1")
 this_try <- try({
