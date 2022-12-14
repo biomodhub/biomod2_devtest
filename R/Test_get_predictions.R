@@ -6,7 +6,7 @@ Error_get_pred <- 0
 
 library(terra)
 library(raster)
-if(terraVersion){
+if (terraVersion) {
   data("DataSpecies")
   data("bioclim_current")
   myExpl <- terra::rast(bioclim_current)
@@ -169,6 +169,32 @@ try({
   )
 }, silent = TRUE)
 
+
+
+
+### plot ------------------------------------------------
+
+cli::cli_process_start("plot BIOMOD.projection.out")
+
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      pdf(file = ".tmp.pdf")
+      plot(myBiomodProjOut_Eval)
+      plot(myBiomodProjOut_Eval, algo = c("GLM","GAM"))
+      plot(myBiomodProjOut_Eval, PA = c("PA1","PA2"))
+      dev.off()
+    })))
+  )
+}, silent = TRUE)
+
+
+if(inherits(this_try, "try-error")){
+  Error_get_pred <- Error_get_pred + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
 
 ### standard ------------------------------------------------
 

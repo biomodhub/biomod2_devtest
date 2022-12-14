@@ -13,7 +13,7 @@ requireNamespace("magrittr")
 devtools::load_all("../biomod2/")
 terraVersion <- TRUE
 # Released version
-# terraVersion <- TRUE # if you need to use pre 4.2-0 data
+# terraVersion <- TRUE
 # devtools::load_all("../biomod2_release/biomod2/")
 # terraVersion <- FALSE # if you need to use 4.1-3
 # devtools::load_all("../biomod2_oldraster/biomod2/")
@@ -24,6 +24,10 @@ toc()
 
 tic("Test_bm_PseudoAbsences.R")
 source("R/Test_bm_PseudoAbsences.R")
+toc()
+
+tic("Test_bm_CrossValidation.R")
+source("R/Test_bm_CrossValidation.R")
 toc()
 
 tic("Test_BIOMOD_Modeling.R")
@@ -77,6 +81,7 @@ dfres <- data.frame(
   Step = c(
     "BIOMOD_Formating",
     "bm_PseudoAbsences",
+    "bm_CrossValidation",
     "BIOMOD_Modeling",
     "BIOMOD_EnsembleModeling",
     "bm_BinaryTransformation",
@@ -92,6 +97,7 @@ dfres <- data.frame(
   Error = c(
     Error_Formating, 
     Error_PseudoAbsences,
+    Error_CV,
     Error_Modeling, 
     Error_EnsembleModeling,
     Error_BinaryTransformation, 

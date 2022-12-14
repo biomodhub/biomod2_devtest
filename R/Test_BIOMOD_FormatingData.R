@@ -64,9 +64,9 @@ myExpl.cat[[1]] <-
   )
 names(myExpl.cat)[1] <- "bio3_factor"
 myExpl.cat <- terra::categories(myExpl.cat, layer = 1, 
-                            data.frame(ID = c(1,2,3,4),
-                                       bio3 = c("low","medium","high","very high")),
-                            active = 2) 
+                                data.frame(ID = c(1,2,3,4),
+                                           bio3 = c("low","medium","high","very high")),
+                                active = 2) 
 
 myExpl.cat.df <- extract(myExpl.cat, y = myResp.SpatVector, ID = FALSE)
 myExpl.cat.raster <- myExpl.raster
@@ -129,14 +129,25 @@ cli::cli_process_start("resp.var = vector ;
                        expl.var = SpatRaster")
 this_try <- try({
   invisible(
-    capture.output(
+    capture.output({
       myBiomodData <- 
         BIOMOD_FormatingData(
           resp.var = myResp,
           expl.var = myExpl,
           resp.xy = myRespXY,
           resp.name = myRespName)
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodData)
+      g <- plot(myBiomodData, plot.type = "raster")
+      g <- plot(myBiomodData, plot.type = "points")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "facet")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "list")
+      dev.off()
+      summary(myBiomodData)
+    }
+    
     )
+    
   )
 }, silent = TRUE)
 
@@ -153,14 +164,23 @@ cli::cli_process_start(c("resp.var = vector ;
                        expl.var = matrix"))
 this_try <- try({
   invisible(
-    capture.output(
+    capture.output({
       myBiomodData <- 
         BIOMOD_FormatingData(
           resp.var = myResp,
           expl.var = myExpl.matrix,
           resp.xy = myRespXY,
           resp.name = myRespName)
-    )
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodData)
+      g <- plot(myBiomodData, plot.type = "raster")
+      g <- plot(myBiomodData, plot.type = "points")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "facet")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "list")
+      dev.off()
+      summary(myBiomodData)
+      
+    })
   )
 }, silent = TRUE)
 
@@ -176,14 +196,23 @@ cli::cli_process_start(c("resp.var = vector ;
                        expl.var = data.frame"))
 this_try <- try({
   invisible(
-    capture.output(
+    capture.output({
       myBiomodData <- 
         BIOMOD_FormatingData(
           resp.var = myResp,
           expl.var = myExpl.df,
           resp.xy = myRespXY,
           resp.name = myRespName)
-    )
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodData)
+      g <- plot(myBiomodData, plot.type = "raster")
+      g <- plot(myBiomodData, plot.type = "points")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "facet")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "list")
+      dev.off()
+      summary(myBiomodData)
+      
+    })
   )
 }, silent = TRUE)
 
@@ -200,14 +229,22 @@ cli::cli_process_start(c("resp.var = vector ;
                        expl.var = SPDF"))
 this_try <- try({
   invisible(
-    capture.output(
+    capture.output({
       myBiomodData <- 
         BIOMOD_FormatingData(
           resp.var = myResp,
           expl.var = myExpl.spdf,
           resp.xy = myRespXY,
           resp.name = myRespName)
-    )
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodData)
+      g <- plot(myBiomodData, plot.type = "raster")
+      g <- plot(myBiomodData, plot.type = "points")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "facet")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "list")
+      dev.off()
+      summary(myBiomodData)
+    })
   )
 }, silent = TRUE)
 
@@ -224,14 +261,23 @@ cli::cli_process_start(c("resp.var = vector ;
                        expl.var = SpatVector"))
 this_try <- try({
   invisible(
-    capture.output(
+    capture.output({
       myBiomodData <- 
         BIOMOD_FormatingData(
           resp.var = myResp,
           expl.var = myExpl.SpatVector,
           resp.xy = myRespXY,
           resp.name = myRespName)
-    )
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodData)
+      g <- plot(myBiomodData, plot.type = "raster")
+      g <- plot(myBiomodData, plot.type = "points")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "facet")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "list")
+      dev.off()
+      summary(myBiomodData)
+      
+    })
   )
 }, silent = TRUE)
 
@@ -637,7 +683,7 @@ cli::cli_process_start("eval.resp.var = vector ;
                        eval.expl.var = SpatRaster")
 this_try <- try({
   invisible(
-    capture.output(
+    capture.output({
       myBiomodData <- 
         BIOMOD_FormatingData(
           resp.var = myResp,
@@ -647,7 +693,16 @@ this_try <- try({
           eval.resp.var = myEvalResp,
           eval.expl.var = myEvalExpl,
           eval.resp.xy = myEvalRespXY)
-    )
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodData)
+      g <- plot(myBiomodData, plot.type = "raster")
+      g <- plot(myBiomodData, plot.type = "points")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "facet")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "list")
+      dev.off()
+      summary(myBiomodData)
+      
+    })
   )
 }, silent = TRUE)
 
@@ -663,7 +718,7 @@ cli::cli_process_start("eval.resp.var = vector ;
                        eval.expl.var = NULL")
 this_try <- try({
   invisible(
-    capture.output(
+    capture.output({
       myBiomodData <- 
         BIOMOD_FormatingData(
           resp.var = myResp,
@@ -672,7 +727,16 @@ this_try <- try({
           resp.name = myRespName,
           eval.resp.var = myEvalResp,
           eval.resp.xy = myEvalRespXY)
-    )
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodData)
+      g <- plot(myBiomodData, plot.type = "raster")
+      g <- plot(myBiomodData, plot.type = "points")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "facet")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "list")
+      dev.off()
+      summary(myBiomodData)
+      
+    })
   )
 }, silent = TRUE)
 
@@ -715,14 +779,14 @@ cli::cli_process_start("eval.resp.var = SpatVector Presence-Absence;
 this_try <- try({
   invisible(
     capture.output(
-        myBiomodData <- 
-          BIOMOD_FormatingData(
-            resp.var = myResp,
-            expl.var = myExpl,
-            resp.xy = myRespXY,
-            resp.name = myRespName,
-            eval.resp.var = myEvalResp.SpatVector,
-            eval.expl.var = myEvalExpl.matrix)
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
+          eval.resp.var = myEvalResp.SpatVector,
+          eval.expl.var = myEvalExpl.matrix)
     )
   )
 }, silent = TRUE)
@@ -740,7 +804,7 @@ cli::cli_process_start("eval.resp.var = SpatVector Presence-Absence;
                        eval.expl.var = data.frame")
 this_try <- try({
   invisible(
-    capture.output(
+    capture.output({
       myBiomodData <- 
         BIOMOD_FormatingData(
           resp.var = myResp,
@@ -749,7 +813,16 @@ this_try <- try({
           resp.name = myRespName,
           eval.resp.var = myEvalResp.SpatVector,
           eval.expl.var = myEvalExpl.df)
-    )
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodData)
+      g <- plot(myBiomodData, plot.type = "raster")
+      g <- plot(myBiomodData, plot.type = "points")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "facet")
+      g <- plot(myBiomodData, plot.type = "points", plot.output = "list")
+      dev.off()
+      summary(myBiomodData)
+      
+    })
   )
 }, silent = TRUE)
 
