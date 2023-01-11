@@ -1,4 +1,4 @@
-cli::cli_h1("bm_PseudoAbsences")
+cli::cli_h1("bm_CrossValidation")
 
 
 Error_CV <- 0
@@ -1058,7 +1058,6 @@ cli::cli_process_start("balance = 'presence'")
 this_try <- try({
   invisible(
     capture.output({
-      
       calib.lines <- 
         BIOMOD_CrossValidation(myBiomodDataPA,
                                k = 2, 
@@ -1112,13 +1111,6 @@ cli::cli_process_start("balance = 'absences'")
 this_try <- try({
   invisible(
     capture.output({
-      myBiomodDataPA <- 
-        BIOMOD_FormatingData(
-          resp.var = myResp01,
-          expl.var = myExpl,
-          resp.xy = myRespXY,
-          resp.name = myRespName)
-      
       calib.lines <- 
         BIOMOD_CrossValidation(myBiomodDataPA,
                                k = 2, 

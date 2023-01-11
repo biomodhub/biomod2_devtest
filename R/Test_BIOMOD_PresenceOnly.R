@@ -323,7 +323,7 @@ this_try <- try({
       myBiomodPO <- BIOMOD_PresenceOnly(bm.mod = myBMout,
                                         bm.em = myBiomodEM)
       myBiomodPO <- BIOMOD_PresenceOnly(bm.em = myBiomodEM)
-      myBiomodPO <- BIOMOD_PresenceOnly(bm.mod = myBiomodModelOut)
+      myBiomodPO <- BIOMOD_PresenceOnly(bm.mod = myBMout)
     }))
   )
 }, silent = TRUE)

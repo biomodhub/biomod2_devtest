@@ -155,8 +155,33 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
+      
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = "mergedAlgo")
+      get_projected_models(myBiomodProj, merged.by.PA = "mergedData")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                      "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo"))
+      
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(plot(myBiomodProj), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, filtered.by = "TSS"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.algo = "mergedAlgo"),
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.PA = "mergedData"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, algo = c("EMmean","EMca")), 
+                         "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                           "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo")), 
+        "ggplot"))
       dev.off()
     })))
   )
@@ -185,7 +210,7 @@ this_try <- try({
           do.stack = TRUE
         )
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(plot(myBiomodProj), "ggplot"))
       dev.off()
     })))
   )
@@ -215,7 +240,7 @@ this_try <- try({
           do.stack = TRUE
         )
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(plot(myBiomodProj), "ggplot"))
       dev.off()
     })))
   )
@@ -244,7 +269,7 @@ this_try <- try({
           do.stack = TRUE
         )
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(plot(myBiomodProj), "ggplot"))
       dev.off()
     })))
   )
@@ -273,7 +298,17 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      stopifnot(is.null(plot(myBiomodProj)))
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = "mergedAlgo")
+      get_projected_models(myBiomodProj, merged.by.PA = "mergedData")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                      "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo"))
+      
+      stopifnot(tinytest::expect_error(plot(myBiomodProj)))
     })))
   )
 }, silent = TRUE)
@@ -300,7 +335,17 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      plot(myBiomodProj)
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = "mergedAlgo")
+      get_projected_models(myBiomodProj, merged.by.PA = "mergedData")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                      "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo"))
+      
+      stopifnot(tinytest::expect_error(plot(myBiomodProj)))
     })))
   )
 }, silent = TRUE)
@@ -329,8 +374,37 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      plot(myBiomodProj)
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = "mergedAlgo")
+      get_projected_models(myBiomodProj, merged.by.PA = "mergedData")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                      "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo"))
       
+      pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
+      stopifnot(inherits(plot(myBiomodProj), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, metric.binary = "TSS"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, metric.filter = "TSS"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, filtered.by = "TSS"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.algo = "mergedAlgo"),
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.PA = "mergedData"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, algo = c("EMmean","EMca")), 
+                         "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                           "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo")), 
+        "ggplot"))
+      dev.off()
     })))
   )
 }, silent = TRUE)
@@ -358,7 +432,33 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      plot(myBiomodProj)
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = "mergedAlgo")
+      get_projected_models(myBiomodProj, merged.by.PA = "mergedData")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                      "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo"))
+      
+      pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
+      stopifnot(inherits(plot(myBiomodProj), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, filtered.by = "TSS"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.algo = "mergedAlgo"),
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.PA = "mergedData"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, algo = c("EMmean","EMca")), 
+                         "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                           "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo")), 
+        "ggplot"))
+      dev.off()
     })))
   )
 }, silent = TRUE)
@@ -385,7 +485,17 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      stopifnot(is.null(plot(myBiomodProj)))
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = "mergedAlgo")
+      get_projected_models(myBiomodProj, merged.by.PA = "mergedData")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                      "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo"))
+      
+      stopifnot(tinytest::expect_error(plot(myBiomodProj)))
     })))
   )
 }, silent = TRUE)
@@ -412,7 +522,17 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      stopifnot(is.null(plot(myBiomodProj)))
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = "mergedAlgo")
+      get_projected_models(myBiomodProj, merged.by.PA = "mergedData")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                      "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo"))
+      
+      stopifnot(tinytest::expect_error(plot(myBiomodProj)))
     })))
   )
 }, silent = TRUE)
@@ -441,7 +561,33 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      plot(myBiomodProj)
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = "mergedAlgo")
+      get_projected_models(myBiomodProj, merged.by.PA = "mergedData")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                      "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo"))
+      
+      pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
+      stopifnot(inherits(plot(myBiomodProj), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, filtered.by = "TSS"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.algo = "mergedAlgo"),
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.PA = "mergedData"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, algo = c("EMmean","EMca")), 
+                         "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                           "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo")), 
+        "ggplot"))
+      dev.off()
     })))
   )
 }, silent = TRUE)
@@ -469,7 +615,33 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      plot(myBiomodProj)
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = "mergedAlgo")
+      get_projected_models(myBiomodProj, merged.by.PA = "mergedData")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                      "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo"))
+      
+      pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
+      stopifnot(inherits(plot(myBiomodProj), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, filtered.by = "TSS"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.algo = "mergedAlgo"),
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.PA = "mergedData"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, algo = c("EMmean","EMca")), 
+                         "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                           "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo")), 
+        "ggplot"))
+      dev.off()
     })))
   )
 }, silent = TRUE)
@@ -501,7 +673,7 @@ this_try <- try({
           do.stack = TRUE
         )
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(plot(myBiomodProj), "ggplot"))
       dev.off()
     })))
   )
@@ -532,7 +704,7 @@ this_try <- try({
           do.stack = TRUE
         )
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(plot(myBiomodProj), "ggplot"))
       dev.off()
     })))
   )
@@ -589,7 +761,17 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      stopifnot(is.null(plot(myBiomodProj)))
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = "mergedAlgo")
+      get_projected_models(myBiomodProj, merged.by.PA = "mergedData")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                      "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo"))
+      
+      stopifnot(tinytest::expect_error(plot(myBiomodProj)))
     })))
   )
 }, silent = TRUE)
@@ -618,7 +800,33 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      plot(myBiomodProj)
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = "mergedAlgo")
+      get_projected_models(myBiomodProj, merged.by.PA = "mergedData")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                      "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo"))
+      
+      pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
+      stopifnot(inherits(plot(myBiomodProj), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, filtered.by = "TSS"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.algo = "mergedAlgo"),
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.PA = "mergedData"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, algo = c("EMmean","EMca")), 
+                         "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             full.name = c("GuloGulo_EMcaByTSS_mergedData_mergedRun_mergedAlgo",
+                           "GuloGulo_EMwmeanByTSS_mergedData_mergedRun_mergedAlgo")), 
+        "ggplot"))
+      dev.off()
     })))
   )
 }, silent = TRUE)
@@ -652,7 +860,7 @@ this_try <- try({
           do.stack = TRUE
         )
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(plot(myBiomodProj), "ggplot"))
       dev.off()
     })))
   )
@@ -681,7 +889,7 @@ this_try <- try({
           do.stack = TRUE
         )
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(plot(myBiomodProj), "ggplot"))
       dev.off()
     })))
   )
@@ -710,7 +918,17 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      stopifnot(is.null(plot(myBiomodProj)))
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = c("MAXNET","MAXENT"))
+      get_projected_models(myBiomodProj, merged.by.PA = "PA2")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_PA1_mergedRun_GBM",
+                      "GuloGulo_EMwmeanByTSS_PA2_mergedRun_GLM"))
+      
+      stopifnot(tinytest::expect_error(plot(myBiomodProj)))
     })))
   )
 }, silent = TRUE)
@@ -739,7 +957,37 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      plot(myBiomodProj)
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = c("MAXNET","MAXENT"))
+      get_projected_models(myBiomodProj, merged.by.PA = "PA2")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_PA1_mergedRun_GBM",
+                      "GuloGulo_EMwmeanByTSS_PA2_mergedRun_GLM"))
+      
+      pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
+      stopifnot(inherits(plot(myBiomodProj), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, metric.binary = "TSS"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, metric.filter = "TSS"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, filtered.by = "TSS"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.algo = c("MAXNET","GLM")),
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.PA = "PA1"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, algo = c("EMmean","EMca")), 
+                         "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             full.name = c("GuloGulo_EMcaByTSS_PA1_mergedRun_GBM",
+                           "GuloGulo_EMwmeanByTSS_PA2_mergedRun_GLM")), 
+        "ggplot"))
+      dev.off()
       
     })))
   )
@@ -767,7 +1015,17 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      stopifnot(is.null(plot(myBiomodProj)))
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = c("MAXNET","MAXENT"))
+      get_projected_models(myBiomodProj, merged.by.PA = "PA2")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_PA1_mergedRun_GBM",
+                      "GuloGulo_EMwmeanByTSS_PA2_mergedRun_GLM"))
+      
+      stopifnot(tinytest::expect_error(plot(myBiomodProj)))
     })))
   )
 }, silent = TRUE)
@@ -795,7 +1053,37 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      plot(myBiomodProj)
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, filtered.by = "TSS")
+      get_projected_models(myBiomodProj, merged.by.algo = c("MAXNET","MAXENT"))
+      get_projected_models(myBiomodProj, merged.by.PA = "PA2")
+      get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
+      get_projected_models(
+        myBiomodProj, 
+        full.name = c("GuloGulo_EMcaByTSS_PA1_mergedRun_GBM",
+                      "GuloGulo_EMwmeanByTSS_PA2_mergedRun_GLM"))
+      
+      pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
+      stopifnot(inherits(plot(myBiomodProj), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, metric.binary = "TSS"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, metric.filter = "TSS"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, filtered.by = "TSS"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.algo = c("MAXNET","GLM")),
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, merged.by.PA = "PA1"), 
+                         "ggplot"))
+      stopifnot(inherits(plot(myBiomodProj, algo = c("EMmean","EMca")), 
+                         "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             full.name = c("GuloGulo_EMcaByTSS_PA1_mergedRun_GBM",
+                           "GuloGulo_EMwmeanByTSS_PA2_mergedRun_GLM")), 
+        "ggplot"))
+      dev.off()
     })))
   )
 }, silent = TRUE)

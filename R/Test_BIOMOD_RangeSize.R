@@ -78,49 +78,29 @@ invisible(
         build.clamping.mask = FALSE,
         do.stack = TRUE
       )
-    threshold_table <-
-      get_evaluations(myBiomodModelOut_noCat, as.data.frame = TRUE) %>% 
-      dplyr::filter(Eval.metric == "TSS") %>% 
-      dplyr::mutate(full.name = glue::glue("GuloGulo_{Dataset}_{Run}_{Algo}")) %>% 
-      dplyr::select(full.name, Cutoff)
-    rownames(threshold_table) <- threshold_table$full.name
-    threshold_table <- threshold_table[,-1, drop = FALSE]
     
-    ProjCurrent.nonbinary.df <- 
-      get_predictions(myBiomodProj.df, 
-                      as.data.frame = TRUE)
-    ProjCurrent.nonbinary <- 
-      get_predictions(myBiomodProj)
+    ProjCurrent.nonbinary.df <- get_predictions(myBiomodProj.df)
     
+    ProjCurrent.nonbinary <-    get_predictions(myBiomodProj)
     ProjCurrent.nonbinary.raster <- stack(ProjCurrent.nonbinary)
     
+    
     ProjCurrent.df <- 
-      get_predictions(myBiomodProj.df, 
-                      as.data.frame = TRUE) %>% 
-      bm_BinaryTransformation(
-        threshold = 
-          threshold_table[get_projected_models(myBiomodProj),"Cutoff"])
+      get_predictions(myBiomodProj.df, metric.binary = "TSS")
     
     ProjCurrent.1.df <-
-      get_predictions(myBiomodProj.df, 
-                      as.data.frame = TRUE,
-                      model = "GLM",
-                      run.eval = "RUN1") %>% 
-      bm_BinaryTransformation(
-        threshold = threshold_table["GuloGulo_AllData_RUN1_GLM", "Cutoff"])
-    
+      get_predictions(myBiomodProj.df,
+                      algo = "GLM",
+                      run = "RUN1",
+                      metric.binary = "TSS")
     ProjCurrent.all.SpatRaster <-
-      get_predictions(myBiomodProj)  %>% 
-      bm_BinaryTransformation(
-        threshold = 
-          threshold_table[get_projected_models(myBiomodProj),"Cutoff"])
+      get_predictions(myBiomodProj, metric.binary = "TSS")
     
     ProjCurrent.1.SpatRaster <-
       get_predictions(myBiomodProj,
-                      model = "GLM",
-                      run.eval = "RUN1") %>% 
-      bm_BinaryTransformation(
-        threshold = threshold_table["GuloGulo_AllData_RUN1_GLM", "Cutoff"])
+                      algo = "GLM",
+                      run = "RUN1",
+                      metric.binary = "TSS") 
     
     
     ## Simple model - future --------------------------------------------------
@@ -145,42 +125,30 @@ invisible(
         do.stack = TRUE
       )
     
-    ProjFuture.nonbinary.df <- 
-      get_predictions(myBiomodFuture.df, 
-                      as.data.frame = TRUE)
-    ProjFuture.nonbinary <- 
-      get_predictions(myBiomodProj)
+    ProjFuture.nonbinary.df <-  get_predictions(myBiomodFuture.df) 
+    ProjFuture.nonbinary <-  get_predictions(myBiomodProj)
     
     ProjFuture.nonbinary.raster <- stack(ProjFuture.nonbinary)
     
     ProjFuture.df <-
-      get_predictions(myBiomodFuture.df, as.data.frame = TRUE) %>% 
-      bm_BinaryTransformation(
-        threshold = 
-          threshold_table[get_projected_models(myBiomodProj),"Cutoff"])
+      get_predictions(myBiomodFuture.df, metric.binary = "TSS")
     
     ProjFuture.1.df <- 
-      get_predictions(myBiomodFuture.df, as.data.frame = TRUE,
-                      model = "GLM",
-                      run.eval = "RUN1") %>% 
-      bm_BinaryTransformation(
-        threshold = threshold_table["GuloGulo_AllData_RUN1_GLM", "Cutoff"])
-    
-    ProjFuture.2.df <- cbind(ProjFuture.1.df,ProjFuture.1.df)
-    colnames(ProjFuture.2.df) <- c("ssp1","ssp2")
+      get_predictions(myBiomodFuture.df,
+                      algo = "GLM",
+                      run = "RUN1",
+                      metric.binary = "TSS")
+    ProjFuture.2.df <- rbind(ProjFuture.1.df,ProjFuture.1.df)
+    ProjFuture.2.df$full.name <- rep(c("ssp1","ssp2"), each = nrow(ProjFuture.1.df))
     
     ProjFuture.all.SpatRaster <-
-      get_predictions(myBiomodFuture) %>% 
-      bm_BinaryTransformation(
-        threshold = 
-          threshold_table[get_projected_models(myBiomodProj),"Cutoff"])
+      get_predictions(myBiomodFuture, metric.binary = "TSS") 
     
     ProjFuture.1.SpatRaster <- 
       get_predictions(myBiomodFuture,
-                      model = "GLM",
-                      run.eval = "RUN1") %>% 
-      bm_BinaryTransformation(
-        threshold = threshold_table["GuloGulo_AllData_RUN1_GLM", "Cutoff"])
+                      algo = "GLM",
+                      run = "RUN1",
+                      metric.binary = "TSS")
     
     ProjFuture.2.SpatRaster <- c(ProjFuture.1.SpatRaster,ProjFuture.1.SpatRaster)
     # names(ProjFuture.2.SpatRaster) <- c("ssp1","ssp2")
@@ -207,45 +175,24 @@ invisible(
         build.clamping.mask = FALSE,
         do.stack = TRUE
       )
-    threshold_ensemble_table <-
-      get_evaluations(myBiomodEnsembleOut_noCat, as.data.frame = TRUE) %>% 
-      dplyr::filter(Eval.metric == "TSS") %>% 
-      dplyr::mutate(full.name = glue::glue("GuloGulo_{Model.name}")) %>% 
-      dplyr::select(full.name, Cutoff)
-    rownames(threshold_ensemble_table) <- threshold_ensemble_table$full.name
-    threshold_ensemble_table <- threshold_ensemble_table[,-1, drop = FALSE]
     
     EnsembleCurrent.df <- 
-      get_predictions(myBiomodEnsembleForecast.df, 
-                      as.data.frame = TRUE) %>% 
-      bm_BinaryTransformation(
-        threshold = 
-          threshold_ensemble_table[
-            get_projected_models(myBiomodEnsembleForecast), "Cutoff"])
+      get_predictions(myBiomodEnsembleForecast.df, metric.binary = "TSS") 
     
     EnsembleCurrent.1.df <- 
-      get_predictions(myBiomodEnsembleForecast.df, 
-                      as.data.frame = TRUE,
-                      model = "EMca") %>% 
-      bm_BinaryTransformation(
-        threshold = 
-          threshold_ensemble_table["GuloGulo_EMcaByTSS_mergedAlgo_mergedRun_mergedData",
-                                   "Cutoff"])
+      get_predictions(myBiomodEnsembleForecast.df,
+                      algo = "EMca",
+                      metric.binary = "TSS")
+    
     EnsembleCurrent.all.SpatRaster <-
-      get_predictions(myBiomodEnsembleForecast) %>% 
-      bm_BinaryTransformation(
-        threshold = 
-          threshold_ensemble_table[
-            get_projected_models(myBiomodEnsembleForecast), "Cutoff"]) 
+      get_predictions(myBiomodEnsembleForecast, 
+                      metric.binary = "TSS")
     
     EnsembleCurrent.1.SpatRaster <- 
       get_predictions(
         myBiomodEnsembleForecast,
-        model = "EMca") %>% 
-      bm_BinaryTransformation(
-        threshold = 
-          threshold_ensemble_table["GuloGulo_EMcaByTSS_mergedAlgo_mergedRun_mergedData",
-                                   "Cutoff"])
+        algo = "EMca",
+        metric.binary = "TSS") 
     
     ## Ensemble model - future --------------------------------------------------
     myBiomodEnsembleFuture <-
@@ -269,39 +216,22 @@ invisible(
         do.stack = TRUE
       )
     EnsembleFuture.df <- 
-      get_predictions(myBiomodEnsembleFuture.df, 
-                      as.data.frame = TRUE) %>% 
-      bm_BinaryTransformation(
-        threshold = 
-          threshold_ensemble_table[
-            get_projected_models(myBiomodEnsembleForecast), "Cutoff"]) 
+      get_predictions(myBiomodEnsembleFuture.df, metric.binary = "TSS") 
     EnsembleFuture.1.df <- 
-      get_predictions(myBiomodEnsembleFuture.df, 
-                      as.data.frame = TRUE,
-                      model = "EMca") %>% 
-      bm_BinaryTransformation(
-        threshold = 
-          threshold_ensemble_table["GuloGulo_EMcaByTSS_mergedAlgo_mergedRun_mergedData",
-                                   "Cutoff"])
+      get_predictions(myBiomodEnsembleFuture.df,
+                      algo = "EMca", metric.binary = "TSS") 
     
     EnsembleFuture.2.df <- cbind(EnsembleFuture.1.df,EnsembleFuture.1.df)
     colnames(EnsembleFuture.2.df) <- c("ssp1","ssp2")
     
     EnsembleFuture.all.SpatRaster <- 
-      get_predictions(myBiomodEnsembleFuture) %>% 
-      bm_BinaryTransformation(
-        threshold = 
-          threshold_ensemble_table[
-            get_projected_models(myBiomodEnsembleForecast), "Cutoff"]) 
+      get_predictions(myBiomodEnsembleFuture, metric.binary = "TSS")
     
     EnsembleFuture.1.SpatRaster <- 
       get_predictions(
         myBiomodEnsembleFuture,
-        model = "EMca") %>% 
-      bm_BinaryTransformation(
-        threshold = 
-          threshold_ensemble_table["GuloGulo_EMcaByTSS_mergedAlgo_mergedRun_mergedData",
-                                   "Cutoff"])
+        algo = "EMca",
+        metric.binary = "TSS")
     
     EnsembleFuture.2.SpatRaster <- c(EnsembleFuture.1.SpatRaster,
                                      EnsembleFuture.1.SpatRaster)

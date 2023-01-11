@@ -101,14 +101,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       
       get_predictions(myBiomodEM)
@@ -162,14 +157,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       
       get_predictions(myBiomodEM)
@@ -226,14 +216,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -292,14 +277,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -357,14 +337,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -421,18 +396,13 @@ this_try <- try({
         bm.mod = myBiomodModelOut,
         models.chosen = 'all',
         em.by = 'all',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -493,14 +463,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -561,14 +526,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -628,14 +588,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -697,14 +652,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -762,14 +712,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -827,14 +772,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -891,14 +831,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -958,14 +893,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -1026,14 +956,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -1094,14 +1019,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -1161,14 +1081,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -1187,9 +1102,9 @@ if(inherits(this_try, "try-error")){
 
 
 
-# em.by = PA_dataset ------------------------------------------------
+# em.by = PA ------------------------------------------------
 
-cli::cli_h2("em.by = PA_dataset")
+cli::cli_h2("em.by = PA")
 
 ### Presence-Only ------------
 cli::cli_process_start("Presence-Only")
@@ -1224,19 +1139,14 @@ this_try <- try({
       }
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
-        em.by = 'PA_dataset',
+        em.by = 'PA',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -1298,14 +1208,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -1324,9 +1229,9 @@ if(inherits(this_try, "try-error")){
 }
 
 
-# em.by = PA_dataset+repet ------------------------------------------------
+# em.by = PA+repet ------------------------------------------------
 
-cli::cli_h2("em.by = PA_dataset+repet")
+cli::cli_h2("em.by = PA+run")
 
 ### Presence-Only ------------
 cli::cli_process_start("Presence-Only")
@@ -1362,19 +1267,14 @@ this_try <- try({
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
         models.chosen = 'all',
-        em.by = 'PA_dataset+repet',
+        em.by = 'PA+run',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -1393,9 +1293,9 @@ if(inherits(this_try, "try-error")){
 }
 
 
-# em.by = PA_dataset+algo ------------------------------------------------
+# em.by = PA+algo ------------------------------------------------
 
-cli::cli_h2("em.by = PA_dataset+algo")
+cli::cli_h2("em.by = PA+algo")
 
 ### Presence-Only ------------
 cli::cli_process_start("Presence-Only")
@@ -1431,19 +1331,14 @@ this_try <- try({
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
         models.chosen = 'all',
-        em.by = 'PA_dataset+algo',
+        em.by = 'PA+algo',
         metric.select = c('TSS','ROC'),
         metric.select.thresh = c(0.7,0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)
@@ -1510,14 +1405,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = FALSE,
-        prob.cv = FALSE,
-        prob.ci = FALSE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = FALSE,
-        prob.mean.weight = FALSE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
       get_predictions(myBiomodEM)
       get_evaluations(myBiomodEM)

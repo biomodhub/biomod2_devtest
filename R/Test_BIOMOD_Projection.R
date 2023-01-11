@@ -149,8 +149,48 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
+      
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, run = "RUN1")
+      get_projected_models(myBiomodProj, algo = "GAM")
+      get_projected_models(myBiomodProj, run = "RUN1", algo = "GBM")
+      get_projected_models(myBiomodProj, 
+                           full.name = c("GuloGulo_allData_RUN2_MARS",
+                                         "GuloGulo_allData_RUN1_MAXENT"))
+      
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(
+        plot(myBiomodProj), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, algo = "GLM"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, algo = "GLM", run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj,
+             full.name = c("GuloGulo_allData_RUN2_MARS",
+                           "GuloGulo_allData_RUN1_MAXENT")),
+        "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             metric.binary = "TSS"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj,
+             metric.filter = "TSS", run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj,
+             metric.binary = "ROC", algo = "GLM"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             metric.filter = "TSS", algo = "GLM", run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             metric.filter = "TSS",
+             full.name = c("GuloGulo_allData_RUN2_MARS",
+                           "GuloGulo_allData_RUN1_MAXENT")),
+        "ggplot"))
+      
       dev.off()
     })))
   )
@@ -171,15 +211,55 @@ this_try <- try({
       myBiomodProj <-
         BIOMOD_Projection(
           bm.mod = myBiomodModelOut_noCat,
-          proj.name = 'Current',
+          proj.name = 'CurrentNoStack',
           new.env = myExpl,
           metric.binary = 'all',
           metric.filter = 'all',
           build.clamping.mask = FALSE,
           do.stack = FALSE
         )
+      
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, run = "RUN1")
+      get_projected_models(myBiomodProj, algo = "GAM")
+      get_projected_models(myBiomodProj, run = "RUN1", algo = "GBM")
+      get_projected_models(myBiomodProj, 
+                           full.name = c("GuloGulo_allData_RUN2_MARS",
+                                         "GuloGulo_allData_RUN1_MAXENT"))
+      
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(
+        plot(myBiomodProj), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, algo = "GLM"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, algo = "GLM", run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj,
+             full.name = c("GuloGulo_allData_RUN2_MARS",
+                           "GuloGulo_allData_RUN1_MAXENT")),
+        "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             metric.binary = "TSS"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj,
+             metric.filter = "TSS", run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj,
+             metric.binary = "ROC", algo = "GLM"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             metric.filter = "TSS", algo = "GLM", run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             metric.filter = "TSS",
+             full.name = c("GuloGulo_allData_RUN2_MARS",
+                           "GuloGulo_allData_RUN1_MAXENT")),
+        "ggplot"))
+      
       dev.off()
     })))
   )
@@ -208,8 +288,48 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
+      
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, run = "RUN1")
+      get_projected_models(myBiomodProj, algo = "GAM")
+      get_projected_models(myBiomodProj, run = "RUN1", algo = "GBM")
+      get_projected_models(myBiomodProj, 
+                           full.name = c("GuloGulo_allData_RUN2_MARS",
+                                         "GuloGulo_allData_RUN1_MAXENT"))
+      
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(
+        plot(myBiomodProj), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, algo = "GLM"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, algo = "GLM", run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj,
+             full.name = c("GuloGulo_allData_RUN2_MARS",
+                           "GuloGulo_allData_RUN1_MAXENT")),
+        "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             metric.binary = "TSS"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj,
+             metric.filter = "TSS", run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj,
+             metric.binary = "ROC", algo = "GLM"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             metric.filter = "TSS", algo = "GLM", run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             metric.filter = "TSS",
+             full.name = c("GuloGulo_allData_RUN2_MARS",
+                           "GuloGulo_allData_RUN1_MAXENT")),
+        "ggplot"))
+      
       dev.off()
     })))
   )
@@ -239,7 +359,7 @@ this_try <- try({
           do.stack = TRUE
         )
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(plot(myBiomodProj), "ggplot"))
       dev.off()
     })))
   )
@@ -268,7 +388,7 @@ this_try <- try({
           do.stack = TRUE
         )
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(plot(myBiomodProj), "ggplot"))
       dev.off()
     })))
   )
@@ -297,7 +417,7 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      stopifnot(is.null(plot(myBiomodProj)))
+      stopifnot(tinytest::expect_error(plot(myBiomodProj)))
     })))
   )
 }, silent = TRUE)
@@ -324,7 +444,7 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      plot(myBiomodProj)
+      stopifnot(tinytest::expect_error(plot(myBiomodProj)))
     })))
   )
 }, silent = TRUE)
@@ -353,7 +473,49 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      plot(myBiomodProj)
+      
+      get_projected_models(myBiomodProj)
+      get_projected_models(myBiomodProj, run = "RUN1")
+      get_projected_models(myBiomodProj, algo = "GAM")
+      get_projected_models(myBiomodProj, run = "RUN1", algo = "GBM")
+      get_projected_models(myBiomodProj, 
+                           full.name = c("GuloGulo_allData_RUN2_MARS",
+                                         "GuloGulo_allData_RUN1_MAXENT"))
+      
+      pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
+      stopifnot(inherits(
+        plot(myBiomodProj), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, algo = "GLM"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, algo = "GLM", run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj,
+             full.name = c("GuloGulo_allData_RUN2_MARS",
+                           "GuloGulo_allData_RUN1_MAXENT")),
+        "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             metric.binary = "TSS"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj,
+             metric.filter = "TSS", run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj,
+             metric.binary = "ROC", algo = "GLM"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             metric.filter = "TSS", algo = "GLM", run = "RUN1"), "ggplot"))
+      stopifnot(inherits(
+        plot(myBiomodProj, 
+             metric.filter = "TSS",
+             full.name = c("GuloGulo_allData_RUN2_MARS",
+                           "GuloGulo_allData_RUN1_MAXENT")),
+        "ggplot"))
+      
+      dev.off()
       
     })))
   )
@@ -382,7 +544,10 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      plot(myBiomodProj)
+      pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
+      stopifnot(inherits(
+        plot(myBiomodProj), "ggplot"))
+      dev.off()
     })))
   )
 }, silent = TRUE)
@@ -409,7 +574,7 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      stopifnot(is.null(plot(myBiomodProj)))
+      stopifnot(tinytest::expect_error(plot(myBiomodProj)))
     })))
   )
 }, silent = TRUE)
@@ -436,7 +601,7 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      stopifnot(is.null(plot(myBiomodProj)))
+      stopifnot(tinytest::expect_error(plot(myBiomodProj)))
     })))
   )
 }, silent = TRUE)
@@ -465,7 +630,10 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      plot(myBiomodProj)
+      pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
+      stopifnot(inherits(
+        plot(myBiomodProj), "ggplot"))
+      dev.off()
     })))
   )
 }, silent = TRUE)
@@ -493,7 +661,10 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      plot(myBiomodProj)
+      pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
+      stopifnot(inherits(
+        plot(myBiomodProj), "ggplot"))
+      dev.off()
     })))
   )
 }, silent = TRUE)
@@ -525,7 +696,7 @@ this_try <- try({
           do.stack = TRUE
         )
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(plot(myBiomodProj), "ggplot"))
       dev.off()
     })))
   )
@@ -556,7 +727,7 @@ this_try <- try({
           do.stack = TRUE
         )
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
-      stopifnot(inherits(plot(myBiomodProj), "trellis"))
+      stopifnot(inherits(plot(myBiomodProj), "ggplot"))
       dev.off()
     })))
   )
@@ -613,7 +784,7 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      stopifnot(is.null(plot(myBiomodProj)))
+      stopifnot(tinytest::expect_error(plot(myBiomodProj)))
     })))
   )
 }, silent = TRUE)
@@ -642,7 +813,10 @@ this_try <- try({
           build.clamping.mask = FALSE,
           do.stack = TRUE
         )
-      plot(myBiomodProj)
+      pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
+      stopifnot(inherits(
+        plot(myBiomodProj), "ggplot"))
+      dev.off()
     })))
   )
 }, silent = TRUE)

@@ -103,7 +103,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)

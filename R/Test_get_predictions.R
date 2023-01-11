@@ -271,19 +271,19 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### run.eval = subset ------------------------------------------------
+### run = subset ------------------------------------------------
 
-cli::cli_process_start("run.eval = subset")
+cli::cli_process_start("run = subset")
 
 
 this_try <- try({
   invisible(
     capture.output(suppressWarnings(suppressMessages({
-      myPred <- get_predictions(myBiomodProjOut_Eval, run.eval = c("RUN1","RUN2"))
+      myPred <- get_predictions(myBiomodProjOut_Eval, run = c("RUN1","RUN2"))
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "SpatRaster"))
       
-      myPred <- get_predictions(myBiomodProjOut_Eval, run.eval = "RUN1")
+      myPred <- get_predictions(myBiomodProjOut_Eval, run = "RUN1")
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "SpatRaster"))
       
@@ -301,19 +301,19 @@ if(inherits(this_try, "try-error")){
 }
 
 
-### data.set = subset ------------------------------------------------
+### PA = subset ------------------------------------------------
 
-cli::cli_process_start("data.set = subset")
+cli::cli_process_start("PA = subset")
 
 
 this_try <- try({
   invisible(
     capture.output(suppressWarnings(suppressMessages({
-      myPred <- get_predictions(myBiomodProjOut_Eval, data.set = c("PA1","PA2"))
+      myPred <- get_predictions(myBiomodProjOut_Eval, PA = c("PA1","PA2"))
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "SpatRaster"))
       
-      myPred <- get_predictions(myBiomodProjOut_Eval, data.set = "PA1")
+      myPred <- get_predictions(myBiomodProjOut_Eval, PA = "PA1")
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "SpatRaster"))
       
@@ -434,19 +434,19 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### run.eval = subset ------------------------------------------------
+### run = subset ------------------------------------------------
 
-cli::cli_process_start("run.eval = subset")
+cli::cli_process_start("run = subset")
 
 
 this_try <- try({
   invisible(
     capture.output(suppressWarnings(suppressMessages({
-      myPred <- get_predictions(myBiomodProjOut_Eval, run.eval = c("RUN1","RUN2"))
+      myPred <- get_predictions(myBiomodProjOut_Eval, run = c("RUN1","RUN2"))
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "data.frame"))
       
-      myPred <- get_predictions(myBiomodProjOut_Eval, run.eval = "RUN1")
+      myPred <- get_predictions(myBiomodProjOut_Eval, run = "RUN1")
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "data.frame"))
       
@@ -463,19 +463,19 @@ if(inherits(this_try, "try-error")){
 }
 
 
-### data.set = subset ------------------------------------------------
+### PA = subset ------------------------------------------------
 
-cli::cli_process_start("data.set = subset")
+cli::cli_process_start("PA = subset")
 
 
 this_try <- try({
   invisible(
     capture.output(suppressWarnings(suppressMessages({
-      myPred <- get_predictions(myBiomodProjOut_Eval, data.set = c("PA1","PA2"))
+      myPred <- get_predictions(myBiomodProjOut_Eval, PA = c("PA1","PA2"))
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "data.frame"))
       
-      myPred <- get_predictions(myBiomodProjOut_Eval, data.set = "PA1")
+      myPred <- get_predictions(myBiomodProjOut_Eval, PA = "PA1")
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "data.frame"))
       
@@ -597,23 +597,23 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### run.eval = subset ------------------------------------------------
+### run = subset ------------------------------------------------
 
-cli::cli_process_start("run.eval = subset")
+cli::cli_process_start("run = subset")
 
 
 this_try <- try({
   invisible(
     capture.output(suppressWarnings(suppressMessages({
-      myPred <- get_predictions(myBiomodProjOut_Eval, run.eval = c("RUN1","RUN2"))
+      myPred <- get_predictions(myBiomodProjOut_Eval, run = c("RUN1","RUN2"))
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "SpatRaster"))
       
-      myPred <- get_predictions(myBiomodProjOut_Eval, run.eval = "RUN1")
+      myPred <- get_predictions(myBiomodProjOut_Eval, run = "RUN1")
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "SpatRaster"))
       
-      myPred <- get_predictions(myBiomodProjOut_Eval, run.eval = "RUN2")
+      myPred <- get_predictions(myBiomodProjOut_Eval, run = "RUN2")
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "SpatRaster"))
       
@@ -630,23 +630,23 @@ if(inherits(this_try, "try-error")){
 }
 
 
-### data.set = subset ------------------------------------------------
+### PA = subset ------------------------------------------------
 
-cli::cli_process_start("data.set = subset")
+cli::cli_process_start("PA = subset")
 
 
 this_try <- try({
   invisible(
     capture.output(suppressWarnings(suppressMessages({
-      myPred <- get_predictions(myBiomodProjOut_Eval, data.set = c("PA1","PA2"))
+      myPred <- get_predictions(myBiomodProjOut_Eval, PA = c("PA1","PA2"))
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "SpatRaster"))
       
-      myPred <- get_predictions(myBiomodProjOut_Eval, data.set = "PA1")
+      myPred <- get_predictions(myBiomodProjOut_Eval, PA = "PA1")
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "SpatRaster"))
       
-      myPred <- get_predictions(myBiomodProjOut_Eval, data.set = "PA2")
+      myPred <- get_predictions(myBiomodProjOut_Eval, PA = "PA2")
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "SpatRaster"))
       
@@ -765,23 +765,23 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### run.eval = subset ------------------------------------------------
+### run = subset ------------------------------------------------
 
-cli::cli_process_start("run.eval = subset")
+cli::cli_process_start("run = subset")
 
 
 this_try <- try({
   invisible(
     capture.output(suppressWarnings(suppressMessages({
-      myPred <- get_predictions(myBiomodProjOut_Eval, run.eval = c("RUN1","RUN2"))
+      myPred <- get_predictions(myBiomodProjOut_Eval, run = c("RUN1","RUN2"))
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "data.frame"))
       
-      myPred <- get_predictions(myBiomodProjOut_Eval, run.eval = "RUN1")
+      myPred <- get_predictions(myBiomodProjOut_Eval, run = "RUN1")
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "data.frame"))
       
-      myPred <- get_predictions(myBiomodProjOut_Eval, run.eval = "RUN2")
+      myPred <- get_predictions(myBiomodProjOut_Eval, run = "RUN2")
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "data.frame"))
       
@@ -798,23 +798,23 @@ if(inherits(this_try, "try-error")){
 }
 
 
-### data.set = subset ------------------------------------------------
+### PA = subset ------------------------------------------------
 
-cli::cli_process_start("data.set = subset")
+cli::cli_process_start("PA = subset")
 
 
 this_try <- try({
   invisible(
     capture.output(suppressWarnings(suppressMessages({
-      myPred <- get_predictions(myBiomodProjOut_Eval, data.set = c("PA1","PA2"))
+      myPred <- get_predictions(myBiomodProjOut_Eval, PA = c("PA1","PA2"))
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "data.frame"))
       
-      myPred <- get_predictions(myBiomodProjOut_Eval, data.set = "PA1")
+      myPred <- get_predictions(myBiomodProjOut_Eval, PA = "PA1")
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "data.frame"))
       
-      myPred <- get_predictions(myBiomodProjOut_Eval, data.set = "PA2")
+      myPred <- get_predictions(myBiomodProjOut_Eval, PA = "PA2")
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "data.frame"))
       
