@@ -81,9 +81,9 @@ names(myExpl.cat)[1] <- "bio3_factor"
 myExpl.cat <- terra::categories(myExpl.cat, layer = 1, 
                                 data.frame(ID = c(1,2,3,4),
                                            bio3 = c("low","medium","high","very high")),
-                                active = 2) 
+                                active = 1) 
 
-myExpl.cat.df <- extract(myExpl.cat, y = myResp.SpatVector, ID =FALSE)
+myExpl.cat.df <- extract(myExpl.cat, y = myResp.SpatVector, ID = FALSE)
 myExpl.cat.raster <- myExpl.raster
 bio3_true <- myExpl.raster[[1]]
 bio3_factor <- calc(bio3_true, function(x){
