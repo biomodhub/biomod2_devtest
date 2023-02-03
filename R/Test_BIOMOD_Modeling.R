@@ -246,48 +246,6 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Absence and Pseudo-Absences ------------
-cli::cli_process_start("Presence-Absence and Pseudo-Absences")
-this_try <- try({
-  invisible(
-    capture.output(suppressWarnings(suppressMessages({
-      myBiomodData <-
-        BIOMOD_FormatingData(
-          resp.var = myResp_PA2,
-          expl.var = myExpl,
-          resp.xy = myRespXY_PA2,
-          resp.name = myRespName,
-          PA.nb.rep = 2,
-          PA.nb.absences = 1600,
-          PA.strategy = 'random')
-      
-      myBiomodModelOut <-
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'NoCat_NoEval_PA2',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
-          metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
-          seed.val = 42
-        )
-      get_predictions(myBiomodModelOut)
-      get_evaluations(myBiomodModelOut)
-      get_built_models(myBiomodModelOut)
-      get_formal_data(myBiomodModelOut)
-      
-    })))
-  )
-}, silent = TRUE)
-
-if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
-  cli::cli_process_failed()
-} else {
-  cli::cli_process_done()
-}
 
 ## With Evaluation -------------------------------------------------------
 cli::cli_h3("With Evaluation")
@@ -406,52 +364,6 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_Eval_Presence-Only_with_NA',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
-          metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
-          seed.val = 42
-        )
-      get_predictions(myBiomodModelOut)
-      get_evaluations(myBiomodModelOut)
-      get_built_models(myBiomodModelOut)
-      get_formal_data(myBiomodModelOut)
-      
-    })))
-  )
-}, silent = TRUE)
-
-if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
-  cli::cli_process_failed()
-} else {
-  cli::cli_process_done()
-}
-
-### Presence-Absence and Pseudo-Absences ------------
-cli::cli_process_start("Presence-Absence and Pseudo-Absences")
-this_try <- try({
-  invisible(
-    capture.output(suppressWarnings(suppressMessages({
-      myBiomodData <-
-        BIOMOD_FormatingData(
-          resp.var = myResp_PA2,
-          expl.var = myExpl,
-          resp.xy = myRespXY_PA2,
-          resp.name = myRespName,
-          PA.nb.rep = 2,
-          PA.nb.absences = 1600,
-          PA.strategy = 'random',
-          eval.resp.var = myResp,
-          eval.expl.var = myExpl,
-          eval.resp.xy = myRespXY)
-      
-      myBiomodModelOut <-
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'NoCat_Eval_PA2',
           nb.rep = 2,
           data.split.perc = 80,
           var.import = 3,
@@ -611,48 +523,6 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Absence and Pseudo-Absences ------------
-cli::cli_process_start("Presence-Absence and Pseudo-Absences")
-this_try <- try({
-  invisible(
-    capture.output(suppressWarnings(suppressMessages({
-      myBiomodData <-
-        BIOMOD_FormatingData(
-          resp.var = myResp_PA2,
-          expl.var = myExpl.cat,
-          resp.xy = myRespXY_PA2,
-          resp.name = myRespName,
-          PA.nb.rep = 2,
-          PA.nb.absences = 1600,
-          PA.strategy = 'random')
-      
-      myBiomodModelOut <-
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'Cat_NoEval_PA2',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
-          metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
-          seed.val = 42
-        )
-      get_predictions(myBiomodModelOut)
-      get_evaluations(myBiomodModelOut)
-      get_built_models(myBiomodModelOut)
-      get_formal_data(myBiomodModelOut)
-      
-    })))
-  )
-}, silent = TRUE)
-
-if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
-  cli::cli_process_failed()
-} else {
-  cli::cli_process_done()
-}
 
 ## With Evaluation -------------------------------------------------------
 cli::cli_h3("With Evaluation")
@@ -794,50 +664,6 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Absence and Pseudo-Absences ------------
-cli::cli_process_start("Presence-Absence and Pseudo-Absences")
-this_try <- try({
-  invisible(
-    capture.output(suppressWarnings(suppressMessages({
-      myBiomodData <-
-        BIOMOD_FormatingData(
-          resp.var = myResp_PA2,
-          expl.var = myExpl.cat,
-          resp.xy = myRespXY_PA2,
-          resp.name = myRespName,
-          PA.nb.rep = 2,
-          PA.nb.absences = 1600,
-          PA.strategy = 'random',
-          eval.resp.var = myResp,
-          eval.expl.var = myExpl.cat,
-          eval.resp.xy = myRespXY)
-      
-      myBiomodModelOut <-
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'Cat_Eval_PA2',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
-          metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
-          seed.val = 42
-        )
-      get_predictions(myBiomodModelOut)
-      get_evaluations(myBiomodModelOut)
-      get_built_models(myBiomodModelOut)
-      get_formal_data(myBiomodModelOut)
-    })))
-  )
-}, silent = TRUE)
-
-if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
-  cli::cli_process_failed()
-} else {
-  cli::cli_process_done()
-}
 
 
 # One non-categorical Variables ------------------------------------------------
@@ -975,48 +801,6 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Absence and Pseudo-Absences ------------
-cli::cli_process_start("Presence-Absence and Pseudo-Absences")
-this_try <- try({
-  invisible(
-    capture.output(suppressWarnings(suppressMessages({
-      myBiomodData <-
-        BIOMOD_FormatingData(
-          resp.var = myResp_PA2,
-          expl.var = myExpl1,
-          resp.xy = myRespXY_PA2,
-          resp.name = myRespName,
-          PA.nb.rep = 2,
-          PA.nb.absences = 1600,
-          PA.strategy = 'random')
-      
-      myBiomodModelOut <-
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'NoCat1_NoEval_PA2',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
-          metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
-          seed.val = 42
-        )
-      get_predictions(myBiomodModelOut)
-      get_evaluations(myBiomodModelOut)
-      get_built_models(myBiomodModelOut)
-      get_formal_data(myBiomodModelOut)
-      
-    })))
-  )
-}, silent = TRUE)
-
-if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
-  cli::cli_process_failed()
-} else {
-  cli::cli_process_done()
-}
 
 ## With Evaluation -------------------------------------------------------
 cli::cli_h3("With Evaluation")
@@ -1158,51 +942,6 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Absence and Pseudo-Absences ------------
-cli::cli_process_start("Presence-Absence and Pseudo-Absences")
-this_try <- try({
-  invisible(
-    capture.output(suppressWarnings(suppressMessages({
-      myBiomodData <-
-        BIOMOD_FormatingData(
-          resp.var = myResp_PA2,
-          expl.var = myExpl1,
-          resp.xy = myRespXY_PA2,
-          resp.name = myRespName,
-          PA.nb.rep = 2,
-          PA.nb.absences = 1600,
-          PA.strategy = 'random',
-          eval.resp.var = myResp,
-          eval.expl.var = myExpl1,
-          eval.resp.xy = myRespXY)
-
-      myBiomodModelOut <-
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'NoCat1_Eval_PA2',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
-          metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
-          seed.val = 42
-        )
-      get_predictions(myBiomodModelOut)
-      get_evaluations(myBiomodModelOut)
-      get_built_models(myBiomodModelOut)
-      get_formal_data(myBiomodModelOut)
-
-    })))
-  )
-}, silent = TRUE)
-
-if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
-  cli::cli_process_failed()
-} else {
-  cli::cli_process_done()
-}
 
 # cross-validation ------------------------------------------------------------------
 cli::cli_h2("Crossvalidation tests")
