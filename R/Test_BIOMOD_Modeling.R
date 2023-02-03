@@ -72,8 +72,52 @@ myExpl.df <- extract(myExpl, y = myResp.SpatVector, ID = FALSE)
 
 cli::cli_h2("No Categorical Variables")
 
+## No Validation -------------------------------------------------------
+cli::cli_h3("No Validation")
+
+### Presence-Absence ------------
+cli::cli_process_start("Presence-Absence")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl,
+          resp.xy = myRespXY,
+          resp.name = myRespName)
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          bm.options = BIOMOD_ModelingOptions(),
+          modeling.id = 'NoCat_NoValid_Presence-Absence',
+          nb.rep = 0,
+          data.split.perc = 80,
+          var.import = 3,
+          metric.eval = c('TSS','ROC'),
+          do.full.models = FALSE,
+          seed.val = 42
+        )
+      get_predictions(myBiomodModelOut)
+      get_evaluations(myBiomodModelOut)
+      get_built_models(myBiomodModelOut)
+      get_formal_data(myBiomodModelOut)
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
 ## No Evaluation -------------------------------------------------------
 cli::cli_h3("No Evaluation")
+
 
 ### Presence-Absence ------------
 cli::cli_process_start("Presence-Absence")

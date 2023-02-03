@@ -62,6 +62,69 @@ myRespXY_PA2 <- myRespXY
 
 cli::cli_h2("No Categorical Variables")
 
+## No Validation -------------------------------------------------------
+cli::cli_h3("No Validation")
+
+### Presence-Absence ------------
+cli::cli_process_start("Presence-Absence")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings({
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl,
+          resp.xy = myRespXY,
+          resp.name = myRespName)
+      
+      file.out <- paste0(myRespName, "/", myRespName, ".NoCat_NoValid_Presence-Absence.models.out")
+      if (file.exists(file.out)) {
+        myBiomodModelOut <- get(load(file.out))
+      } else {
+        myBiomodModelOut <- 
+          BIOMOD_Modeling(
+            bm.format = myBiomodData,
+            bm.options = BIOMOD_ModelingOptions(),
+            modeling.id = 'NoCat_NoValid_Presence-Absence',
+            nb.rep = 2,
+            data.split.perc = 80,
+            var.import = 3,
+            metric.eval = c('TSS','ROC'),
+            do.full.models = FALSE,
+            seed.val = 42
+          )
+      }
+      myBiomodEM <- BIOMOD_EnsembleModeling(
+        bm.mod = myBiomodModelOut,
+        em.by = 'all',
+        var.import = 1,
+        metric.select = NULL,
+        metric.select.thresh = NULL,
+        metric.eval = c('TSS'),
+        em.algo = c('EMmean', 'EMcv', 'EMci'),
+        # em.algo = c('EMca'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
+        seed.val = 42)
+      
+      get_predictions(myBiomodEM)
+      get_evaluations(myBiomodEM)
+      get_built_models(myBiomodEM)
+      get_formal_data(myBiomodEM)
+    }))
+    
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_EnsembleModeling <- Error_EnsembleModeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+
 ## No Evaluation -------------------------------------------------------
 cli::cli_h3("No Evaluation")
 
