@@ -125,8 +125,7 @@ cli::cli_h3("resp.var = vector")
 
 
 ### resp.var = vector ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = vector ;
-                       expl.var = SpatRaster")
+cli::cli_process_start("resp.var = vector ; expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output({
@@ -160,8 +159,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### resp.var = vector ; expl.var = matrix ------------
-cli::cli_process_start(c("resp.var = vector ;
-                       expl.var = matrix"))
+cli::cli_process_start("resp.var = vector ; expl.var = matrix")
 this_try <- try({
   invisible(
     capture.output({
@@ -192,8 +190,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = vector ; expl.var = data.frame ------------
-cli::cli_process_start(c("resp.var = vector ;
-                       expl.var = data.frame"))
+cli::cli_process_start("resp.var = vector ; expl.var = data.frame")
 this_try <- try({
   invisible(
     capture.output({
@@ -225,8 +222,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### resp.var = vector ; expl.var = SPDF ------------
-cli::cli_process_start(c("resp.var = vector ;
-                       expl.var = SPDF"))
+cli::cli_process_start("resp.var = vector ; expl.var = SPDF")
 this_try <- try({
   invisible(
     capture.output({
@@ -257,8 +253,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### resp.var = vector ; expl.var = SpatVector ------------
-cli::cli_process_start(c("resp.var = vector ;
-                       expl.var = SpatVector"))
+cli::cli_process_start("resp.var = vector ; expl.var = SpatVector")
 this_try <- try({
   invisible(
     capture.output({
@@ -289,8 +284,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = vector ; expl.var = raster ------------
-cli::cli_process_start(c("resp.var = vector ;
-                       expl.var = raster"))
+cli::cli_process_start("resp.var = vector ; expl.var = raster")
 this_try <- try({
   invisible(
     capture.output(
@@ -315,8 +309,7 @@ if(inherits(this_try, "try-error")){
 cli::cli_h3("resp.var = SpatialPoints")
 
 ### resp.var = SpatialPoints ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = SpatialPoints ;
-                       expl.var = SpatRaster")
+cli::cli_process_start("resp.var = SpatialPoints ; expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -339,9 +332,32 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SpatialPoints ; expl.var = SpatRaster ; multiple Pseudo-Absences ------------
+cli::cli_process_start("resp.var = SpatialPoints ; expl.var = SpatRaster ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.SpatialPoints,
+          expl.var = myExpl,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.strategy = 'random',
+          PA.nb.absences = c(1000, 500, 500, 200))
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Formating <- Error_Formating + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 ### resp.var = SpatialPoints ; expl.var = raster ------------
-cli::cli_process_start(c("resp.var = SpatialPoints ;
-                       expl.var = raster"))
+cli::cli_process_start("resp.var = SpatialPoints ; expl.var = raster")
 this_try <- try({
   invisible(
     capture.output(
@@ -364,13 +380,36 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SpatialPoints ; expl.var = raster ; multiple Pseudo-Absences ------------
+cli::cli_process_start("resp.var = SpatialPoints ; expl.var = raster ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.SpatialPoints,
+          expl.var = myExpl.raster,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.strategy = 'random',
+          PA.nb.absences = c(1000, 500, 500, 200))
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Formating <- Error_Formating + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
 ## resp.var = SPDF ----------------------
 cli::cli_h3("resp.var = SPDF")
 
 ### resp.var = SPDF ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = SPDF ;
-                       expl.var = SpatRaster")
+cli::cli_process_start("resp.var = SPDF ; expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -392,8 +431,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### resp.var = SPDF ; expl.var = matrix ------------
-cli::cli_process_start(c("resp.var = SPDF ;
-                       expl.var = matrix"))
+cli::cli_process_start("resp.var = SPDF ; expl.var = matrix")
 this_try <- try({
   invisible(
     capture.output(
@@ -414,8 +452,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = SPDF ; expl.var = data.frame ------------
-cli::cli_process_start(c("resp.var = SPDF ;
-                       expl.var = data.frame"))
+cli::cli_process_start("resp.var = SPDF ; expl.var = data.frame")
 this_try <- try({
   invisible(
     capture.output(
@@ -437,8 +474,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### resp.var = SPDF ; expl.var = SPDF ------------
-cli::cli_process_start(c("resp.var = SPDF ;
-                       expl.var = SPDF"))
+cli::cli_process_start("resp.var = SPDF ; expl.var = SPDF")
 this_try <- try({
   invisible(
     capture.output(
@@ -459,8 +495,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = SPDF ; expl.var = SpatVector ------------
-cli::cli_process_start(c("resp.var = SPDF ;
-                       expl.var = SpatVector"))
+cli::cli_process_start("resp.var = SPDF ; expl.var = SpatVector")
 this_try <- try({
   invisible(
     capture.output(
@@ -481,8 +516,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = SPDF ; expl.var = raster ------------
-cli::cli_process_start(c("resp.var = SPDF ;
-                       expl.var = raster"))
+cli::cli_process_start("resp.var = SPDF ; expl.var = raster")
 this_try <- try({
   invisible(
     capture.output(
@@ -507,8 +541,7 @@ if(inherits(this_try, "try-error")){
 cli::cli_h3("resp.var = SpatVector Presence-Only")
 
 ### resp.var = SpatVector ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = SpatVector Presence-Only;
-                       expl.var = SpatRaster")
+cli::cli_process_start("resp.var = SpatVector Presence-Only ; expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -531,13 +564,36 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SpatVector ; expl.var = SpatRaster ------------
+cli::cli_process_start("resp.var = SpatVector Presence-Only ; expl.var = SpatRaster ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.SpatVectorPO,
+          expl.var = myExpl,
+          resp.name = myRespName, 
+          PA.nb.rep = 4,
+          PA.strategy = 'random',
+          PA.nb.absences = c(1000, 500, 500, 200))
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Formating <- Error_Formating + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
 ## resp.var = SpatVector ----------------------
 cli::cli_h3("resp.var = SpatVector Presence-Absence")
 
 ### resp.var = SpatVector ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = SpatVector ;
-                       expl.var = SpatRaster")
+cli::cli_process_start("resp.var = SpatVector ; expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -559,8 +615,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### resp.var = SpatVector ; expl.var = matrix ------------
-cli::cli_process_start(c("resp.var = SpatVector ;
-                       expl.var = matrix"))
+cli::cli_process_start("resp.var = SpatVector ; expl.var = matrix")
 this_try <- try({
   invisible(
     capture.output(
@@ -581,8 +636,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = SpatVector ; expl.var = data.frame ------------
-cli::cli_process_start(c("resp.var = SpatVector ;
-                       expl.var = data.frame"))
+cli::cli_process_start("resp.var = SpatVector ; expl.var = data.frame")
 this_try <- try({
   invisible(
     capture.output(
@@ -604,8 +658,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### resp.var = SpatVector ; expl.var = SPDF ------------
-cli::cli_process_start(c("resp.var = SpatVector ;
-                       expl.var = SPDF"))
+cli::cli_process_start("resp.var = SpatVector ; expl.var = SPDF")
 this_try <- try({
   invisible(
     capture.output(
@@ -626,8 +679,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = SpatVector ; expl.var = SpatVector ------------
-cli::cli_process_start(c("resp.var = SpatVector ;
-                       expl.var = SpatVector"))
+cli::cli_process_start("resp.var = SpatVector ; expl.var = SpatVector")
 this_try <- try({
   invisible(
     capture.output(
@@ -648,8 +700,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = SpatVector ; expl.var = raster ------------
-cli::cli_process_start(c("resp.var = SpatVector ;
-                       expl.var = raster"))
+cli::cli_process_start("resp.var = SpatVector ; expl.var = raster")
 this_try <- try({
   invisible(
     capture.output(
@@ -679,8 +730,7 @@ cli::cli_h2("With Evaluations")
 cli::cli_h3("expl as SpatRaster")
 
 ### eval.resp.var = vector ; eval.expl.var = SpatRaster ------------
-cli::cli_process_start("eval.resp.var = vector ;
-                       eval.expl.var = SpatRaster")
+cli::cli_process_start("eval.resp.var = vector ; eval.expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output({
@@ -714,8 +764,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### eval.resp.var = vector ; eval.expl.var = NULL ------------
-cli::cli_process_start("eval.resp.var = vector ;
-                       eval.expl.var = NULL")
+cli::cli_process_start("eval.resp.var = vector ; eval.expl.var = NULL")
 this_try <- try({
   invisible(
     capture.output({
@@ -749,8 +798,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### eval.resp.var = SPDF ; eval.expl.var = SPDF ------------
-cli::cli_process_start("eval.resp.var = SPDF ;
-                       eval.expl.var = SPDF")
+cli::cli_process_start("eval.resp.var = SPDF ; eval.expl.var = SPDF")
 this_try <- try({
   invisible(
     capture.output(
@@ -774,8 +822,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### eval.resp.var = SpatVector Presence-Absence ; eval.expl.var = Matrix ------------
-cli::cli_process_start("eval.resp.var = SpatVector Presence-Absence;
-                       eval.expl.var = Matrix")
+cli::cli_process_start("eval.resp.var = SpatVector Presence-Absence ; eval.expl.var = Matrix")
 this_try <- try({
   invisible(
     capture.output(
@@ -800,8 +847,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### eval.resp.var = SpatVector Presence-Absence ; eval.expl.var = data.frame ------------
-cli::cli_process_start("eval.resp.var = SpatVector Presence-Absence;
-                       eval.expl.var = data.frame")
+cli::cli_process_start("eval.resp.var = SpatVector Presence-Absence ; eval.expl.var = data.frame")
 this_try <- try({
   invisible(
     capture.output({
@@ -837,8 +883,7 @@ if(inherits(this_try, "try-error")){
 cli::cli_h3("expl as RasterStack")
 
 ### eval.resp.var = vector ; eval.expl.var = SpatRaster ------------
-cli::cli_process_start("eval.resp.var = vector ;
-                       eval.expl.var = raster")
+cli::cli_process_start("eval.resp.var = vector ; eval.expl.var = raster")
 this_try <- try({
   invisible(
     capture.output(
@@ -863,8 +908,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### eval.resp.var = vector ; eval.expl.var = NULL ------------
-cli::cli_process_start("eval.resp.var = vector ;
-                       eval.expl.var = NULL")
+cli::cli_process_start("eval.resp.var = vector ; eval.expl.var = NULL")
 this_try <- try({
   invisible(
     capture.output(
@@ -897,8 +941,7 @@ cli::cli_h3("resp.var = vector")
 
 
 ### resp.var = vector ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = vector ;
-                       expl.var = SpatRaster")
+cli::cli_process_start("resp.var = vector ; expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -921,8 +964,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### resp.var = vector ; expl.var = data.frame ------------
-cli::cli_process_start(c("resp.var = vector ;
-                       expl.var = data.frame"))
+cli::cli_process_start("resp.var = vector ; expl.var = data.frame")
 this_try <- try({
   invisible(
     capture.output(
@@ -945,8 +987,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### resp.var = vector ; expl.var = SPDF ------------
-cli::cli_process_start(c("resp.var = vector ;
-                       expl.var = SPDF"))
+cli::cli_process_start("resp.var = vector ; expl.var = SPDF")
 this_try <- try({
   invisible(
     capture.output(
@@ -969,8 +1010,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### resp.var = vector ; expl.var = SpatVector ------------
-cli::cli_process_start(c("resp.var = vector ;
-                       expl.var = SpatVector"))
+cli::cli_process_start("resp.var = vector ; expl.var = SpatVector")
 this_try <- try({
   invisible(
     capture.output(
@@ -992,8 +1032,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = vector ; expl.var = raster ------------
-cli::cli_process_start(c("resp.var = vector ;
-                       expl.var = raster"))
+cli::cli_process_start("resp.var = vector ; expl.var = raster")
 this_try <- try({
   invisible(
     capture.output(
@@ -1018,8 +1057,7 @@ if(inherits(this_try, "try-error")){
 cli::cli_h3("resp.var = SpatialPoints")
 
 ### resp.var = SpatialPoints ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = SpatialPoints ;
-                       expl.var = SpatRaster")
+cli::cli_process_start("resp.var = SpatialPoints ; expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -1042,9 +1080,32 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SpatialPoints ; expl.var = SpatRaster ; multiple Pseudo-Absences ------------
+cli::cli_process_start("resp.var = SpatialPoints ; expl.var = SpatRaster ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.SpatialPoints,
+          expl.var = myExpl.cat,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.strategy = 'random',
+          PA.nb.absences = c(1000, 500, 500, 200))
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Formating <- Error_Formating + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 ### resp.var = SpatialPoints ; expl.var = raster ------------
-cli::cli_process_start(c("resp.var = SpatialPoints ;
-                       expl.var = raster"))
+cli::cli_process_start("resp.var = SpatialPoints ; expl.var = raster")
 this_try <- try({
   invisible(
     capture.output(
@@ -1067,13 +1128,36 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SpatialPoints ; expl.var = raster ; multiple Pseudo-Absences ------------
+cli::cli_process_start("resp.var = SpatialPoints ; expl.var = raster ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.SpatialPoints,
+          expl.var = myExpl.cat.raster,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.strategy = 'random',
+          PA.nb.absences = c(1000, 500, 500, 200))
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Formating <- Error_Formating + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
 ## resp.var = SPDF ----------------------
 cli::cli_h3("resp.var = SPDF")
 
 ### resp.var = SPDF ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = SPDF ;
-                       expl.var = SpatRaster")
+cli::cli_process_start("resp.var = SPDF ; expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -1095,8 +1179,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### resp.var = SPDF ; expl.var = data.frame ------------
-cli::cli_process_start(c("resp.var = SPDF ;
-                       expl.var = data.frame"))
+cli::cli_process_start("resp.var = SPDF ; expl.var = data.frame")
 this_try <- try({
   invisible(
     capture.output(
@@ -1118,8 +1201,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### resp.var = SPDF ; expl.var = SPDF ------------
-cli::cli_process_start(c("resp.var = SPDF ;
-                       expl.var = SPDF"))
+cli::cli_process_start("resp.var = SPDF ; expl.var = SPDF")
 this_try <- try({
   invisible(
     capture.output(
@@ -1140,8 +1222,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = SPDF ; expl.var = SpatVector ------------
-cli::cli_process_start(c("resp.var = SPDF ;
-                       expl.var = SpatVector"))
+cli::cli_process_start("resp.var = SPDF ; expl.var = SpatVector")
 this_try <- try({
   invisible(
     capture.output(
@@ -1162,8 +1243,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = SPDF ; expl.var = raster ------------
-cli::cli_process_start(c("resp.var = SPDF ;
-                       expl.var = raster"))
+cli::cli_process_start("resp.var = SPDF ; expl.var = raster")
 this_try <- try({
   invisible(
     capture.output(
@@ -1188,8 +1268,7 @@ if(inherits(this_try, "try-error")){
 cli::cli_h3("resp.var = SpatVector Presence-Only")
 
 ### resp.var = SpatVector ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = SpatVector Presence-Only;
-                       expl.var = SpatRaster")
+cli::cli_process_start("resp.var = SpatVector Presence-Only ; expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -1212,13 +1291,36 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SpatVector ; expl.var = SpatRaster ; multiple Pseudo-Absences ------------
+cli::cli_process_start("resp.var = SpatVector Presence-Only ; expl.var = SpatRaster ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.SpatVectorPO,
+          expl.var = myExpl.cat,
+          resp.name = myRespName, 
+          PA.nb.rep = 4,
+          PA.strategy = 'random',
+          PA.nb.absences = c(1000, 500, 500, 200))
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Formating <- Error_Formating + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
 ## resp.var = SpatVector ----------------------
 cli::cli_h3("resp.var = SpatVector Presence-Absence")
 
 ### resp.var = SpatVector ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = SpatVector ;
-                       expl.var = SpatRaster")
+cli::cli_process_start("resp.var = SpatVector ; expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -1241,8 +1343,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### resp.var = SpatVector ; expl.var = data.frame ------------
-cli::cli_process_start(c("resp.var = SpatVector ;
-                       expl.var = data.frame"))
+cli::cli_process_start("resp.var = SpatVector ; expl.var = data.frame")
 this_try <- try({
   invisible(
     capture.output(
@@ -1264,8 +1365,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### resp.var = SpatVector ; expl.var = SPDF ------------
-cli::cli_process_start(c("resp.var = SpatVector ;
-                       expl.var = SPDF"))
+cli::cli_process_start("resp.var = SpatVector ; expl.var = SPDF")
 this_try <- try({
   invisible(
     capture.output(
@@ -1286,8 +1386,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = SpatVector ; expl.var = SpatVector ------------
-cli::cli_process_start(c("resp.var = SpatVector ;
-                       expl.var = SpatVector"))
+cli::cli_process_start("resp.var = SpatVector ; expl.var = SpatVector")
 this_try <- try({
   invisible(
     capture.output(
@@ -1308,8 +1407,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = SpatVector ; expl.var = raster ------------
-cli::cli_process_start(c("resp.var = SpatVector ;
-                       expl.var = raster"))
+cli::cli_process_start("resp.var = SpatVector ; expl.var = raster")
 this_try <- try({
   invisible(
     capture.output(
@@ -1339,8 +1437,7 @@ cli::cli_h2("With Evaluations")
 cli::cli_h3("expl as SpatRaster")
 
 ### eval.resp.var = vector ; eval.expl.var = SpatRaster ------------
-cli::cli_process_start("eval.resp.var = vector ;
-                       eval.expl.var = SpatRaster")
+cli::cli_process_start("eval.resp.var = vector ; eval.expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -1365,8 +1462,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### eval.resp.var = vector ; eval.expl.var = NULL ------------
-cli::cli_process_start("eval.resp.var = vector ;
-                       eval.expl.var = NULL")
+cli::cli_process_start("eval.resp.var = vector ; eval.expl.var = NULL")
 this_try <- try({
   invisible(
     capture.output(
@@ -1391,8 +1487,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### eval.resp.var = SPDF ; eval.expl.var = SPDF ------------
-cli::cli_process_start("eval.resp.var = SPDF ;
-                       eval.expl.var = SPDF")
+cli::cli_process_start("eval.resp.var = SPDF ; eval.expl.var = SPDF")
 this_try <- try({
   invisible(
     capture.output(
@@ -1417,8 +1512,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### eval.resp.var = SpatVector Presence-Absence ; eval.expl.var = data.frame ------------
-cli::cli_process_start("eval.resp.var = SpatVector Presence-Absence;
-                       eval.expl.var = data.frame")
+cli::cli_process_start("eval.resp.var = SpatVector Presence-Absence ; eval.expl.var = data.frame")
 this_try <- try({
   invisible(
     capture.output(
@@ -1445,8 +1539,7 @@ if(inherits(this_try, "try-error")){
 cli::cli_h3("expl as RasterStack")
 
 ### eval.resp.var = vector ; eval.expl.var = SpatRaster ------------
-cli::cli_process_start("eval.resp.var = vector ;
-                       eval.expl.var = raster")
+cli::cli_process_start("eval.resp.var = vector ; eval.expl.var = raster")
 this_try <- try({
   invisible(
     capture.output(
@@ -1471,8 +1564,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### eval.resp.var = vector ; eval.expl.var = NULL ------------
-cli::cli_process_start("eval.resp.var = vector ;
-                       eval.expl.var = NULL")
+cli::cli_process_start("eval.resp.var = vector ; eval.expl.var = NULL")
 this_try <- try({
   invisible(
     capture.output(
@@ -1505,8 +1597,7 @@ cli::cli_h3("No Evaluations")
 
 
 ### resp.var = vector ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = vector ;
-                       expl.var = SpatRaster")
+cli::cli_process_start("resp.var = vector ; expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -1528,8 +1619,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = vector ; expl.var = RasterStack ------------
-cli::cli_process_start("resp.var = vector ;
-                       expl.var = RasterStack")
+cli::cli_process_start("resp.var = vector ; expl.var = RasterStack")
 this_try <- try({
   invisible(
     capture.output(
@@ -1551,8 +1641,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = vector ; expl.var = matrix ------------
-cli::cli_process_start(c("resp.var = vector ;
-                       expl.var = matrix"))
+cli::cli_process_start("resp.var = vector ; expl.var = matrix")
 this_try <- try({
   invisible(
     capture.output(
@@ -1574,8 +1663,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = vector ; expl.var = data.frame ------------
-cli::cli_process_start(c("resp.var = vector ;
-                       expl.var = data.frame"))
+cli::cli_process_start("resp.var = vector ; expl.var = data.frame")
 this_try <- try({
   invisible(
     capture.output(
@@ -1603,8 +1691,7 @@ cli::cli_h3("With Evaluations")
 
 
 ### eval.resp.var = vector ; eval.expl.var = SpatRaster ------------
-cli::cli_process_start("eval.resp.var = vector ;
-                       eval.expl.var = SpatRaster")
+cli::cli_process_start("eval.resp.var = vector ; eval.expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -1629,8 +1716,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### eval.resp.var = vector ; eval.expl.var = NULL ------------
-cli::cli_process_start("eval.resp.var = vector ;
-                       eval.expl.var = NULL")
+cli::cli_process_start("eval.resp.var = vector ; eval.expl.var = NULL")
 this_try <- try({
   invisible(
     capture.output(
@@ -1656,8 +1742,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### eval.resp.var = SpatVector Presence-Absence ; eval.expl.var = Matrix ------------
-cli::cli_process_start("eval.resp.var = SpatVector Presence-Absence;
-                       eval.expl.var = Matrix")
+cli::cli_process_start("eval.resp.var = SpatVector Presence-Absence ; eval.expl.var = Matrix")
 this_try <- try({
   invisible(
     capture.output(
@@ -1682,8 +1767,7 @@ if(inherits(this_try, "try-error")){
 
 
 ### eval.resp.var = SpatVector Presence-Absence ; eval.expl.var = data.frame ------------
-cli::cli_process_start("eval.resp.var = SpatVector Presence-Absence;
-                       eval.expl.var = data.frame")
+cli::cli_process_start("eval.resp.var = SpatVector Presence-Absence ; eval.expl.var = data.frame")
 this_try <- try({
   invisible(
     capture.output(
@@ -1707,8 +1791,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### eval.resp.var = vector ; eval.expl.var = SpatRaster ------------
-cli::cli_process_start("eval.resp.var = vector ;
-                       eval.expl.var = raster")
+cli::cli_process_start("eval.resp.var = vector ; eval.expl.var = raster")
 this_try <- try({
   invisible(
     capture.output(
