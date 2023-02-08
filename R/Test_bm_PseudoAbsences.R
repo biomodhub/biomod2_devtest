@@ -2363,7 +2363,7 @@ cli::cli_h3("resp.var = vector")
 
 
 ### resp.var = vector ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = vector ; expl.var = SpatRaster")
+cli::cli_process_start("resp.var = vector ; expl.var = SpatRaster ; dist.max = 50")
 this_try <- try({
   invisible(
     capture.output(
@@ -2373,6 +2373,87 @@ this_try <- try({
           expl.var = myExpl,
           resp.xy = myRespXY,
           resp.name = myRespName, 
+          PA.nb.rep = 3,
+          PA.nb.absences = 300,
+          PA.strategy = "disk",
+          PA.dist.max = 50
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### resp.var = vector ; expl.var = SpatRaster ------------
+cli::cli_process_start("resp.var = vector ; expl.var = SpatRaster ; multiple Pseudo-Absences ; dist.max = 50")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl,
+          resp.xy = myRespXY,
+          resp.name = myRespName, 
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk",
+          PA.dist.max = 50
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### resp.var = vector ; expl.var = SpatRaster ------------
+cli::cli_process_start("resp.var = vector ; expl.var = SpatRaster ; multiple Pseudo-Absences ; dist.max = 10")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl,
+          resp.xy = myRespXY,
+          resp.name = myRespName, 
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk",
+          PA.dist.max = 10
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### resp.var = vector ; expl.var = matrix ------------
+cli::cli_process_start("resp.var = vector ; expl.var = matrix")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl.matrix,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
           PA.nb.rep = 3,
           PA.nb.absences = 300,
           PA.strategy = "disk"
@@ -2388,10 +2469,8 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-
 ### resp.var = vector ; expl.var = matrix ------------
-cli::cli_process_start("resp.var = vector ;
-                       expl.var = matrix")
+cli::cli_process_start("resp.var = vector ; expl.var = matrix ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
     capture.output(
@@ -2399,6 +2478,32 @@ this_try <- try({
         BIOMOD_FormatingData(
           resp.var = myResp,
           expl.var = myExpl.matrix,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### resp.var = vector ; expl.var = data.frame ------------
+cli::cli_process_start("resp.var = vector ; expl.var = data.frame")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl.df,
           resp.xy = myRespXY,
           resp.name = myRespName,
           PA.nb.rep = 3,
@@ -2417,8 +2522,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = vector ; expl.var = data.frame ------------
-cli::cli_process_start("resp.var = vector ;
-                       expl.var = data.frame")
+cli::cli_process_start("resp.var = vector ; expl.var = data.frame ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
     capture.output(
@@ -2428,8 +2532,8 @@ this_try <- try({
           expl.var = myExpl.df,
           resp.xy = myRespXY,
           resp.name = myRespName,
-          PA.nb.rep = 3,
-          PA.nb.absences = 300,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
           PA.strategy = "disk"
         )
     )
@@ -2443,10 +2547,8 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-
 ### resp.var = vector ; expl.var = SPDF ------------
-cli::cli_process_start("resp.var = vector ;
-                       expl.var = SPDF")
+cli::cli_process_start("resp.var = vector ; expl.var = SPDF")
 this_try <- try({
   invisible(
     capture.output(
@@ -2471,10 +2573,35 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = vector ; expl.var = SPDF ------------
+cli::cli_process_start("resp.var = vector ; expl.var = SPDF ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl.spdf,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
 ### resp.var = vector ; expl.var = SpatVector ------------
-cli::cli_process_start("resp.var = vector ;
-                       expl.var = SpatVector")
+cli::cli_process_start("resp.var = vector ; expl.var = SpatVector")
 this_try <- try({
   invisible(
     capture.output(
@@ -2482,6 +2609,58 @@ this_try <- try({
         BIOMOD_FormatingData(
           resp.var = myResp,
           expl.var = myExpl.SpatVector,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
+          PA.nb.rep = 3,
+          PA.nb.absences = 300,
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### resp.var = vector ; expl.var = SpatVector ------------
+cli::cli_process_start("resp.var = vector ; expl.var = SpatVector ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl.SpatVector,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### resp.var = vector ; expl.var = raster ------------
+cli::cli_process_start("resp.var = vector ; expl.var = raster")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl.raster,
           resp.xy = myRespXY,
           resp.name = myRespName,
           PA.nb.rep = 3,
@@ -2500,8 +2679,7 @@ if(inherits(this_try, "try-error")){
 }
 
 ### resp.var = vector ; expl.var = raster ------------
-cli::cli_process_start("resp.var = vector ;
-                       expl.var = raster")
+cli::cli_process_start("resp.var = vector ; expl.var = raster ; multiple Pseudo-absences")
 this_try <- try({
   invisible(
     capture.output(
@@ -2511,8 +2689,8 @@ this_try <- try({
           expl.var = myExpl.raster,
           resp.xy = myRespXY,
           resp.name = myRespName,
-          PA.nb.rep = 3,
-          PA.nb.absences = 300,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
           PA.strategy = "disk"
         )
     )
@@ -2530,8 +2708,7 @@ if(inherits(this_try, "try-error")){
 cli::cli_h3("resp.var = SpatialPoints")
 
 ### resp.var = SpatialPoints ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = SpatialPoints ;
-                       expl.var = SpatRaster")
+cli::cli_process_start("resp.var = SpatialPoints ; expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -2555,10 +2732,34 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SpatialPoints ; expl.var = SpatRaster ------------
+cli::cli_process_start("resp.var = SpatialPoints ; expl.var = SpatRaster ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.SpatialPoints,
+          expl.var = myExpl,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
 ### resp.var = SpatialPoints ; expl.var = raster ------------
-cli::cli_process_start("resp.var = SpatialPoints ;
-                       expl.var = raster")
+cli::cli_process_start("resp.var = SpatialPoints ; expl.var = raster")
 this_try <- try({
   invisible(
     capture.output(
@@ -2569,6 +2770,31 @@ this_try <- try({
           resp.name = myRespName,
           PA.nb.rep = 3,
           PA.nb.absences = 300,
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### resp.var = SpatialPoints ; expl.var = raster ------------
+cli::cli_process_start("resp.var = SpatialPoints ; expl.var = raster ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.SpatialPoints,
+          expl.var = myExpl.raster,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
           PA.strategy = "disk"
         )
     )
@@ -2587,8 +2813,7 @@ if(inherits(this_try, "try-error")){
 cli::cli_h3("resp.var = SPDF")
 
 ### resp.var = SPDF ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = SPDF ;
-                       expl.var = SpatRaster")
+cli::cli_process_start("resp.var = SPDF ; expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -2612,10 +2837,34 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SPDF ; expl.var = SpatRaster ------------
+cli::cli_process_start("resp.var = SPDF ; expl.var = SpatRaster ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.spdf,
+          expl.var = myExpl,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
 ### resp.var = SPDF ; expl.var = matrix ------------
-cli::cli_process_start("resp.var = SPDF ;
-                       expl.var = matrix")
+cli::cli_process_start("resp.var = SPDF ; expl.var = matrix")
 this_try <- try({
   invisible(
     capture.output(
@@ -2639,9 +2888,33 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SPDF ; expl.var = matrix ------------
+cli::cli_process_start("resp.var = SPDF ; expl.var = matrix ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.spdf,
+          expl.var = myExpl.matrix,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 ### resp.var = SPDF ; expl.var = data.frame ------------
-cli::cli_process_start("resp.var = SPDF ;
-                       expl.var = data.frame")
+cli::cli_process_start("resp.var = SPDF ; expl.var = data.frame")
 this_try <- try({
   invisible(
     capture.output(
@@ -2665,10 +2938,34 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SPDF ; expl.var = data.frame ------------
+cli::cli_process_start("resp.var = SPDF ; expl.var = data.frame ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.spdf,
+          expl.var = myExpl.df,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
 ### resp.var = SPDF ; expl.var = SPDF ------------
-cli::cli_process_start("resp.var = SPDF ;
-                       expl.var = SPDF")
+cli::cli_process_start("resp.var = SPDF ; expl.var = SPDF")
 this_try <- try({
   invisible(
     capture.output(
@@ -2692,9 +2989,33 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SPDF ; expl.var = SPDF ------------
+cli::cli_process_start("resp.var = SPDF ; expl.var = SPDF ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.spdf,
+          expl.var = myExpl.spdf,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 ### resp.var = SPDF ; expl.var = SpatVector ------------
-cli::cli_process_start("resp.var = SPDF ;
-                       expl.var = SpatVector")
+cli::cli_process_start("resp.var = SPDF ; expl.var = SpatVector")
 this_try <- try({
   invisible(
     capture.output(
@@ -2718,9 +3039,33 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SPDF ; expl.var = SpatVector ------------
+cli::cli_process_start("resp.var = SPDF ; expl.var = SpatVector ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.spdf,
+          expl.var = myExpl.SpatVector,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 ### resp.var = SPDF ; expl.var = raster ------------
-cli::cli_process_start("resp.var = SPDF ;
-                       expl.var = raster")
+cli::cli_process_start("resp.var = SPDF ; expl.var = raster")
 this_try <- try({
   invisible(
     capture.output(
@@ -2731,6 +3076,31 @@ this_try <- try({
           resp.name = myRespName,
           PA.nb.rep = 3,
           PA.nb.absences = 300,
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### resp.var = SPDF ; expl.var = raster ------------
+cli::cli_process_start("resp.var = SPDF ; expl.var = raster ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.spdf,
+          expl.var = myExpl.raster,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
           PA.strategy = "disk"
         )
     )
@@ -2749,8 +3119,7 @@ if(inherits(this_try, "try-error")){
 cli::cli_h3("resp.var = SpatVector")
 
 ### resp.var = SpatVector ; expl.var = SpatRaster ------------
-cli::cli_process_start("resp.var = SpatVector ;
-                       expl.var = SpatRaster")
+cli::cli_process_start("resp.var = SpatVector ; expl.var = SpatRaster")
 this_try <- try({
   invisible(
     capture.output(
@@ -2774,10 +3143,34 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SpatVector ; expl.var = SpatRaster ------------
+cli::cli_process_start("resp.var = SpatVector ; expl.var = SpatRaster ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.SpatVector,
+          expl.var = myExpl,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
 ### resp.var = SpatVector ; expl.var = matrix ------------
-cli::cli_process_start("resp.var = SpatVector ;
-                       expl.var = matrix")
+cli::cli_process_start("resp.var = SpatVector ; expl.var = matrix")
 this_try <- try({
   invisible(
     capture.output(
@@ -2801,9 +3194,33 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SpatVector ; expl.var = matrix ------------
+cli::cli_process_start("resp.var = SpatVector ; expl.var = matrix ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.SpatVector,
+          expl.var = myExpl.matrix,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 ### resp.var = SpatVector ; expl.var = data.frame ------------
-cli::cli_process_start("resp.var = SpatVector ;
-                       expl.var = data.frame")
+cli::cli_process_start("resp.var = SpatVector ; expl.var = data.frame")
 this_try <- try({
   invisible(
     capture.output(
@@ -2827,10 +3244,34 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SpatVector ; expl.var = data.frame ------------
+cli::cli_process_start("resp.var = SpatVector ; expl.var = data.frame ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.SpatVector,
+          expl.var = myExpl.df,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
 ### resp.var = SpatVector ; expl.var = SPDF ------------
-cli::cli_process_start("resp.var = SpatVector ;
-                       expl.var = SPDF")
+cli::cli_process_start("resp.var = SpatVector ; expl.var = SPDF")
 this_try <- try({
   invisible(
     capture.output(
@@ -2854,9 +3295,33 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SpatVector ; expl.var = SPDF ------------
+cli::cli_process_start("resp.var = SpatVector ; expl.var = SPDF ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.SpatVector,
+          expl.var = myExpl.spdf,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 ### resp.var = SpatVector ; expl.var = SpatVector ------------
-cli::cli_process_start("resp.var = SpatVector ;
-                       expl.var = SpatVector")
+cli::cli_process_start("resp.var = SpatVector ; expl.var = SpatVector")
 this_try <- try({
   invisible(
     capture.output(
@@ -2880,9 +3345,33 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### resp.var = SpatVector ; expl.var = SpatVector ------------
+cli::cli_process_start("resp.var = SpatVector ; expl.var = SpatVector ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.SpatVector,
+          expl.var = myExpl.SpatVector,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 ### resp.var = SpatVector ; expl.var = raster ------------
-cli::cli_process_start("resp.var = SpatVector ;
-                       expl.var = raster")
+cli::cli_process_start("resp.var = SpatVector ; expl.var = raster")
 this_try <- try({
   invisible(
     capture.output(
@@ -2893,6 +3382,31 @@ this_try <- try({
           resp.name = myRespName,
           PA.nb.rep = 3,
           PA.nb.absences = 300,
+          PA.strategy = "disk"
+        )
+    )
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_PseudoAbsences <- Error_PseudoAbsences + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### resp.var = SpatVector ; expl.var = raster ------------
+cli::cli_process_start("resp.var = SpatVector ; expl.var = raster ; multiple Pseudo-Absences")
+this_try <- try({
+  invisible(
+    capture.output(
+      myBiomodData <- 
+        BIOMOD_FormatingData(
+          resp.var = myResp.SpatVector,
+          expl.var = myExpl.raster,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
           PA.strategy = "disk"
         )
     )
