@@ -88,11 +88,11 @@ this_try <- try({
             bm.format = myBiomodData,
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_NoValid_Presence-Absence',
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -151,11 +151,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_NoEval_Presence-Absence',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       }
@@ -164,7 +164,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -207,11 +207,11 @@ this_try <- try({
             bm.format = myBiomodData,
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat1_NoEval_Presence-Absence',
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -220,7 +220,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -265,11 +265,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_NoEval_Presence-Only',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       }
@@ -279,7 +279,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -325,11 +325,11 @@ this_try <- try({
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_NoEval_Presence-Only_MultiPA',
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -339,7 +339,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -386,11 +386,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_NoEval_Presence-Only_with_NA',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       }
@@ -400,7 +400,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -447,11 +447,11 @@ this_try <- try({
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_NoEval_Presence-Only_with_NA_MultiPA',
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -461,7 +461,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -511,11 +511,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_Eval_Presence-Absence',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       }
@@ -526,7 +526,7 @@ this_try <- try({
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         EMci.alpha = 0.05,
         EMwmean.decay = 'proportional',
@@ -574,11 +574,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_Eval_Presence-Only',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       }
@@ -588,7 +588,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -637,11 +637,11 @@ this_try <- try({
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_Eval_Presence-Only_MultiPA',
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -651,7 +651,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -700,11 +700,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_Eval_Presence-Only_with_NA',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       }
@@ -714,7 +714,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -763,11 +763,11 @@ this_try <- try({
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_Eval_Presence-Only_with_NA_MultiPA',
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -777,7 +777,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -827,11 +827,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_NoEval_Presence-Absence',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       }
@@ -841,7 +841,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -887,11 +887,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_NoEval_Presence-Only',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       }
@@ -901,7 +901,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -947,11 +947,11 @@ this_try <- try({
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'Cat_NoEval_Presence-Only_MultiPA',
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -961,7 +961,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1007,11 +1007,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_NoEval_Presence-Only_with_NA',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       }
@@ -1021,7 +1021,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1067,11 +1067,11 @@ this_try <- try({
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'Cat_NoEval_Presence-Only_with_NA_MultiPA',
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -1081,7 +1081,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1130,11 +1130,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_Eval_Presence-Absence',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       }
@@ -1144,7 +1144,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1193,11 +1193,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_Eval_Presence-Only',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       }
@@ -1207,7 +1207,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1256,11 +1256,11 @@ this_try <- try({
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'Cat_Eval_Presence-Only_MultiPA',
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -1270,7 +1270,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1319,11 +1319,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_Eval_Presence-Only_with_NA',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       }
@@ -1333,7 +1333,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1382,11 +1382,11 @@ this_try <- try({
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'Cat_Eval_Presence-Only_with_NA_MultiPA',
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -1396,7 +1396,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1446,11 +1446,11 @@ this_try <- try({
             bm.format = myBiomodData,
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_NoEval_Presence-Only',
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -1459,7 +1459,7 @@ this_try <- try({
         em.by = 'PA',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1505,11 +1505,11 @@ this_try <- try({
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_NoEval_Presence-Only_MultiPA',
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -1518,7 +1518,7 @@ this_try <- try({
         em.by = 'PA',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1568,11 +1568,11 @@ this_try <- try({
             bm.format = myBiomodData,
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_NoEval_Presence-Only',
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -1582,7 +1582,7 @@ this_try <- try({
         em.by = 'algo',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1628,11 +1628,11 @@ this_try <- try({
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_NoEval_Presence-Only_MultiPA',
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -1642,7 +1642,7 @@ this_try <- try({
         em.by = 'algo',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1665,7 +1665,7 @@ if(inherits(this_try, "try-error")){
 }
 
 
-# em.by = PA+repet ------------------------------------------------
+# em.by = PA+run ------------------------------------------------
 
 cli::cli_h2("em.by = PA+run")
 
@@ -1692,11 +1692,11 @@ this_try <- try({
             bm.format = myBiomodData,
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_NoEval_Presence-Only',
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -1706,7 +1706,7 @@ this_try <- try({
         em.by = 'PA+run',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1752,11 +1752,11 @@ this_try <- try({
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_NoEval_Presence-Only_MultiPA',
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -1766,7 +1766,7 @@ this_try <- try({
         em.by = 'PA+run',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1776,7 +1776,6 @@ this_try <- try({
       get_evaluations(myBiomodEM)
       get_built_models(myBiomodEM)
       get_formal_data(myBiomodEM)
-      
     }))
   )
 }, silent = TRUE)
@@ -1816,11 +1815,11 @@ this_try <- try({
             bm.format = myBiomodData,
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_NoEval_Presence-Only',
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -1830,7 +1829,7 @@ this_try <- try({
         em.by = 'PA+algo',
         metric.select = c('TSS','ROC'),
         metric.select.thresh = c(0.7,0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1840,7 +1839,6 @@ this_try <- try({
       get_evaluations(myBiomodEM)
       get_built_models(myBiomodEM)
       get_formal_data(myBiomodEM)
-      
     }))
   )
 }, silent = TRUE)
@@ -1876,11 +1874,11 @@ this_try <- try({
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_NoEval_Presence-Only_MultiPA',
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -1890,7 +1888,7 @@ this_try <- try({
         em.by = 'PA+algo',
         metric.select = c('TSS','ROC'),
         metric.select.thresh = c(0.7,0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
         EMci.alpha = 0.05,
@@ -1900,7 +1898,6 @@ this_try <- try({
       get_evaluations(myBiomodEM)
       get_built_models(myBiomodEM)
       get_formal_data(myBiomodEM)
-      
     }))
   )
 }, silent = TRUE)
@@ -1945,11 +1942,11 @@ this_try <- try({
             bm.format = myBiomodData,
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_Eval_Presence-Only_with_NA',
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -1959,7 +1956,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean'),
         EMci.alpha = 0.05,
@@ -2008,11 +2005,11 @@ this_try <- try({
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'NoCat_Eval_Presence-Only_with_NA_MultiPA',
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42
           )
       }
@@ -2022,7 +2019,7 @@ this_try <- try({
         em.by = 'all',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
-        var.import = 3,
+        var.import = 2,
         metric.eval = c('TSS', 'ROC'),
         em.algo = c('EMmean'),
         EMci.alpha = 0.05,

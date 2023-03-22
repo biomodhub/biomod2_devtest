@@ -92,11 +92,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_NoValid_Presence-Absence',
-          nb.rep = 0,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -136,11 +136,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_NoEval_Presence-Absence',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -179,11 +179,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_NoEval_Presence-Only',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -223,11 +223,11 @@ this_try <- try({
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_NoEval_Presence-Only',
           models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -267,11 +267,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_NoEval_Presence-Only_with_NA',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -311,11 +311,11 @@ this_try <- try({
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_NoEval_Presence-Only_with_NA',
           models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -358,11 +358,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_Eval_Presence-Absence',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -405,11 +405,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_Eval_Presence-Only',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -452,11 +452,11 @@ this_try <- try({
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_Eval_Presence-Only',
           models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -499,11 +499,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_Eval_Presence-Only_with_NA',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -546,11 +546,11 @@ this_try <- try({
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_Eval_Presence-Only_with_NA',
           models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -594,11 +594,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_NoEval_Presence-Absence',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -638,11 +638,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_NoEval_Presence-Only',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -682,11 +682,11 @@ this_try <- try({
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_NoEval_Presence-Only',
           models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -726,11 +726,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_NoEval_Presence-Only_with_NA',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -770,11 +770,11 @@ this_try <- try({
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_NoEval_Presence-Only_with_NA',
           models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -817,11 +817,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_Eval_Presence-Absence',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -864,11 +864,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_Eval_Presence-Only',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -911,11 +911,11 @@ this_try <- try({
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_Eval_Presence-Only',
           models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -958,11 +958,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_Eval_Presence-Only_with_NA',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -999,17 +999,25 @@ this_try <- try({
           eval.expl.var = myExpl.cat,
           eval.resp.xy = myRespXY)
       
+      # myCV = bm_CrossValidation(bm.format = myBiomodData
+      #                           , strategy = "kfold"
+      #                           , nb.rep = 2
+      #                           , k = 3
+      #                           , do.full.models = TRUE)
+      # summary(myBiomodData, calib.lines = myCV)
+      # plot(myBiomodData, calib.lines = myCV)
+      
       myBiomodModelOut <-
         BIOMOD_Modeling(
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_Eval_Presence-Only_with_NA',
           models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -1054,11 +1062,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat1_NoEval_Presence-Absence',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -1098,11 +1106,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat1_NoEval_Presence-Only',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -1142,11 +1150,11 @@ this_try <- try({
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat1_NoEval_Presence-Only',
           models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -1186,11 +1194,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat1_NoEval_Presence-Only_with_NA',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -1230,11 +1238,11 @@ this_try <- try({
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat1_NoEval_Presence-Only_with_NA',
           models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -1277,11 +1285,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat1_Eval_Presence-Absence',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       invisible(get_predictions(myBiomodModelOut))
@@ -1324,11 +1332,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat1_Eval_Presence-Only',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -1371,11 +1379,11 @@ this_try <- try({
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat1_Eval_Presence-Only',
           models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -1418,11 +1426,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat1_Eval_Presence-Only_with_NA',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -1465,11 +1473,11 @@ this_try <- try({
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat1_Eval_Presence-Only_with_NA',
           models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 80,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
@@ -1509,21 +1517,16 @@ this_try <- try({
           eval.expl.var = myExpl,
           eval.resp.xy = myRespXY)
       
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = FALSE)
-      
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 2,
-                                           nb.rep = 1,
-                                           do.stratification = FALSE)
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 2,
-                                           do.stratification = FALSE,
-                                           do.full.models = FALSE)
-      
+      myBiomodCV <- bm_CrossValidation(myBiomodData,
+                                       strategy = "random",
+                                       nb.rep = 3,
+                                       perc = 70)
+      myBiomodCV <- bm_CrossValidation(myBiomodData,
+                                       strategy = "kfold",
+                                       nb.rep = 2,
+                                       k = 3)
+      myBiomodCV <- bm_CrossValidation(myBiomodData,
+                                       strategy = "block")
     })))
   )
 }, silent = TRUE)
@@ -1551,25 +1554,16 @@ this_try <- try({
           eval.expl.var = myExpl,
           eval.resp.xy = myRespXY)
       
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("x"))
-      
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("x"),
-                                           balance = "presences")
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("x"),
-                                           balance = "absences")
-      
+      myBiomodCV <- bm_CrossValidation(myBiomodData,
+                                       strategy = "strat",
+                                       k = 2,
+                                       balance = "presences",
+                                       strat = "x")
+      myBiomodCV <- bm_CrossValidation(myBiomodData,
+                                       strategy = "strat",
+                                       k = 2,
+                                       balance = "absences",
+                                       strat = "x")
     })))
   )
 }, silent = TRUE)
@@ -1597,25 +1591,16 @@ this_try <- try({
           eval.expl.var = myExpl,
           eval.resp.xy = myRespXY)
       
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("y"))
-      
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("y"),
-                                           balance = "presences")
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("y"),
-                                           balance = "absences")
-      
+      myBiomodCV <- bm_CrossValidation(myBiomodData,
+                                       strategy = "strat",
+                                       k = 2,
+                                       balance = "presences",
+                                       strat = "y")
+      myBiomodCV <- bm_CrossValidation(myBiomodData,
+                                       strategy = "strat",
+                                       k = 2,
+                                       balance = "absences",
+                                       strat = "y")
     })))
   )
 }, silent = TRUE)
@@ -1644,25 +1629,16 @@ this_try <- try({
           eval.expl.var = myExpl,
           eval.resp.xy = myRespXY)
       
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("both"))
-      
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("both"),
-                                           balance = "presences")
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("both"),
-                                           balance = "absences")
-      
+      myBiomodCV <- bm_CrossValidation(myBiomodData,
+                                       strategy = "strat",
+                                       k = 2,
+                                       balance = "presences",
+                                       strat = "both")
+      myBiomodCV <- bm_CrossValidation(myBiomodData,
+                                       strategy = "strat",
+                                       k = 2,
+                                       balance = "absences",
+                                       strat = "both")
     })))
   )
 }, silent = TRUE)
@@ -1691,25 +1667,8 @@ this_try <- try({
           eval.expl.var = myExpl,
           eval.resp.xy = myRespXY)
       
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("block"))
-      
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("block"),
-                                           balance = "presences")
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("block"),
-                                           balance = "absences")
-      
+      myBiomodCV <- bm_CrossValidation(myBiomodData,
+                                       strategy = "block")
     })))
   )
 }, silent = TRUE)
@@ -1736,25 +1695,14 @@ this_try <- try({
           eval.expl.var = myExpl.df,
           eval.resp.xy = myRespXY)
       
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("x"))
-      
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("block"),
-                                           balance = "presences")
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("both"),
-                                           balance = "absences")
-      
+      myBiomodCV <- bm_CrossValidation(myBiomodData,
+                                       strategy = "env",
+                                       k = 2,
+                                       balance = "presences")
+      myBiomodCV <- bm_CrossValidation(myBiomodData,
+                                       strategy = "env",
+                                       k = 2,
+                                       balance = "absences")
     })))
   )
 }, silent = TRUE)
@@ -1767,57 +1715,6 @@ if(inherits(this_try, "try-error")){
 }
 
 cli::cli_h3("Modeling with Cross-validation")
-## BIOMOD_Modeling with Cross-validation - matrix -------------------------
-cli::cli_process_start("Modeling with Cross-validation - matrix")
-this_try <- try({
-  invisible(
-    capture.output(suppressWarnings(suppressMessages({
-      myBiomodData <-
-        BIOMOD_FormatingData(
-          resp.var = myResp,
-          expl.var = myExpl,
-          resp.xy = myRespXY,
-          resp.name = myRespName,
-          eval.resp.var = myResp,
-          eval.expl.var = myExpl,
-          eval.resp.xy = myRespXY)
-      
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("block"))
-      
-      myBiomodModelOut <-
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          models = c("GLM","SRE","RF"),
-          modeling.id = 'CV_matrix',
-          data.split.table = myBiomodCV,
-          var.import = 3,
-          metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
-          seed.val = 42
-        )
-      get_predictions(myBiomodModelOut)
-      get_evaluations(myBiomodModelOut)
-      get_built_models(myBiomodModelOut)
-      get_formal_data(myBiomodModelOut)
-      
-      
-    })))
-  )
-}, silent = TRUE)
-
-if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
-  cli::cli_process_failed()
-} else {
-  cli::cli_process_done()
-}
-
-
 ## BIOMOD_Modeling with Cross-validation  - data.frame ---------------------
 cli::cli_process_start("Modeling with Cross-validation - data.frame")
 this_try <- try({
@@ -1833,11 +1730,10 @@ this_try <- try({
           eval.expl.var = myExpl,
           eval.resp.xy = myRespXY)
       
-      myBiomodCV <- BIOMOD_CrossValidation(myBiomodData,
-                                           k = 5,
-                                           nb.rep = 3,
-                                           do.stratification = TRUE,
-                                           method = c("both"))
+      myBiomodCV <- bm_CrossValidation(myBiomodData,
+                                       strategy = "kfold",
+                                       nb.rep = 2,
+                                       k = 3)
       
       myBiomodModelOut <-
         BIOMOD_Modeling(
@@ -1845,18 +1741,16 @@ this_try <- try({
           bm.options = BIOMOD_ModelingOptions(),
           models = c("GLM","SRE","RF"),
           modeling.id = 'CV_matrix',
-          data.split.table = as.data.frame(myBiomodCV),
-          var.import = 3,
+          CV.strategy = 'user.defined',
+          CV.user.table = as.data.frame(myBiomodCV),
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42
         )
       get_predictions(myBiomodModelOut)
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
-      
     })))
   )
 }, silent = TRUE)
