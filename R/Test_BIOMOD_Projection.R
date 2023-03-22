@@ -156,7 +156,7 @@ this_try <- try({
       get_projected_models(myBiomodProj, run = "RUN1", algo = "GBM")
       get_projected_models(myBiomodProj, 
                            full.name = c("GuloGulo_allData_RUN2_MARS",
-                                         "GuloGulo_allData_RUN1_MAXENT"))
+                                         "GuloGulo_allData_RUN1_GLM"))
       
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
       stopifnot(inherits(
@@ -170,7 +170,7 @@ this_try <- try({
       stopifnot(inherits(
         plot(myBiomodProj,
              full.name = c("GuloGulo_allData_RUN2_MARS",
-                           "GuloGulo_allData_RUN1_MAXENT")),
+                           "GuloGulo_allData_RUN1_GLM")),
         "ggplot"))
       stopifnot(inherits(
         plot(myBiomodProj, 
@@ -188,7 +188,7 @@ this_try <- try({
         plot(myBiomodProj, 
              metric.filter = "TSS",
              full.name = c("GuloGulo_allData_RUN2_MARS",
-                           "GuloGulo_allData_RUN1_MAXENT")),
+                           "GuloGulo_allData_RUN1_GLM")),
         "ggplot"))
       
       dev.off()
@@ -225,7 +225,7 @@ this_try <- try({
       get_projected_models(myBiomodProj, run = "RUN1", algo = "GBM")
       get_projected_models(myBiomodProj, 
                            full.name = c("GuloGulo_allData_RUN2_MARS",
-                                         "GuloGulo_allData_RUN1_MAXENT"))
+                                         "GuloGulo_allData_RUN1_GLM"))
       
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
       stopifnot(inherits(
@@ -239,7 +239,7 @@ this_try <- try({
       stopifnot(inherits(
         plot(myBiomodProj,
              full.name = c("GuloGulo_allData_RUN2_MARS",
-                           "GuloGulo_allData_RUN1_MAXENT")),
+                           "GuloGulo_allData_RUN1_GLM")),
         "ggplot"))
       stopifnot(inherits(
         plot(myBiomodProj, 
@@ -257,7 +257,7 @@ this_try <- try({
         plot(myBiomodProj, 
              metric.filter = "TSS",
              full.name = c("GuloGulo_allData_RUN2_MARS",
-                           "GuloGulo_allData_RUN1_MAXENT")),
+                           "GuloGulo_allData_RUN1_GLM")),
         "ggplot"))
       
       dev.off()
@@ -292,10 +292,10 @@ this_try <- try({
       get_projected_models(myBiomodProj)
       get_projected_models(myBiomodProj, run = "RUN1")
       get_projected_models(myBiomodProj, algo = "GAM")
-      get_projected_models(myBiomodProj, run = "RUN1", algo = "GBM")
+      get_projected_models(myBiomodProj, run = "RUN1", algo = "GLM")
       get_projected_models(myBiomodProj, 
                            full.name = c("GuloGulo_allData_RUN2_MARS",
-                                         "GuloGulo_allData_RUN1_MAXENT"))
+                                         "GuloGulo_allData_RUN1_GLM"))
       
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
       stopifnot(inherits(
@@ -309,7 +309,7 @@ this_try <- try({
       stopifnot(inherits(
         plot(myBiomodProj,
              full.name = c("GuloGulo_allData_RUN2_MARS",
-                           "GuloGulo_allData_RUN1_MAXENT")),
+                           "GuloGulo_allData_RUN1_GLM")),
         "ggplot"))
       stopifnot(inherits(
         plot(myBiomodProj, 
@@ -327,7 +327,7 @@ this_try <- try({
         plot(myBiomodProj, 
              metric.filter = "TSS",
              full.name = c("GuloGulo_allData_RUN2_MARS",
-                           "GuloGulo_allData_RUN1_MAXENT")),
+                           "GuloGulo_allData_RUN1_GLM")),
         "ggplot"))
       
       dev.off()
@@ -480,7 +480,7 @@ this_try <- try({
       get_projected_models(myBiomodProj, run = "RUN1", algo = "GBM")
       get_projected_models(myBiomodProj, 
                            full.name = c("GuloGulo_allData_RUN2_MARS",
-                                         "GuloGulo_allData_RUN1_MAXENT"))
+                                         "GuloGulo_allData_RUN1_GLM"))
       
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
       stopifnot(inherits(
@@ -494,7 +494,7 @@ this_try <- try({
       stopifnot(inherits(
         plot(myBiomodProj,
              full.name = c("GuloGulo_allData_RUN2_MARS",
-                           "GuloGulo_allData_RUN1_MAXENT")),
+                           "GuloGulo_allData_RUN1_GLM")),
         "ggplot"))
       stopifnot(inherits(
         plot(myBiomodProj, 
@@ -512,7 +512,7 @@ this_try <- try({
         plot(myBiomodProj, 
              metric.filter = "TSS",
              full.name = c("GuloGulo_allData_RUN2_MARS",
-                           "GuloGulo_allData_RUN1_MAXENT")),
+                           "GuloGulo_allData_RUN1_GLM")),
         "ggplot"))
       
       dev.off()
