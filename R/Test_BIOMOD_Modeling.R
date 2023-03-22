@@ -21,7 +21,6 @@ myRespName <- 'GuloGulo'
 myExpl1 <- myExpl[[1]]
 
 ## myExpl.cat ----------------------------------
-
 myExpl.cat <- myExpl
 myExpl.cat[[1]] <-
   terra::classify(
@@ -59,8 +58,8 @@ myResp_PA2 <- myResp
 myResp_PA2[tmpindex] <- NA
 myRespXY_PA2 <- myRespXY
 
-## myExpl.df ---------------------------------------------------------------
 
+## myExpl.df ---------------------------------------------------------------
 myResp.SpatVector <- vect(x = data.frame("presence" = myResp, 
                                          "x" = DataSpecies[,'X_WGS84'], 
                                          "y" = DataSpecies[,'Y_WGS84']), 
@@ -69,7 +68,6 @@ myExpl.df <- extract(myExpl, y = myResp.SpatVector, ID = FALSE)
 
 
 # No Categorical Variables ------------------------------------------------
-
 cli::cli_h2("No Categorical Variables")
 
 ## No Validation -------------------------------------------------------
@@ -117,7 +115,6 @@ if(inherits(this_try, "try-error")){
 
 ## No Evaluation -------------------------------------------------------
 cli::cli_h3("No Evaluation")
-
 
 ### Presence-Absence ------------
 cli::cli_process_start("Presence-Absence")
@@ -190,7 +187,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -202,7 +198,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only ------------
+### Presence-Only ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -234,7 +230,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -278,7 +273,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -290,7 +284,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only with NA ------------
+### Presence-Only with NA ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -322,7 +316,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -369,7 +362,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -416,7 +408,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -428,7 +419,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only ------------
+### Presence-Only ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -463,7 +454,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -510,7 +500,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -522,7 +511,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only with NA ------------
+### Presence-Only with NA ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -557,7 +546,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -571,7 +559,6 @@ if(inherits(this_try, "try-error")){
 
 
 # With Categorical Variables ------------------------------------------------
-
 cli::cli_h2("With Categorical Variables")
 
 ## No Evaluation -------------------------------------------------------
@@ -605,7 +592,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -649,7 +635,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -661,7 +646,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only ------------
+### Presence-Only ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -693,7 +678,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -737,7 +721,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -749,7 +732,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only with NA ------------
+### Presence-Only with NA ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -781,7 +764,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -828,7 +810,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -875,7 +856,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -887,7 +867,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only ------------
+### Presence-Only ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -922,7 +902,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -969,7 +948,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -981,7 +959,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only with NA ------------
+### Presence-Only with NA ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -1024,7 +1002,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -1039,7 +1016,6 @@ if(inherits(this_try, "try-error")){
 
 
 # One non-categorical Variables ------------------------------------------------
-
 cli::cli_h2("One non-categorical Variables")
 
 ## No Evaluation -------------------------------------------------------
@@ -1073,7 +1049,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -1117,7 +1092,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -1129,7 +1103,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only ------------
+### Presence-Only ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -1161,7 +1135,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -1205,7 +1178,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -1217,7 +1189,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only with NA ------------
+### Presence-Only with NA ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -1249,7 +1221,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -1296,7 +1267,6 @@ this_try <- try({
       invisible(get_evaluations(myBiomodModelOut))
       invisible(get_built_models(myBiomodModelOut))
       invisible(get_formal_data(myBiomodModelOut))
-      
     })))
   )
 }, silent = TRUE)
@@ -1343,7 +1313,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -1355,7 +1324,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only ------------
+### Presence-Only ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -1390,7 +1359,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -1437,7 +1405,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -1449,7 +1416,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only with NA ------------
+### Presence-Only with NA ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -1484,7 +1451,6 @@ this_try <- try({
       get_evaluations(myBiomodModelOut)
       get_built_models(myBiomodModelOut)
       get_formal_data(myBiomodModelOut)
-      
     })))
   )
 }, silent = TRUE)
@@ -1539,7 +1505,6 @@ if(inherits(this_try, "try-error")){
 }
 
 ## With stratification - method = 'x' ------------------------------------
-
 cli::cli_process_start("With stratification - method = 'x'")
 this_try <- try({
   invisible(

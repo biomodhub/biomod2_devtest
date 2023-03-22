@@ -20,8 +20,8 @@ myRespName <- 'GuloGulo'
 
 myExpl1 <- myExpl[[1]]
 
-## myExpl.cat ----------------------------------
 
+## myExpl.cat ----------------------------------
 myExpl.cat <- myExpl
 myExpl.cat[[1]] <-
   terra::classify(
@@ -61,7 +61,6 @@ myRespXY_PA2 <- myRespXY
 
 
 # No Categorical Variables ------------------------------------------------
-
 cli::cli_h2("No Categorical Variables")
 
 ## No Validation -------------------------------------------------------
@@ -114,7 +113,6 @@ this_try <- try({
       get_built_models(myBiomodEM)
       get_formal_data(myBiomodEM)
     }))
-    
   )
 }, silent = TRUE)
 
@@ -146,18 +144,18 @@ this_try <- try({
       if (file.exists(file.out)) {
         myBiomodModelOut <- get(load(file.out))
       } else {
-      myBiomodModelOut <- 
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'NoCat_NoEval_Presence-Absence',
-          CV.strategy = 'random',
-          CV.nb.rep = 2,
-          CV.perc = 80,
-          var.import = 2,
-          metric.eval = c('TSS','ROC'),
-          seed.val = 42
-        )
+        myBiomodModelOut <- 
+          BIOMOD_Modeling(
+            bm.format = myBiomodData,
+            bm.options = BIOMOD_ModelingOptions(),
+            modeling.id = 'NoCat_NoEval_Presence-Absence',
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
+            metric.eval = c('TSS','ROC'),
+            seed.val = 42
+          )
       }
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
@@ -260,18 +258,18 @@ this_try <- try({
       if (file.exists(file.out)) {
         myBiomodModelOut <- get(load(file.out))
       } else {
-      myBiomodModelOut <- 
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'NoCat_NoEval_Presence-Only',
-          CV.strategy = 'random',
-          CV.nb.rep = 2,
-          CV.perc = 80,
-          var.import = 2,
-          metric.eval = c('TSS','ROC'),
-          seed.val = 42
-        )
+        myBiomodModelOut <- 
+          BIOMOD_Modeling(
+            bm.format = myBiomodData,
+            bm.options = BIOMOD_ModelingOptions(),
+            modeling.id = 'NoCat_NoEval_Presence-Only',
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
+            metric.eval = c('TSS','ROC'),
+            seed.val = 42
+          )
       }
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
@@ -289,7 +287,6 @@ this_try <- try({
       get_evaluations(myBiomodEM)
       get_built_models(myBiomodEM)
       get_formal_data(myBiomodEM)
-      
     }))
   )
 }, silent = TRUE)
@@ -301,7 +298,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only ------------
+### Presence-Only ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -349,7 +346,6 @@ this_try <- try({
       get_evaluations(myBiomodEM)
       get_built_models(myBiomodEM)
       get_formal_data(myBiomodEM)
-      
     }))
   )
 }, silent = TRUE)
@@ -382,17 +378,17 @@ this_try <- try({
         myBiomodModelOut <- get(load(file.out))
       } else {
         myBiomodModelOut <- 
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'NoCat_NoEval_Presence-Only_with_NA',
-          CV.strategy = 'random',
-          CV.nb.rep = 2,
-          CV.perc = 80,
-          var.import = 2,
-          metric.eval = c('TSS','ROC'),
-          seed.val = 42
-        )
+          BIOMOD_Modeling(
+            bm.format = myBiomodData,
+            bm.options = BIOMOD_ModelingOptions(),
+            modeling.id = 'NoCat_NoEval_Presence-Only_with_NA',
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
+            metric.eval = c('TSS','ROC'),
+            seed.val = 42
+          )
       }
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
@@ -410,7 +406,6 @@ this_try <- try({
       get_evaluations(myBiomodEM)
       get_built_models(myBiomodEM)
       get_formal_data(myBiomodEM)
-      
     }))
   )
 }, silent = TRUE)
@@ -422,7 +417,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only with NA ------------
+### Presence-Only with NA ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -471,7 +466,6 @@ this_try <- try({
       get_evaluations(myBiomodEM)
       get_built_models(myBiomodEM)
       get_formal_data(myBiomodEM)
-      
     }))
   )
 }, silent = TRUE)
@@ -507,17 +501,17 @@ this_try <- try({
         myBiomodModelOut <- get(load(file.out))
       } else {
         myBiomodModelOut <- 
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'NoCat_Eval_Presence-Absence',
-          CV.strategy = 'random',
-          CV.nb.rep = 2,
-          CV.perc = 80,
-          var.import = 2,
-          metric.eval = c('TSS','ROC'),
-          seed.val = 42
-        )
+          BIOMOD_Modeling(
+            bm.format = myBiomodData,
+            bm.options = BIOMOD_ModelingOptions(),
+            modeling.id = 'NoCat_Eval_Presence-Absence',
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
+            metric.eval = c('TSS','ROC'),
+            seed.val = 42
+          )
       }
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
@@ -570,17 +564,17 @@ this_try <- try({
         myBiomodModelOut <- get(load(file.out))
       } else {
         myBiomodModelOut <- 
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'NoCat_Eval_Presence-Only',
-          CV.strategy = 'random',
-          CV.nb.rep = 2,
-          CV.perc = 80,
-          var.import = 2,
-          metric.eval = c('TSS','ROC'),
-          seed.val = 42
-        )
+          BIOMOD_Modeling(
+            bm.format = myBiomodData,
+            bm.options = BIOMOD_ModelingOptions(),
+            modeling.id = 'NoCat_Eval_Presence-Only',
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
+            metric.eval = c('TSS','ROC'),
+            seed.val = 42
+          )
       }
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
@@ -609,7 +603,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only ------------
+### Presence-Only ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -696,17 +690,17 @@ this_try <- try({
         myBiomodModelOut <- get(load(file.out))
       } else {
         myBiomodModelOut <- 
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'NoCat_Eval_Presence-Only_with_NA',
-          CV.strategy = 'random',
-          CV.nb.rep = 2,
-          CV.perc = 80,
-          var.import = 2,
-          metric.eval = c('TSS','ROC'),
-          seed.val = 42
-        )
+          BIOMOD_Modeling(
+            bm.format = myBiomodData,
+            bm.options = BIOMOD_ModelingOptions(),
+            modeling.id = 'NoCat_Eval_Presence-Only_with_NA',
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
+            metric.eval = c('TSS','ROC'),
+            seed.val = 42
+          )
       }
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
@@ -735,7 +729,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only with NA ------------
+### Presence-Only with NA ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -800,7 +794,6 @@ if(inherits(this_try, "try-error")){
 
 
 # With Categorical Variables ------------------------------------------------
-
 cli::cli_h2("With Categorical Variables")
 
 ## No Evaluation -------------------------------------------------------
@@ -823,17 +816,17 @@ this_try <- try({
         myBiomodModelOut <- get(load(file.out))
       } else {
         myBiomodModelOut <- 
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'Cat_NoEval_Presence-Absence',
-          CV.strategy = 'random',
-          CV.nb.rep = 2,
-          CV.perc = 80,
-          var.import = 2,
-          metric.eval = c('TSS','ROC'),
-          seed.val = 42
-        )
+          BIOMOD_Modeling(
+            bm.format = myBiomodData,
+            bm.options = BIOMOD_ModelingOptions(),
+            modeling.id = 'Cat_NoEval_Presence-Absence',
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
+            metric.eval = c('TSS','ROC'),
+            seed.val = 42
+          )
       }
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
@@ -883,17 +876,17 @@ this_try <- try({
         myBiomodModelOut <- get(load(file.out))
       } else {
         myBiomodModelOut <- 
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'Cat_NoEval_Presence-Only',
-          CV.strategy = 'random',
-          CV.nb.rep = 2,
-          CV.perc = 80,
-          var.import = 2,
-          metric.eval = c('TSS','ROC'),
-          seed.val = 42
-        )
+          BIOMOD_Modeling(
+            bm.format = myBiomodData,
+            bm.options = BIOMOD_ModelingOptions(),
+            modeling.id = 'Cat_NoEval_Presence-Only',
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
+            metric.eval = c('TSS','ROC'),
+            seed.val = 42
+          )
       }
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
@@ -922,7 +915,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only ------------
+### Presence-Only ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -1003,17 +996,17 @@ this_try <- try({
         myBiomodModelOut <- get(load(file.out))
       } else {
         myBiomodModelOut <- 
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'Cat_NoEval_Presence-Only_with_NA',
-          CV.strategy = 'random',
-          CV.nb.rep = 2,
-          CV.perc = 80,
-          var.import = 2,
-          metric.eval = c('TSS','ROC'),
-          seed.val = 42
-        )
+          BIOMOD_Modeling(
+            bm.format = myBiomodData,
+            bm.options = BIOMOD_ModelingOptions(),
+            modeling.id = 'Cat_NoEval_Presence-Only_with_NA',
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
+            metric.eval = c('TSS','ROC'),
+            seed.val = 42
+          )
       }
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
@@ -1042,7 +1035,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only with NA ------------
+### Presence-Only with NA ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -1126,17 +1119,17 @@ this_try <- try({
         myBiomodModelOut <- get(load(file.out))
       } else {
         myBiomodModelOut <- 
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'Cat_Eval_Presence-Absence',
-          CV.strategy = 'random',
-          CV.nb.rep = 2,
-          CV.perc = 80,
-          var.import = 2,
-          metric.eval = c('TSS','ROC'),
-          seed.val = 42
-        )
+          BIOMOD_Modeling(
+            bm.format = myBiomodData,
+            bm.options = BIOMOD_ModelingOptions(),
+            modeling.id = 'Cat_Eval_Presence-Absence',
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
+            metric.eval = c('TSS','ROC'),
+            seed.val = 42
+          )
       }
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
@@ -1189,17 +1182,17 @@ this_try <- try({
         myBiomodModelOut <- get(load(file.out))
       } else {
         myBiomodModelOut <- 
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'Cat_Eval_Presence-Only',
-          CV.strategy = 'random',
-          CV.nb.rep = 2,
-          CV.perc = 80,
-          var.import = 2,
-          metric.eval = c('TSS','ROC'),
-          seed.val = 42
-        )
+          BIOMOD_Modeling(
+            bm.format = myBiomodData,
+            bm.options = BIOMOD_ModelingOptions(),
+            modeling.id = 'Cat_Eval_Presence-Only',
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
+            metric.eval = c('TSS','ROC'),
+            seed.val = 42
+          )
       }
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
@@ -1228,7 +1221,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only ------------
+### Presence-Only ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -1315,17 +1308,17 @@ this_try <- try({
         myBiomodModelOut <- get(load(file.out))
       } else {
         myBiomodModelOut <- 
-        BIOMOD_Modeling(
-          bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
-          modeling.id = 'Cat_Eval_Presence-Only_with_NA',
-          CV.strategy = 'random',
-          CV.nb.rep = 2,
-          CV.perc = 80,
-          var.import = 2,
-          metric.eval = c('TSS','ROC'),
-          seed.val = 42
-        )
+          BIOMOD_Modeling(
+            bm.format = myBiomodData,
+            bm.options = BIOMOD_ModelingOptions(),
+            modeling.id = 'Cat_Eval_Presence-Only_with_NA',
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 80,
+            var.import = 2,
+            metric.eval = c('TSS','ROC'),
+            seed.val = 42
+          )
       }
       myBiomodEM <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut,
@@ -1354,7 +1347,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only with NA ------------
+### Presence-Only with NA ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -1420,7 +1413,6 @@ if(inherits(this_try, "try-error")){
 
 
 # em.by = PA ------------------------------------------------
-
 cli::cli_h2("em.by = PA")
 
 ### Presence-Only ------------
@@ -1469,7 +1461,6 @@ this_try <- try({
       get_evaluations(myBiomodEM)
       get_built_models(myBiomodEM)
       get_formal_data(myBiomodEM)
-      
     }))
   )
 }, silent = TRUE)
@@ -1481,7 +1472,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only ------------
+### Presence-Only ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -1528,7 +1519,6 @@ this_try <- try({
       get_evaluations(myBiomodEM)
       get_built_models(myBiomodEM)
       get_formal_data(myBiomodEM)
-      
     }))
   )
 }, silent = TRUE)
@@ -1542,7 +1532,6 @@ if(inherits(this_try, "try-error")){
 
 
 # em.by = algo ------------------------------------------------
-
 cli::cli_h2("em.by = algo")
 
 ### Presence-Only ------------
@@ -1592,7 +1581,6 @@ this_try <- try({
       get_evaluations(myBiomodEM)
       get_built_models(myBiomodEM)
       get_formal_data(myBiomodEM)
-      
     }))
   )
 }, silent = TRUE)
@@ -1604,7 +1592,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only ------------
+### Presence-Only ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -1652,7 +1640,6 @@ this_try <- try({
       get_evaluations(myBiomodEM)
       get_built_models(myBiomodEM)
       get_formal_data(myBiomodEM)
-      
     }))
   )
 }, silent = TRUE)
@@ -1666,7 +1653,6 @@ if(inherits(this_try, "try-error")){
 
 
 # em.by = PA+run ------------------------------------------------
-
 cli::cli_h2("em.by = PA+run")
 
 ### Presence-Only ------------
@@ -1716,7 +1702,6 @@ this_try <- try({
       get_evaluations(myBiomodEM)
       get_built_models(myBiomodEM)
       get_formal_data(myBiomodEM)
-      
     }))
   )
 }, silent = TRUE)
@@ -1728,7 +1713,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only ------------
+### Presence-Only ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -1789,7 +1774,6 @@ if(inherits(this_try, "try-error")){
 
 
 # em.by = PA+algo ------------------------------------------------
-
 cli::cli_h2("em.by = PA+algo")
 
 ### Presence-Only ------------
@@ -1850,7 +1834,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only ------------
+### Presence-Only ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
@@ -1912,7 +1896,6 @@ if(inherits(this_try, "try-error")){
 
 
 # Only one ensemble model ------------------------------------------------
-
 cli::cli_h2("Only one ensemble model")
 
 ### Presence-Only with NA ------------
@@ -1977,7 +1960,7 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
-### Presence-Only with NA ------------
+### Presence-Only with NA ; multiple Pseudo-Absences ------------
 cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences")
 this_try <- try({
   invisible(
