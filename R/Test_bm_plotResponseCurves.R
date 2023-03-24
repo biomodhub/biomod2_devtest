@@ -107,7 +107,7 @@ invisible(
           modeling.id = 'NoCat_NoEval_Presence-Absence',
           CV.strategy = 'random',
           CV.nb.rep = 2,
-          CV.perc = 80,
+          CV.perc = 0.8,
           var.import = 2,
           metric.eval = c('TSS','ROC'),
           seed.val = 42
@@ -768,7 +768,7 @@ invisible(
           modeling.id = 'Cat_NoEval_Presence-Absence',
           CV.strategy = 'random',
           CV.nb.rep = 2,
-          CV.perc = 80,
+          CV.perc = 0.8,
           var.import = 2,
           metric.eval = c('TSS','ROC'),
           seed.val = 42

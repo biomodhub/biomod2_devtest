@@ -97,11 +97,11 @@ this_try <- try({
             bm.format = myBiomodData,
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'clamping_nocat',
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 0.8,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42,
             nb.cpu = 4)
       }
@@ -124,11 +124,11 @@ this_try <- try({
             bm.format = myBiomodData.cat,
             bm.options = BIOMOD_ModelingOptions(),
             modeling.id = 'clamping_cat',
-            nb.rep = 2,
-            data.split.perc = 80,
-            var.import = 3,
+            CV.strategy = 'random',
+            CV.nb.rep = 2,
+            CV.perc = 0.8,
+            var.import = 2,
             metric.eval = c('TSS','ROC'),
-            do.full.models = FALSE,
             seed.val = 42,
             nb.cpu = 4)
       }

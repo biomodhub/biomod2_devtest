@@ -78,11 +78,11 @@ this_try <- try({
           bm.format = myBiomodData,
           bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Parallel',
-          nb.rep = 2,
-          data.split.perc = 80,
-          var.import = 3,
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 0.8,
+          var.import = 2,
           metric.eval = c('TSS','ROC'),
-          do.full.models = FALSE,
           seed.val = 42,
           nb.cpu = 4)
       get_predictions(myBiomodModelOut)

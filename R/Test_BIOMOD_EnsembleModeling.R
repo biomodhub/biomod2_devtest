@@ -89,7 +89,7 @@ this_try <- try({
             modeling.id = 'NoCat_NoValid_Presence-Absence',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -151,7 +151,7 @@ this_try <- try({
             modeling.id = 'NoCat_NoEval_Presence-Absence',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -207,7 +207,7 @@ this_try <- try({
             modeling.id = 'NoCat1_NoEval_Presence-Absence',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -265,7 +265,7 @@ this_try <- try({
             modeling.id = 'NoCat_NoEval_Presence-Only',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -324,7 +324,7 @@ this_try <- try({
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -384,7 +384,7 @@ this_try <- try({
             modeling.id = 'NoCat_NoEval_Presence-Only_with_NA',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -444,7 +444,7 @@ this_try <- try({
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -507,7 +507,7 @@ this_try <- try({
             modeling.id = 'NoCat_Eval_Presence-Absence',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -570,7 +570,7 @@ this_try <- try({
             modeling.id = 'NoCat_Eval_Presence-Only',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -633,7 +633,7 @@ this_try <- try({
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -696,7 +696,7 @@ this_try <- try({
             modeling.id = 'NoCat_Eval_Presence-Only_with_NA',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -759,7 +759,7 @@ this_try <- try({
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -822,7 +822,7 @@ this_try <- try({
             modeling.id = 'Cat_NoEval_Presence-Absence',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -882,7 +882,7 @@ this_try <- try({
             modeling.id = 'Cat_NoEval_Presence-Only',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -942,7 +942,7 @@ this_try <- try({
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1002,7 +1002,7 @@ this_try <- try({
             modeling.id = 'Cat_NoEval_Presence-Only_with_NA',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1062,7 +1062,7 @@ this_try <- try({
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1125,7 +1125,7 @@ this_try <- try({
             modeling.id = 'Cat_Eval_Presence-Absence',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1188,7 +1188,7 @@ this_try <- try({
             modeling.id = 'Cat_Eval_Presence-Only',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1251,7 +1251,7 @@ this_try <- try({
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1314,7 +1314,7 @@ this_try <- try({
             modeling.id = 'Cat_Eval_Presence-Only_with_NA',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1377,7 +1377,7 @@ this_try <- try({
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1440,7 +1440,7 @@ this_try <- try({
             modeling.id = 'NoCat_NoEval_Presence-Only',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1498,7 +1498,7 @@ this_try <- try({
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1559,7 +1559,7 @@ this_try <- try({
             modeling.id = 'NoCat_NoEval_Presence-Only',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1618,7 +1618,7 @@ this_try <- try({
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1680,7 +1680,7 @@ this_try <- try({
             modeling.id = 'NoCat_NoEval_Presence-Only',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1739,7 +1739,7 @@ this_try <- try({
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1801,7 +1801,7 @@ this_try <- try({
             modeling.id = 'NoCat_NoEval_Presence-Only',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1860,7 +1860,7 @@ this_try <- try({
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1927,7 +1927,7 @@ this_try <- try({
             modeling.id = 'NoCat_Eval_Presence-Only_with_NA',
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42
@@ -1990,7 +1990,7 @@ this_try <- try({
             models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
             CV.strategy = 'random',
             CV.nb.rep = 2,
-            CV.perc = 80,
+            CV.perc = 0.8,
             var.import = 2,
             metric.eval = c('TSS','ROC'),
             seed.val = 42

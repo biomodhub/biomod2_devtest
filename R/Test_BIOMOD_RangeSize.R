@@ -79,28 +79,25 @@ invisible(
         do.stack = TRUE
       )
     
-    ProjCurrent.nonbinary.df <- get_predictions(myBiomodProj.df)
+    ProjCurrent.nonbinary.df <- get_predictions(myBiomodProj.df, model.as.col = TRUE)
     
-    ProjCurrent.nonbinary <-    get_predictions(myBiomodProj)
+    ProjCurrent.nonbinary <- get_predictions(myBiomodProj)
     ProjCurrent.nonbinary.raster <- stack(ProjCurrent.nonbinary)
     
     
-    ProjCurrent.df <- 
-      get_predictions(myBiomodProj.df, metric.binary = "TSS")
+    ProjCurrent.df <- get_predictions(myBiomodProj.df, metric.binary = "TSS", model.as.col = TRUE)
     
-    ProjCurrent.1.df <-
-      get_predictions(myBiomodProj.df,
-                      algo = "GLM",
-                      run = "RUN1",
-                      metric.binary = "TSS")
-    ProjCurrent.all.SpatRaster <-
-      get_predictions(myBiomodProj, metric.binary = "TSS")
+    ProjCurrent.1.df <- get_predictions(myBiomodProj.df,
+                                        algo = "GLM",
+                                        run = "RUN1",
+                                        metric.binary = "TSS",
+                                        model.as.col = TRUE)
+    ProjCurrent.all.SpatRaster <- get_predictions(myBiomodProj, metric.binary = "TSS")
     
-    ProjCurrent.1.SpatRaster <-
-      get_predictions(myBiomodProj,
-                      algo = "GLM",
-                      run = "RUN1",
-                      metric.binary = "TSS") 
+    ProjCurrent.1.SpatRaster <- get_predictions(myBiomodProj,
+                                                algo = "GLM",
+                                                run = "RUN1",
+                                                metric.binary = "TSS") 
     
     
     ## Simple model - future --------------------------------------------------
@@ -125,30 +122,27 @@ invisible(
         do.stack = TRUE
       )
     
-    ProjFuture.nonbinary.df <-  get_predictions(myBiomodFuture.df) 
+    ProjFuture.nonbinary.df <-  get_predictions(myBiomodFuture.df, model.as.col = TRUE) 
     ProjFuture.nonbinary <-  get_predictions(myBiomodProj)
     
     ProjFuture.nonbinary.raster <- stack(ProjFuture.nonbinary)
     
-    ProjFuture.df <-
-      get_predictions(myBiomodFuture.df, metric.binary = "TSS")
+    ProjFuture.df <- get_predictions(myBiomodFuture.df, metric.binary = "TSS", model.as.col = TRUE)
     
-    ProjFuture.1.df <- 
-      get_predictions(myBiomodFuture.df,
-                      algo = "GLM",
-                      run = "RUN1",
-                      metric.binary = "TSS")
-    ProjFuture.2.df <- rbind(ProjFuture.1.df,ProjFuture.1.df)
-    ProjFuture.2.df$full.name <- rep(c("ssp1","ssp2"), each = nrow(ProjFuture.1.df))
+    ProjFuture.1.df <- get_predictions(myBiomodFuture.df,
+                                       algo = "GLM",
+                                       run = "RUN1",
+                                       metric.binary = "TSS",
+                                       model.as.col = TRUE)
+    ProjFuture.2.df <- cbind(ProjFuture.1.df,ProjFuture.1.df)
+    colnames(ProjFuture.2.df) <- c("Proj1", "Proj2")
     
-    ProjFuture.all.SpatRaster <-
-      get_predictions(myBiomodFuture, metric.binary = "TSS") 
+    ProjFuture.all.SpatRaster <- get_predictions(myBiomodFuture, metric.binary = "TSS") 
     
-    ProjFuture.1.SpatRaster <- 
-      get_predictions(myBiomodFuture,
-                      algo = "GLM",
-                      run = "RUN1",
-                      metric.binary = "TSS")
+    ProjFuture.1.SpatRaster <- get_predictions(myBiomodFuture,
+                                               algo = "GLM",
+                                               run = "RUN1",
+                                               metric.binary = "TSS")
     
     ProjFuture.2.SpatRaster <- c(ProjFuture.1.SpatRaster,ProjFuture.1.SpatRaster)
     # names(ProjFuture.2.SpatRaster) <- c("ssp1","ssp2")
