@@ -141,14 +141,9 @@ this_try <- try({
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42,
         nb.cpu = 4)
       get_predictions(myBiomodEM)

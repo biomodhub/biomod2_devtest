@@ -124,7 +124,135 @@ x <- try({
 
 cli::cli_h2("Without Pseudo-Absences")
 
-## do.stratification = FALSE ------------------------------------------
+
+## random ------------
+cli::cli_h3("strategy = 'random'")
+cli::cli_process_start("strategy = 'random'")
+this_try <- try({
+  invisible(
+    capture.output({
+      
+      calib.lines <- bm_CrossValidation(myBiomodData,
+                                        strategy = "random",
+                                        nb.rep = 10,
+                                        perc = 0.8,
+                                        do.full.models = FALSE)
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines)
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines, 
+                plot.type = "raster")
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                run = c("RUN1","RUN2"))
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                plot.output = "list",
+                run = c("RUN1","RUN2"))
+      dev.off()
+      summary(myBiomodData, calib.lines = calib.lines)
+      
+    })
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_CV <- Error_CV + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+
+## strategy = 'kfold' ------------------------------------------
+cli::cli_h3("strategy = 'kfold'")
+
+
+### balance = 'presence' ------------
+cli::cli_process_start("balance = 'presences'")
+this_try <- try({
+  invisible(
+    capture.output({
+      calib.lines <- bm_CrossValidation(myBiomodData,
+                                        strategy = "kfold",
+                                        k = 5, 
+                                        nb.rep = 2,
+                                        balance = "presences",
+                                        do.full.models = FALSE)
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines)
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines, 
+                plot.type = "raster")
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                run = c("RUN1","RUN2"))
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                plot.output = "list",
+                run = c("RUN1","RUN2"))
+      dev.off()
+      summary(myBiomodData, calib.lines = calib.lines)
+      
+    })
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_CV <- Error_CV + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### balance = 'absences' ------------
+cli::cli_process_start("balance = 'absences'")
+this_try <- try({
+  invisible(
+    capture.output({
+      calib.lines <- bm_CrossValidation(myBiomodData,
+                                        strategy = "kfold",
+                                        k = 5, 
+                                        nb.rep = 2,
+                                        balance = "absences",
+                                        do.full.models = FALSE)
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines)
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines, 
+                plot.type = "raster")
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                run = c("RUN1","RUN2"))
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                plot.output = "list",
+                run = c("RUN1","RUN2"))
+      dev.off()
+      summary(myBiomodData, calib.lines = calib.lines)
+      
+    })
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_CV <- Error_CV + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+## strategy = 'env' ------------------------------------------
 cli::cli_h3("strategy = 'env'")
 
 
@@ -133,10 +261,9 @@ cli::cli_process_start("balance = 'presences'")
 this_try <- try({
   invisible(
     capture.output({
-      
       calib.lines <- bm_CrossValidation(myBiomodData,
                                         strategy = "env",
-                                        k = 2, 
+                                        k = 5, 
                                         balance = "presences",
                                         do.full.models = FALSE)
       pdf(file = ".tmp.pdf")
@@ -177,7 +304,8 @@ this_try <- try({
       
       calib.lines <- bm_CrossValidation(myBiomodData,
                                         strategy = "env",
-                                        k = 2, 
+                                        k = 5, 
+                                        env.var = "bio3",
                                         balance = "absences",
                                         do.full.models = FALSE)
       pdf(file = ".tmp.pdf")
@@ -212,7 +340,7 @@ if(inherits(this_try, "try-error")){
 
 
 
-## do.stratification = TRUE ; method = 'x' -------------------------------
+## strategy = 'strat', strat = 'x' -------------------------------
 cli::cli_h3("strategy = 'strat', strat = 'x'")
 
 
@@ -224,8 +352,7 @@ this_try <- try({
       
       calib.lines <- bm_CrossValidation(myBiomodData,
                                         strategy = "strat",
-                                        nb.rep = 2,
-                                        k = 2, 
+                                        k = 5, 
                                         balance = "presences",
                                         strat = "x",
                                         do.full.models = FALSE)
@@ -302,7 +429,7 @@ if(inherits(this_try, "try-error")){
 }
 
 
-## do.stratification = TRUE ; method = 'y' -------------------------------
+## strategy = 'strat', strat = 'y' -------------------------------
 cli::cli_h3("strategy = 'strat', strat = 'y'")
 
 
@@ -314,7 +441,6 @@ this_try <- try({
       
       calib.lines <- bm_CrossValidation(myBiomodData,
                                         strategy = "strat",
-                                        nb.rep = 2,
                                         k = 2, 
                                         balance = "presences",
                                         strat = "y",
@@ -357,7 +483,6 @@ this_try <- try({
       
       calib.lines <- bm_CrossValidation(myBiomodData,
                                         strategy = "strat",
-                                        nb.rep = 2,
                                         k = 2, 
                                         balance = "absences",
                                         strat = "y",
@@ -392,7 +517,7 @@ if(inherits(this_try, "try-error")){
 }
 
 
-## do.stratification = TRUE ; method = 'both' -------------------------------
+## strategy = 'strat', strat = 'both' -------------------------------
 cli::cli_h3("strategy = 'strat', strat = 'both'")
 
 
@@ -404,8 +529,7 @@ this_try <- try({
       
       calib.lines <- bm_CrossValidation(myBiomodData,
                                         strategy = "strat",
-                                        nb.rep = 2,
-                                        k = 2, 
+                                        k = 4, 
                                         balance = "presences",
                                         strat = "both",
                                         do.full.models = FALSE)
@@ -447,7 +571,6 @@ this_try <- try({
       
       calib.lines <- bm_CrossValidation(myBiomodData,
                                         strategy = "strat",
-                                        nb.rep = 2,
                                         k = 2, 
                                         balance = "absences",
                                         strat = "both",
@@ -482,7 +605,7 @@ if(inherits(this_try, "try-error")){
 }
 
 
-## do.stratification = TRUE ; method = 'block' -------------------------------
+## strategy = 'block' -------------------------------
 cli::cli_h3("strategy = 'block'")
 
 this_try <- try({
@@ -522,13 +645,200 @@ if(inherits(this_try, "try-error")){
 }
 
 
+## strategy = 'user.defined' ------------
+cli::cli_h3("strategy = 'user.defined'")
+cli::cli_process_start("strategy = 'user.defined'")
+this_try <- try({
+  invisible(
+    capture.output({
+      
+      calib.lines.prep <- bm_CrossValidation(myBiomodData,
+                                             strategy = "env",
+                                             k = 2, 
+                                             # env.var = "bio3",
+                                             balance = "absences",
+                                             do.full.models = FALSE)
+      calib.lines <- bm_CrossValidation(myBiomodData,
+                                        strategy = "user.defined",
+                                        user.table = calib.lines.prep)
+      
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines)
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines, 
+                plot.type = "raster")
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                run = c("RUN1","RUN2"))
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                plot.output = "list",
+                run = c("RUN1","RUN2"))
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                run = c("RUN1","RUN2"),
+                PA = c("PA1"))
+      g <- plot(myBiomodData, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                plot.output = "list",
+                PA = c("PA1","PA2"))
+      
+      dev.off()
+      summary(myBiomodData, calib.lines = calib.lines)
+      
+    })
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_CV <- Error_CV + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
 # With Pseudo-Absences ----------------------------------------------------
 
 cli::cli_h2("With Pseudo-Absences")
 
+## strategy = random ------------
+cli::cli_h3("strategy = 'random'")
+cli::cli_process_start("strategy = 'random'")
+this_try <- try({
+  invisible(
+    capture.output({
+      
+      calib.lines <- bm_CrossValidation(myBiomodDataPA,
+                                        strategy = "random",
+                                        nb.rep = 2,
+                                        perc = 0.8,
+                                        do.full.models = FALSE)
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines)
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines, 
+                plot.type = "raster")
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                run = c("RUN1","RUN2"))
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                plot.output = "list",
+                run = c("RUN1","RUN2"))
+      dev.off()
+      summary(myBiomodDataPA, calib.lines = calib.lines)
+      
+    })
+  )
+}, silent = TRUE)
 
-## do.stratification = FALSE ------------------------------------------
+if(inherits(this_try, "try-error")){
+  Error_CV <- Error_CV + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+## strategy = 'kfold' ------------------------------------------
+cli::cli_h3("strategy = 'kfold'")
+
+
+### balance = 'presence' ------------
+cli::cli_process_start("balance = 'presences'")
+this_try <- try({
+  invisible(
+    capture.output({
+      calib.lines <- bm_CrossValidation(myBiomodDataPA,
+                                        strategy = "kfold",
+                                        k = 5, 
+                                        nb.rep = 2,
+                                        balance = "presences",
+                                        do.full.models = FALSE)
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines)
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines, 
+                plot.type = "raster")
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                run = c("RUN1","RUN2"))
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                plot.output = "list",
+                run = c("RUN1","RUN2"))
+      dev.off()
+      summary(myBiomodDataPA, calib.lines = calib.lines)
+      
+    })
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_CV <- Error_CV + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+## strategy = 'kfold' ------------------------------------------
+cli::cli_h3("strategy = 'kfold'")
+
+
+### balance = 'absences' ------------
+cli::cli_process_start("balance = 'absences'")
+this_try <- try({
+  invisible(
+    capture.output({
+      calib.lines <- bm_CrossValidation(myBiomodDataPA,
+                                        strategy = "kfold",
+                                        k = 5, 
+                                        nb.rep = 2,
+                                        balance = "absences",
+                                        do.full.models = FALSE)
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines)
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines, 
+                plot.type = "raster")
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                run = c("RUN1","RUN2"))
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                plot.output = "list",
+                run = c("RUN1","RUN2"))
+      dev.off()
+      summary(myBiomodDataPA, calib.lines = calib.lines)
+      
+    })
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_CV <- Error_CV + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+## strategy = 'env' ------------------------------------------
 cli::cli_h3("strategy = 'env'")
 
 
@@ -538,9 +848,10 @@ this_try <- try({
   invisible(
     capture.output({
       
-      calib.lines <- bm_CrossValidation(myBiomodData,
+      calib.lines <- bm_CrossValidation(myBiomodDataPA,
                                         strategy = "env",
                                         k = 2, 
+                                        env.var = "bio3",
                                         balance = "presences",
                                         do.full.models = FALSE)
       pdf(file = ".tmp.pdf")
@@ -557,7 +868,8 @@ this_try <- try({
                 calib.lines = calib.lines, 
                 plot.type = "raster",
                 plot.output = "list",
-                run = c("RUN1","RUN2"))
+                run = c("RUN1","RUN2"),
+                PA = c("PA1"))
       g <- plot(myBiomodDataPA, 
                 calib.lines = calib.lines, 
                 plot.type = "raster",
@@ -589,7 +901,7 @@ this_try <- try({
   invisible(
     capture.output({
       
-      calib.lines <- bm_CrossValidation(myBiomodData,
+      calib.lines <- bm_CrossValidation(myBiomodDataPA,
                                         strategy = "env",
                                         k = 2, 
                                         balance = "absences",
@@ -637,7 +949,7 @@ if(inherits(this_try, "try-error")){
 
 
 
-## do.stratification = TRUE ; method = 'x' -------------------------------
+## strategy = 'strat', strat = 'x' -------------------------------
 cli::cli_h3("strategy = 'strat', strat = 'x'")
 
 
@@ -647,10 +959,9 @@ this_try <- try({
   invisible(
     capture.output({
       
-      calib.lines <- bm_CrossValidation(myBiomodData,
+      calib.lines <- bm_CrossValidation(myBiomodDataPA,
                                         strategy = "strat",
-                                        nb.rep = 2,
-                                        k = 2, 
+                                        k = 5, 
                                         balance = "presences",
                                         strat = "x",
                                         do.full.models = FALSE)
@@ -700,7 +1011,7 @@ this_try <- try({
   invisible(
     capture.output({
       
-      calib.lines <- bm_CrossValidation(myBiomodData,
+      calib.lines <- bm_CrossValidation(myBiomodDataPA,
                                         strategy = "strat",
                                         nb.rep = 2,
                                         k = 2, 
@@ -747,7 +1058,7 @@ if(inherits(this_try, "try-error")){
 }
 
 
-## do.stratification = TRUE ; method = 'y' -------------------------------
+## strategy = 'strat', strat = 'y' -------------------------------
 cli::cli_h3("strategy = 'strat', strat = 'y'")
 
 
@@ -757,7 +1068,7 @@ this_try <- try({
   invisible(
     capture.output({
       
-      calib.lines <- bm_CrossValidation(myBiomodData,
+      calib.lines <- bm_CrossValidation(myBiomodDataPA,
                                         strategy = "strat",
                                         nb.rep = 2,
                                         k = 2, 
@@ -810,7 +1121,7 @@ this_try <- try({
   invisible(
     capture.output({
       
-      calib.lines <- bm_CrossValidation(myBiomodData,
+      calib.lines <- bm_CrossValidation(myBiomodDataPA,
                                         strategy = "strat",
                                         nb.rep = 2,
                                         k = 2, 
@@ -857,7 +1168,7 @@ if(inherits(this_try, "try-error")){
 }
 
 
-## do.stratification = TRUE ; method = 'both' -------------------------------
+## strategy = 'strat', strat = 'both' -------------------------------
 cli::cli_h3("strategy = 'strat', strat = 'both'")
 
 
@@ -867,10 +1178,9 @@ this_try <- try({
   invisible(
     capture.output({
       
-      calib.lines <- bm_CrossValidation(myBiomodData,
+      calib.lines <- bm_CrossValidation(myBiomodDataPA,
                                         strategy = "strat",
-                                        nb.rep = 2,
-                                        k = 2, 
+                                        k = 4, 
                                         balance = "presences",
                                         strat = "both",
                                         do.full.models = FALSE)
@@ -920,10 +1230,9 @@ this_try <- try({
   invisible(
     capture.output({
       
-      calib.lines <- bm_CrossValidation(myBiomodData,
+      calib.lines <- bm_CrossValidation(myBiomodDataPA,
                                         strategy = "strat",
-                                        nb.rep = 2,
-                                        k = 2, 
+                                        k = 4, 
                                         balance = "absences",
                                         strat = "both",
                                         do.full.models = FALSE)
@@ -967,7 +1276,7 @@ if(inherits(this_try, "try-error")){
 }
 
 
-## do.stratification = TRUE ; method = 'block' -------------------------------
+## strategy = 'block' -------------------------------
 cli::cli_h3("strategy = 'block'")
 
 
@@ -976,7 +1285,7 @@ cli::cli_process_start("balance = 'presences'")
 this_try <- try({
   invisible(
     capture.output({
-      calib.lines <- bm_CrossValidation(myBiomodData,
+      calib.lines <- bm_CrossValidation(myBiomodDataPA,
                                         strategy = "block",
                                         do.full.models = FALSE)
       pdf(file = ".tmp.pdf")
@@ -1023,3 +1332,64 @@ if(inherits(this_try, "try-error")){
 while(!is.null(dev.list())){
   dev.off()
 }
+
+
+cli::cli_h3("strategy = 'user.defined'")
+
+## strategy = 'user.defined' ------------
+cli::cli_process_start("strategy = 'user.defined'")
+this_try <- try({
+  invisible(
+    capture.output({
+      
+      calib.lines.prep <- bm_CrossValidation(myBiomodDataPA,
+                                        strategy = "env",
+                                        k = 2, 
+                                        # env.var = "bio3",
+                                        balance = "absences",
+                                        do.full.models = FALSE)
+      calib.lines <- bm_CrossValidation(myBiomodDataPA,
+                                        strategy = "user.defined",
+                                        user.table = calib.lines.prep)
+      
+      pdf(file = ".tmp.pdf")
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines)
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines, 
+                plot.type = "raster")
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                run = c("RUN1","RUN2"))
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                plot.output = "list",
+                run = c("RUN1","RUN2"))
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                run = c("RUN1","RUN2"),
+                PA = c("PA1"))
+      g <- plot(myBiomodDataPA, 
+                calib.lines = calib.lines, 
+                plot.type = "raster",
+                plot.output = "list",
+                PA = c("PA1","PA2"))
+      
+      dev.off()
+      summary(myBiomodDataPA, calib.lines = calib.lines)
+      
+    })
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_CV <- Error_CV + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+

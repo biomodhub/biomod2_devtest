@@ -920,13 +920,13 @@ this_try <- try({
         )
       get_projected_models(myBiomodProj)
       get_projected_models(myBiomodProj, filtered.by = "TSS")
-      get_projected_models(myBiomodProj, merged.by.run = "RUN1")
+      get_projected_models(myBiomodProj, merged.by.run = "mergedRun")
       get_projected_models(myBiomodProj, merged.by.PA = "PA2")
       get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
       get_projected_models(
         myBiomodProj, 
-        full.name = c("GuloGulo_EMcaByTSS_PA1_allRun_mergedAlgo",
-                      "GuloGulo_EMwmeanByTSS_PA2_allRun_mergedAlgo"))
+        full.name = c("GuloGulo_EMcaByTSS_PA1_mergedRun_RF",
+                      "GuloGulo_EMwmeanByTSS_PA2_mergedRun_GBM"))
       
       stopifnot(tinytest::expect_error(plot(myBiomodProj)))
     })))
@@ -959,14 +959,10 @@ this_try <- try({
         )
       get_projected_models(myBiomodProj)
       get_projected_models(myBiomodProj, filtered.by = "TSS")
-      get_projected_models(myBiomodProj, merged.by.run = "RUN1")
+      get_projected_models(myBiomodProj, merged.by.run = "mergedRun")
       get_projected_models(myBiomodProj, merged.by.PA = "PA2")
       get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
-      get_projected_models(
-        myBiomodProj, 
-        full.name = c("GuloGulo_EMcaByTSS_PA1_allRun_mergedAlgo",
-                      "GuloGulo_EMwmeanByTSS_PA2_allRun_mergedAlgo"))
-      
+
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
       stopifnot(inherits(plot(myBiomodProj), 
                          "ggplot"))
@@ -984,8 +980,8 @@ this_try <- try({
                          "ggplot"))
       stopifnot(inherits(
         plot(myBiomodProj, 
-             full.name = c("GuloGulo_EMcaByTSS_PA1_mergedRun_GBM",
-                           "GuloGulo_EMwmeanByTSS_PA2_mergedRun_GLM")), 
+             full.name = c("GuloGulo_EMcaByTSS_PA1_mergedRun_RF",
+                           "GuloGulo_EMwmeanByTSS_PA2_mergedRun_GBM")), 
         "ggplot"))
       dev.off()
       
@@ -1017,14 +1013,10 @@ this_try <- try({
         )
       get_projected_models(myBiomodProj)
       get_projected_models(myBiomodProj, filtered.by = "TSS")
-      get_projected_models(myBiomodProj, merged.by.run = "RUN1")
+      get_projected_models(myBiomodProj, merged.by.run = "mergedRun")
       get_projected_models(myBiomodProj, merged.by.PA = "PA2")
       get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
-      get_projected_models(
-        myBiomodProj, 
-        full.name = c("GuloGulo_EMcaByTSS_PA1_allRun_mergedAlgo",
-                      "GuloGulo_EMwmeanByTSS_PA2_allRun_mergedAlgo"))
-      
+
       stopifnot(tinytest::expect_error(plot(myBiomodProj)))
     })))
   )
@@ -1055,14 +1047,10 @@ this_try <- try({
         )
       get_projected_models(myBiomodProj)
       get_projected_models(myBiomodProj, filtered.by = "TSS")
-      get_projected_models(myBiomodProj, merged.by.run = "RUN1")
+      get_projected_models(myBiomodProj, merged.by.run = "mergedRun")
       get_projected_models(myBiomodProj, merged.by.PA = "PA2")
       get_projected_models(myBiomodProj, algo = c("EMmean","EMca"))
-      get_projected_models(
-        myBiomodProj, 
-        full.name = c("GuloGulo_EMcaByTSS_PA1_allRun_mergedAlgo",
-                      "GuloGulo_EMwmeanByTSS_PA2_allRun_mergedAlgo"))
-      
+
       pdf(file = ".tmp.pdf", width = 20/cm(1), height = 15/cm(1))
       stopifnot(inherits(plot(myBiomodProj), 
                          "ggplot"))
@@ -1072,7 +1060,7 @@ this_try <- try({
                          "ggplot"))
       stopifnot(inherits(plot(myBiomodProj, filtered.by = "TSS"), 
                          "ggplot"))
-      stopifnot(inherits(plot(myBiomodProj, merged.by.run = "RUN1"),
+      stopifnot(inherits(plot(myBiomodProj, merged.by.run = "mergedRun"),
                          "ggplot"))
       stopifnot(inherits(plot(myBiomodProj, merged.by.PA = "PA1"), 
                          "ggplot"))
@@ -1080,8 +1068,8 @@ this_try <- try({
                          "ggplot"))
       stopifnot(inherits(
         plot(myBiomodProj, 
-             full.name = c("GuloGulo_EMcaByTSS_PA1_allRun_mergedAlgo",
-                           "GuloGulo_EMwmeanByTSS_PA2_allRun_mergedAlgo")),
+             full.name = c("GuloGulo_EMcaByTSS_PA1_mergedRun_RF",
+                           "GuloGulo_EMwmeanByTSS_PA2_mergedRun_GBM")),
         "ggplot"))
       dev.off()
     })))
