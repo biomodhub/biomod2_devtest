@@ -111,19 +111,14 @@ invisible(
       myBiomodEnsembleOut1 <-   BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut1,
         models.chosen = 'all',
-        em.by = 'PA_dataset',
+        em.by = 'PA',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
     }
   }))))
@@ -206,19 +201,14 @@ invisible(
     myBiomodEM <- BIOMOD_EnsembleModeling(
       bm.mod = myBMout,
       models.chosen = 'all',
-      em.by = 'PA_dataset+repet',
+      em.by = 'PA+run',
       metric.select = c('TSS'),
       metric.select.thresh = c(0.7),
       var.import = 3,
       metric.eval = c('TSS', 'ROC'),
-      prob.mean = TRUE,
-      prob.median = TRUE,
-      prob.cv = TRUE,
-      prob.ci = TRUE,
-      prob.ci.alpha = 0.05,
-      committee.averaging = TRUE,
-      prob.mean.weight = TRUE,
-      prob.mean.weight.decay = 'proportional',
+      em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+      EMci.alpha = 0.05,
+      EMwmean.decay = 'proportional',
       seed.val = 42)
     }
   }))))
@@ -271,14 +261,9 @@ invisible(
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = TRUE,
-        prob.ci = TRUE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = TRUE,
-        prob.mean.weight = TRUE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMcv', 'EMci', 'EMmedian', 'EMca', 'EMwmean'),
+        EMci.alpha = 0.05,
+        EMwmean.decay = 'proportional',
         seed.val = 42)
     }
   })))
@@ -305,7 +290,7 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
+if (inherits(this_try, "try-error")) {
   Error_PresenceOnly <- Error_PresenceOnly + 1
   cli::cli_process_failed()
 } else {
