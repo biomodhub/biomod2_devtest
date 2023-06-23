@@ -125,19 +125,12 @@ try({
       myBiomodEnsembleOut_noCat <- BIOMOD_EnsembleModeling(
         bm.mod = myBiomodModelOut_Eval,
         models.chosen = model_subset,
-        em.by = 'PA_dataset+repet',
+        em.by = 'PA+run',
         metric.select = c('TSS'),
         metric.select.thresh = c(0.7),
         var.import = 3,
         metric.eval = c('TSS', 'ROC'),
-        prob.mean = TRUE,
-        prob.median = TRUE,
-        prob.cv = FALSE,
-        prob.ci = FALSE,
-        prob.ci.alpha = 0.05,
-        committee.averaging = FALSE,
-        prob.mean.weight = FALSE,
-        prob.mean.weight.decay = 'proportional',
+        em.algo = c('EMmean', 'EMmedian'),
         seed.val = 42)
     })))
   )
@@ -549,7 +542,7 @@ cli::cli_process_start("full.name = subset")
 this_try <- try({
   invisible(
     capture.output(suppressWarnings(suppressMessages({
-      my_subset <- get_projected_models(myBiomodProjOut_Eval)[c(2,6,7)]
+      my_subset <- get_projected_models(myBiomodProjOut_Eval)[c(2,6,5)]
       myPred <- get_predictions(myBiomodProjOut_Eval, full.name = my_subset)
       stopifnot(!is.null(myPred))
       stopifnot(inherits(myPred, "SpatRaster"))
@@ -716,7 +709,7 @@ cli::cli_process_start("full.name = subset")
 this_try <- try({
   invisible(
     capture.output(suppressWarnings(suppressMessages({
-      my_subset <- get_projected_models(myBiomodProjOut_Eval)[c(2,6,7)]
+      my_subset <- get_projected_models(myBiomodProjOut_Eval)[c(2,6,5)]
       
       myPred <- get_predictions(myBiomodProjOut_Eval, full.name = my_subset)
       stopifnot(!is.null(myPred))
