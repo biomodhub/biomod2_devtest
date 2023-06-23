@@ -198,7 +198,7 @@ this_try <- try({
         BIOMOD_FormatingData(
           resp.var = myResp,
           expl.var = myExpl.df,
-          resp.xy = myRespXY,
+          # resp.xy = myRespXY,
           resp.name = myRespName)
       pdf(file = ".tmp.pdf")
       g <- plot(myBiomodData)
@@ -972,7 +972,7 @@ this_try <- try({
         BIOMOD_FormatingData(
           resp.var = myResp,
           expl.var = myExpl.cat.df,
-          resp.xy = myRespXY,
+          # resp.xy = myRespXY,
           resp.name = myRespName)
     )
   )
@@ -1671,7 +1671,7 @@ this_try <- try({
         BIOMOD_FormatingData(
           resp.var = myResp,
           expl.var = myExpl.df1,
-          resp.xy = myRespXY,
+          # resp.xy = myRespXY,
           resp.name = myRespName)
     )
   )
