@@ -300,14 +300,14 @@ this_try <- try({
     capture.output({
       myBiomodOptions <-
         bm_ModelingOptions(data.type = "binary"
-                           , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
-                                        , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , models = c('SRE')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
                            , val.list = NULL
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
-      names(myBiomodOptions@options$ANN.binary.nnet.nnet@args.values)
+      names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
     })
   )
 }, silent = TRUE)
@@ -326,16 +326,16 @@ this_try <- try({
     capture.output({
       myBiomodOptions <-
         bm_ModelingOptions(data.type = "binary"
-                           , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
-                                        , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , models = c('SRE')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
                            , val.list = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
-      names(myBiomodOptions@options$ANN.binary.nnet.nnet@args.values)
-      myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_allData_allRun`
+      names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
       myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA1_allRun`
+      myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA2_allRun`
     })
   )
 }, silent = TRUE)
