@@ -1,11 +1,11 @@
 cli::cli_h1("bm_ModelingOptions")
 
-Error_Formating <- 0
+Error_ModelingOptions <- 0
 
 # Preparation -----------------------------------------------------------------
 library(terra)
 library(raster)
-if(terraVersion){
+if (terraVersion) {
   data("DataSpecies")
   data("bioclim_current")
   myExpl <- terra::rast(bioclim_current)
@@ -27,18 +27,20 @@ myRespXY_PO <- myRespXY[tmpindex,]
 
 
 ## myBiomodData ---------------------------------------------------------------
+set.seed(42)
+mysubsample <- sample(1:2488, size = 150)
 myBiomodData <-
   BIOMOD_FormatingData(
-    resp.var = myResp,
+    resp.var = myResp[mysubsample],
     expl.var = myExpl,
-    resp.xy = myRespXY,
+    resp.xy = myRespXY[mysubsample,],
     resp.name = myRespName)
 
 myBiomodDataPA <-
   BIOMOD_FormatingData(
-    resp.var = myResp_PO,
+    resp.var = myResp_PO[1:100],
     expl.var = myExpl,
-    resp.xy = myRespXY_PO,
+    resp.xy = myRespXY_PO[1:100,],
     resp.name = myRespName,
     PA.nb.rep = 2,
     PA.nb.absences = 500,
@@ -79,43 +81,18 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
 }
 
-
-## with calib.lines -----------------------------
-cli::cli_h3("with calib.lines")
-
-cli::cli_process_start("No val.list ; No bm.format ; calib.lines = Presence-Absence")
-this_try <- try({
-  invisible(
-    capture.output({
-      myBiomodOptions <-
-        bm_ModelingOptions(data.type = "binary"
-                           , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
-                                        , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
-                           , strategy = "default"
-                           , val.list = NULL, bm.format = NULL
-                           , calib.lines = myBiomodCV)
-      myBiomodOptions
-      names(myBiomodOptions@options$ANN.binary.nnet.nnet@args.values)
-    })
-  )
-}, silent = TRUE)
-
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
-  cli::cli_process_failed()
-} else {
-  cli::cli_process_done()
-}
-
-## NEED CORRECTION IN expected_CVnames
-# cli::cli_process_start("No val.list ; No bm.format ; calib.lines = Presence-Only")
+# should be modified with expect_error
+# ## with calib.lines -----------------------------
+# cli::cli_h3("with calib.lines")
+# 
+# cli::cli_process_start("No val.list ; No bm.format ; calib.lines = Presence-Absence")
 # this_try <- try({
 #   invisible(
 #     capture.output({
@@ -125,15 +102,15 @@ if(inherits(this_try, "try-error")){
 #                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
 #                            , strategy = "default"
 #                            , val.list = NULL, bm.format = NULL
-#                            , calib.lines = myBiomodCVPA)
+#                            , calib.lines = myBiomodCV)
 #       myBiomodOptions
 #       names(myBiomodOptions@options$ANN.binary.nnet.nnet@args.values)
 #     })
 #   )
 # }, silent = TRUE)
 # 
-# if(inherits(this_try, "try-error")){
-#   Error_Formating <- Error_Formating + 1
+# if (inherits(this_try, "try-error")) {
+#   Error_ModelingOptions <- Error_ModelingOptions + 1
 #   cli::cli_process_failed()
 # } else {
 #   cli::cli_process_done()
@@ -161,8 +138,8 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -187,8 +164,8 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -216,8 +193,8 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -242,8 +219,8 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -270,44 +247,20 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
 }
 
-
-## with calib.lines -----------------------------
-cli::cli_h3("with calib.lines")
-
-
-cli::cli_process_start("No val.list ; No bm.format ; calib.lines = Presence-Absence")
-this_try <- try({
-  invisible(
-    capture.output({
-      myBiomodOptions <-
-        bm_ModelingOptions(data.type = "binary"
-                           , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
-                                        , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
-                           , strategy = "bigboss"
-                           , val.list = NULL, bm.format = NULL
-                           , calib.lines = myBiomodCV)
-      myBiomodOptions
-      names(myBiomodOptions@options$ANN.binary.nnet.nnet@args.values)
-    })
-  )
-}, silent = TRUE)
-
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
-  cli::cli_process_failed()
-} else {
-  cli::cli_process_done()
-}
-
-## NEED CORRECTION IN expected_CVnames
-# cli::cli_process_start("No val.list ; No bm.format ; calib.lines = Presence-Only")
+# # should be modified with expect_error
+# 
+# ## with calib.lines -----------------------------
+# cli::cli_h3("with calib.lines")
+# 
+# 
+# cli::cli_process_start("No val.list ; No bm.format ; calib.lines = Presence-Absence")
 # this_try <- try({
 #   invisible(
 #     capture.output({
@@ -317,15 +270,15 @@ if(inherits(this_try, "try-error")){
 #                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
 #                            , strategy = "bigboss"
 #                            , val.list = NULL, bm.format = NULL
-#                            , calib.lines = myBiomodCVPA)
+#                            , calib.lines = myBiomodCV)
 #       myBiomodOptions
 #       names(myBiomodOptions@options$ANN.binary.nnet.nnet@args.values)
 #     })
 #   )
 # }, silent = TRUE)
 # 
-# if(inherits(this_try, "try-error")){
-#   Error_Formating <- Error_Formating + 1
+# if (inherits(this_try, "try-error")) {
+#   Error_ModelingOptions <- Error_ModelingOptions + 1
 #   cli::cli_process_failed()
 # } else {
 #   cli::cli_process_done()
@@ -353,8 +306,8 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -379,8 +332,8 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -409,8 +362,8 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -435,8 +388,8 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -464,48 +417,19 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
 }
 
-
-## with calib.lines -----------------------------
-cli::cli_h3("with calib.lines")
-
-
-cli::cli_process_start("No val.list ; No bm.format ; calib.lines = Presence-Absence")
-this_try <- try({
-  invisible(
-    capture.output({
-      myBiomodOptions <-
-        bm_ModelingOptions(data.type = "binary"
-                           , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
-                                        , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
-                           , strategy = "user.defined"
-                           , val.list = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
-                                             , XGBOOST.binary.xgboost.xgboost = list('_allData_allRun' = list(nrounds = 10)))
-                           , bm.format = NULL
-                           , calib.lines = myBiomodCV) ## does not work with myBiomodCVPA !
-      myBiomodOptions
-      names(myBiomodOptions@options$ANN.binary.nnet.nnet@args.values)
-      myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_allData_allRun`
-      myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_allData_RUN1`
-    })
-  )
-}, silent = TRUE)
-
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
-  cli::cli_process_failed()
-} else {
-  cli::cli_process_done()
-}
-
-## NEED CORRECTION IN expected_CVnames
-# cli::cli_process_start("No val.list ; No bm.format ; calib.lines = Presence-Only")
+# # should be modified with expect_error
+# ## with calib.lines -----------------------------
+# cli::cli_h3("with calib.lines")
+# 
+# 
+# cli::cli_process_start("No val.list ; No bm.format ; calib.lines = Presence-Absence")
 # this_try <- try({
 #   invisible(
 #     capture.output({
@@ -517,7 +441,7 @@ if(inherits(this_try, "try-error")){
 #                            , val.list = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
 #                                              , XGBOOST.binary.xgboost.xgboost = list('_allData_allRun' = list(nrounds = 10)))
 #                            , bm.format = NULL
-#                            , calib.lines = myBiomodCVPA)
+#                            , calib.lines = myBiomodCV) ## does not work with myBiomodCVPA !
 #       myBiomodOptions
 #       names(myBiomodOptions@options$ANN.binary.nnet.nnet@args.values)
 #       myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_allData_allRun`
@@ -526,8 +450,8 @@ if(inherits(this_try, "try-error")){
 #   )
 # }, silent = TRUE)
 # 
-# if(inherits(this_try, "try-error")){
-#   Error_Formating <- Error_Formating + 1
+# if (inherits(this_try, "try-error")) {
+#   Error_ModelingOptions <- Error_ModelingOptions + 1
 #   cli::cli_process_failed()
 # } else {
 #   cli::cli_process_done()
@@ -556,8 +480,8 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -585,8 +509,8 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -618,8 +542,8 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -647,22 +571,313 @@ this_try <- try({
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
 }
 
 
-# strategy = tuned --------------------------------------------------
-cli::cli_h2("strategy = tuned")
+# strategy = tuned ; with bm.format--------------------------------------------------
+cli::cli_h2("strategy = tuned - with bm.format")
 
-## with bm.format -------------------------------
-cli::cli_h3("with bm.format")
+## Presence-Absence -------------------------------
+cli::cli_h3("Presence-Absence")
+
+### ANN -------------------------------
+
+cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = ANN")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('ANN')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodData
+                           , calib.lines = NULL)
+      myBiomodOptions
+      myBiomodOptions@options$ANN.binary.nnet.nnet@args.values
+      names(myBiomodOptions@options$ANN.binary.nnet.nnet@args.values)
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
 
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines")
+
+### CTA -------------------------------
+
+cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = CTA")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('CTA')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodData
+                           , calib.lines = NULL)
+      myBiomodOptions
+      myBiomodOptions@options$CTA.binary.rpart.rpart@args.values
+      names(myBiomodOptions@options$CTA.binary.rpart.rpart@args.values)
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+### FDA -------------------------------
+
+cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = FDA")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('FDA')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodData
+                           , calib.lines = NULL)
+      myBiomodOptions
+      myBiomodOptions@options$FDA.binary.mda.fda@args.values
+      names(myBiomodOptions@options$FDA.binary.mda.fda@args.values)
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+### GAM -------------------------------
+
+cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = GAM")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('GAM')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodData
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+### GBM -------------------------------
+
+cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = GBM")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('GBM')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodData
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+### GLM -------------------------------
+
+cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = GLM")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('GLM')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodData
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+### MARS -------------------------------
+
+cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = MARS")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('MARS')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodData
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+### MAXENT -------------------------------
+
+cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = MAXENT")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('MAXENT')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodData
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+### MAXNET -------------------------------
+
+cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = MAXNET")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('MAXNET')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodData
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+### RF -------------------------------
+
+cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = RF")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('RF')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodData
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+### SRE -------------------------------
+
+cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = SRE")
 this_try <- try({
   invisible(
     capture.output({
@@ -675,20 +890,355 @@ this_try <- try({
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
-      names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
     })
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### XGBOOST -------------------------------
+
+cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = XGBOOST")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('XGBOOST')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodData
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
 }
 
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines")
+## Presence-Only -------------------------------
+
+cli::cli_h3("Presence-Only")
+
+
+### ANN ---------------------------------------------------------------
+cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = ANN")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('ANN')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodDataPA
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA1_allRun`
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA2_allRun`
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+
+### CTA ---------------------------------------------------------------
+cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = CTA")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('CTA')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodDataPA
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA1_allRun`
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA2_allRun`
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+
+### FDA ---------------------------------------------------------------
+cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = FDA")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('FDA')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodDataPA
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA1_allRun`
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA2_allRun`
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+
+### GAM ---------------------------------------------------------------
+cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = GAM")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('GAM')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodDataPA
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA1_allRun`
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA2_allRun`
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+
+### GBM ---------------------------------------------------------------
+cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = GBM")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('GBM')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodDataPA
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA1_allRun`
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA2_allRun`
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+
+### GLM ---------------------------------------------------------------
+cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = GLM")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('GLM')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodDataPA
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA1_allRun`
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA2_allRun`
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+
+### MARS ---------------------------------------------------------------
+cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = MARS")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('MARS')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodDataPA
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA1_allRun`
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA2_allRun`
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+
+### MAXENT ---------------------------------------------------------------
+cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = MAXENT")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('MAXENT')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodDataPA
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA1_allRun`
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA2_allRun`
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+
+### MAXNET ---------------------------------------------------------------
+cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = MAXNET")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('MAXNET')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodDataPA
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA1_allRun`
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA2_allRun`
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+
+### RF ---------------------------------------------------------------
+cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = RF")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('RF')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodDataPA
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA1_allRun`
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA2_allRun`
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+
+### SRE ---------------------------------------------------------------
+cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = SRE")
 this_try <- try({
   invisible(
     capture.output({
@@ -701,17 +1251,48 @@ this_try <- try({
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
-      names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
-      myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA1_allRun`
-      myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA2_allRun`
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA1_allRun`
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA2_allRun`
     })
   )
 }, silent = TRUE)
 
-if(inherits(this_try, "try-error")){
-  Error_Formating <- Error_Formating + 1
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
 }
+
+
+
+### XGBOOST ---------------------------------------------------------------
+cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = XGBOOST")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('XGBOOST')
+                           # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodDataPA
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA1_allRun`
+      # myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values$`_PA2_allRun`
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
