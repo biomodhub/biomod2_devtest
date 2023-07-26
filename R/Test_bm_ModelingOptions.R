@@ -673,7 +673,7 @@ if (inherits(this_try, "try-error")) {
 }
 
 
-### GAM -------------------------------
+### GAM-mgcv -------------------------------
 
 cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = GAM")
 this_try <- try({
@@ -681,7 +681,7 @@ this_try <- try({
     capture.output({
       myBiomodOptions <-
         bm_ModelingOptions(data.type = "binary"
-                           , models = c('GAM')
+                           , models = c('GAM.mgcv.gam')
                            , strategy = "tuned"
                            , val.list = NULL
                            , bm.format = myBiomodData
@@ -701,6 +701,32 @@ if (inherits(this_try, "try-error")) {
 }
 
 
+### GAM-gam -------------------------------
+
+cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = GAM")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('GAM.gam.gam')
+                           , strategy = "tuned"
+                           , val.list = NULL
+                           , bm.format = myBiomodData
+                           , calib.lines = NULL)
+      myBiomodOptions
+      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
+      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
 ### GBM -------------------------------
 
 cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = GBM")
