@@ -152,6 +152,98 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### Presence-Absence ; Options userDefined ------------
+cli::cli_process_start("Presence-Absence ; Options userDefined")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl,
+          resp.xy = myRespXY,
+          resp.name = myRespName)
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          modeling.id = 'NoCat_NoValid_Presence-Absence_userDefined',
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 0.8,
+          OPT.strategy = 'user.defined',
+          OPT.val.list = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
+                              , XGBOOST.binary.xgboost.xgboost = list('_allData_allRun' = list(nrounds = 10))),
+          var.import = 2,
+          metric.eval = c('TSS','ROC'),
+          seed.val = 42
+        )
+      get_predictions(myBiomodModelOut)
+      get_evaluations(myBiomodModelOut)
+      get_built_models(myBiomodModelOut)
+      get_formal_data(myBiomodModelOut)
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
+### Presence-Absence ; Options userObject ------------
+cli::cli_process_start("Presence-Absence ; Options userObject")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl,
+          resp.xy = myRespXY,
+          resp.name = myRespName)
+      
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
+                                        , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
+                           , strategy = "user.defined"
+                           , val.list = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
+                                             , XGBOOST.binary.xgboost.xgboost = list('_allData_allRun' = list(nrounds = 10)))
+                           , bm.format = myBiomodData
+                           , calib.lines = NULL)
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          modeling.id = 'NoCat_NoValid_Presence-Absence_userObject',
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 0.8,
+          OPT.user = myBiomodOptions,
+          var.import = 2,
+          metric.eval = c('TSS','ROC'),
+          seed.val = 42
+        )
+      get_predictions(myBiomodModelOut)
+      get_evaluations(myBiomodModelOut)
+      get_built_models(myBiomodModelOut)
+      get_formal_data(myBiomodModelOut)
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
 
 ## No Evaluation -------------------------------------------------------
 cli::cli_h3("No Evaluation")
