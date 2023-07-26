@@ -113,6 +113,45 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### Presence-Absence ; Options bigboss ------------
+cli::cli_process_start("Presence-Absence ; Options bigboss")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl1,
+          resp.xy = myRespXY,
+          resp.name = myRespName)
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          modeling.id = 'NoCat1_NoEval_Presence-Absence_bigboss',
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 0.8,
+          OPT.strategy = 'bigboss',
+          var.import = 2,
+          metric.eval = c('TSS','ROC'),
+          seed.val = 42
+        )
+      get_predictions(myBiomodModelOut)
+      get_evaluations(myBiomodModelOut)
+      get_built_models(myBiomodModelOut)
+      get_formal_data(myBiomodModelOut)
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
 ### Presence-Only ; Options default ------------
 cli::cli_process_start("Presence-Only ; Options default")
@@ -137,6 +176,48 @@ this_try <- try({
           CV.nb.rep = 2,
           CV.perc = 0.8,
           OPT.strategy = 'default',
+          var.import = 2,
+          metric.eval = c('TSS','ROC'),
+          seed.val = 42
+        )
+      get_predictions(myBiomodModelOut)
+      get_evaluations(myBiomodModelOut)
+      get_built_models(myBiomodModelOut)
+      get_formal_data(myBiomodModelOut)
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### Presence-Only ; Options bigboss ------------
+cli::cli_process_start("Presence-Only ; Options bigboss")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp_PO,
+          expl.var = myExpl1,
+          resp.xy = myRespXY_PO,
+          resp.name = myRespName,
+          PA.nb.rep = 2,
+          PA.nb.absences = 500,
+          PA.strategy = 'random')
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          modeling.id = 'NoCat1_NoEval_Presence-Only_bigboss',
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 0.8,
+          OPT.strategy = 'bigboss',
           var.import = 2,
           metric.eval = c('TSS','ROC'),
           seed.val = 42
@@ -199,6 +280,49 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### Presence-Only ; multiple Pseudo-Absences ; Options bigboss ------------
+cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences ; Options bigboss")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp_PO,
+          expl.var = myExpl1,
+          resp.xy = myRespXY_PO,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = 'random')
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          modeling.id = 'NoCat1_NoEval_Presence-Only_multPA_bigboss',
+          models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 0.8,
+          OPT.strategy = 'bigboss',
+          var.import = 2,
+          metric.eval = c('TSS','ROC'),
+          seed.val = 42
+        )
+      get_predictions(myBiomodModelOut)
+      get_evaluations(myBiomodModelOut)
+      get_built_models(myBiomodModelOut)
+      get_formal_data(myBiomodModelOut)
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
 ### Presence-Only with NA ; Options default ------------
 cli::cli_process_start("Presence-Only with NA ; Options default")
@@ -242,6 +366,49 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### Presence-Only with NA ; Options bigboss ------------
+cli::cli_process_start("Presence-Only with NA ; Options bigboss")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp_PO_NA,
+          expl.var = myExpl1,
+          resp.xy = myRespXY_PO_NA,
+          resp.name = myRespName,
+          PA.nb.rep = 2,
+          PA.nb.absences = 500,
+          PA.strategy = 'random')
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          modeling.id = 'NoCat1_NoEval_Presence-Only_with_NA_bigboss',
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 0.8,
+          OPT.strategy = 'bigboss',
+          var.import = 2,
+          metric.eval = c('TSS','ROC'),
+          seed.val = 42
+        )
+      get_predictions(myBiomodModelOut)
+      get_evaluations(myBiomodModelOut)
+      get_built_models(myBiomodModelOut)
+      get_formal_data(myBiomodModelOut)
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
 ### Presence-Only with NA ; multiple Pseudo-Absences ; Options default ------------
 cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences ; Options default")
 this_try <- try({
@@ -266,6 +433,49 @@ this_try <- try({
           CV.nb.rep = 2,
           CV.perc = 0.8,
           OPT.strategy = 'default',
+          var.import = 2,
+          metric.eval = c('TSS','ROC'),
+          seed.val = 42
+        )
+      get_predictions(myBiomodModelOut)
+      get_evaluations(myBiomodModelOut)
+      get_built_models(myBiomodModelOut)
+      get_formal_data(myBiomodModelOut)
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### Presence-Only with NA ; multiple Pseudo-Absences ; Options bigboss ------------
+cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences ; Options bigboss")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp_PO_NA,
+          expl.var = myExpl1,
+          resp.xy = myRespXY_PO_NA,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = 'random')
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          modeling.id = 'NoCat1_NoEval_Presence-Only_with_NA_multPA_bigboss',
+          models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 0.8,
+          OPT.strategy = 'bigboss',
           var.import = 2,
           metric.eval = c('TSS','ROC'),
           seed.val = 42
@@ -331,6 +541,48 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### Presence-Absence ; Options bigboss ------------
+cli::cli_process_start("Presence-Absence ; Options bigboss")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp,
+          expl.var = myExpl1,
+          resp.xy = myRespXY,
+          resp.name = myRespName,
+          eval.resp.var = myResp,
+          eval.expl.var = myExpl1,
+          eval.resp.xy = myRespXY)
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          modeling.id = 'NoCat1_Eval_Presence-Absence_bigboss',
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 0.8,
+          OPT.strategy = 'bigboss',
+          var.import = 2,
+          metric.eval = c('TSS','ROC'),
+          seed.val = 42
+        )
+      invisible(get_predictions(myBiomodModelOut))
+      invisible(get_evaluations(myBiomodModelOut))
+      invisible(get_built_models(myBiomodModelOut))
+      invisible(get_formal_data(myBiomodModelOut))
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
 
 ### Presence-Only ; Options default ------------
 cli::cli_process_start("Presence-Only ; Options default")
@@ -377,6 +629,52 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### Presence-Only ; Options bigboss ------------
+cli::cli_process_start("Presence-Only ; Options bigboss")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp_PO,
+          expl.var = myExpl1,
+          resp.xy = myRespXY_PO,
+          resp.name = myRespName,
+          PA.nb.rep = 2,
+          PA.nb.absences = 500,
+          PA.strategy = 'random',
+          eval.resp.var = myResp,
+          eval.expl.var = myExpl1,
+          eval.resp.xy = myRespXY)
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          modeling.id = 'NoCat1_Eval_Presence-Only_bigboss',
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 0.8,
+          OPT.strategy = 'bigboss',
+          var.import = 2,
+          metric.eval = c('TSS','ROC'),
+          seed.val = 42
+        )
+      get_predictions(myBiomodModelOut)
+      get_evaluations(myBiomodModelOut)
+      get_built_models(myBiomodModelOut)
+      get_formal_data(myBiomodModelOut)
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
 ### Presence-Only ; multiple Pseudo-Absences ; Options default ------------
 cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences ; Options default")
 this_try <- try({
@@ -404,6 +702,52 @@ this_try <- try({
           CV.nb.rep = 2,
           CV.perc = 0.8,
           OPT.strategy = 'default',
+          var.import = 2,
+          metric.eval = c('TSS','ROC'),
+          seed.val = 42
+        )
+      get_predictions(myBiomodModelOut)
+      get_evaluations(myBiomodModelOut)
+      get_built_models(myBiomodModelOut)
+      get_formal_data(myBiomodModelOut)
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### Presence-Only ; multiple Pseudo-Absences ; Options bigboss ------------
+cli::cli_process_start("Presence-Only ; multiple Pseudo-Absences ; Options bigboss")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp_PO,
+          expl.var = myExpl1,
+          resp.xy = myRespXY_PO,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = 'random',
+          eval.resp.var = myResp,
+          eval.expl.var = myExpl1,
+          eval.resp.xy = myRespXY)
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          modeling.id = 'NoCat1_Eval_Presence-Only_multPA_bigboss',
+          models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 0.8,
+          OPT.strategy = 'bigboss',
           var.import = 2,
           metric.eval = c('TSS','ROC'),
           seed.val = 42
@@ -469,6 +813,52 @@ if(inherits(this_try, "try-error")){
   cli::cli_process_done()
 }
 
+### Presence-Only with NA ; Options bigboss ------------
+cli::cli_process_start("Presence-Only with NA ; Options bigboss")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp_PO_NA,
+          expl.var = myExpl1,
+          resp.xy = myRespXY_PO_NA,
+          resp.name = myRespName,
+          PA.nb.rep = 2,
+          PA.nb.absences = 500,
+          PA.strategy = 'random',
+          eval.resp.var = myResp,
+          eval.expl.var = myExpl1,
+          eval.resp.xy = myRespXY)
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          modeling.id = 'NoCat1_Eval_Presence-Only_with_NA_bigboss',
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 0.8,
+          OPT.strategy = 'bigboss',
+          var.import = 2,
+          metric.eval = c('TSS','ROC'),
+          seed.val = 42
+        )
+      get_predictions(myBiomodModelOut)
+      get_evaluations(myBiomodModelOut)
+      get_built_models(myBiomodModelOut)
+      get_formal_data(myBiomodModelOut)
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+
 ### Presence-Only with NA ; multiple Pseudo-Absences ; Options default ------------
 cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences ; Options default")
 this_try <- try({
@@ -496,6 +886,52 @@ this_try <- try({
           CV.nb.rep = 2,
           CV.perc = 0.8,
           OPT.strategy = 'default',
+          var.import = 2,
+          metric.eval = c('TSS','ROC'),
+          seed.val = 42
+        )
+      get_predictions(myBiomodModelOut)
+      get_evaluations(myBiomodModelOut)
+      get_built_models(myBiomodModelOut)
+      get_formal_data(myBiomodModelOut)
+    })))
+  )
+}, silent = TRUE)
+
+if(inherits(this_try, "try-error")){
+  Error_Modeling <- Error_Modeling + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
+
+### Presence-Only with NA ; multiple Pseudo-Absences ; Options bigboss ------------
+cli::cli_process_start("Presence-Only with NA ; multiple Pseudo-Absences ; Options bigboss")
+this_try <- try({
+  invisible(
+    capture.output(suppressWarnings(suppressMessages({
+      myBiomodData <-
+        BIOMOD_FormatingData(
+          resp.var = myResp_PO_NA,
+          expl.var = myExpl1,
+          resp.xy = myRespXY_PO_NA,
+          resp.name = myRespName,
+          PA.nb.rep = 4,
+          PA.nb.absences = c(1000, 500, 500, 200),
+          PA.strategy = 'random',
+          eval.resp.var = myResp,
+          eval.expl.var = myExpl1,
+          eval.resp.xy = myRespXY)
+      
+      myBiomodModelOut <-
+        BIOMOD_Modeling(
+          bm.format = myBiomodData,
+          modeling.id = 'NoCat1_Eval_Presence-Only_with_NA_multPA_bigboss',
+          models.pa = list(RF = c("PA1", "PA2"), GLM = "PA3", MARS = c("PA2", "PA4")),
+          CV.strategy = 'random',
+          CV.nb.rep = 2,
+          CV.perc = 0.8,
+          OPT.strategy = 'bigboss',
           var.import = 2,
           metric.eval = c('TSS','ROC'),
           seed.val = 42
