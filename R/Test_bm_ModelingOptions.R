@@ -65,7 +65,7 @@ myBiomodCVPA <- bm_CrossValidation(bm.format = myBiomodDataPA,
 cli::cli_h2("strategy = default")
 
 
-cli::cli_process_start("No val.list ; No bm.format ; No calib.lines")
+cli::cli_process_start("No user.val ; No bm.format ; No calib.lines")
 this_try <- try({
   invisible(
     capture.output({
@@ -74,7 +74,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "default"
-                           , val.list = NULL, bm.format = NULL, calib.lines = NULL)
+                           , user.val = NULL, bm.format = NULL, calib.lines = NULL)
       myBiomodOptions
       names(myBiomodOptions@options$ANN.binary.nnet.nnet@args.values)
     })
@@ -92,7 +92,7 @@ if (inherits(this_try, "try-error")) {
 # ## with calib.lines -----------------------------
 # cli::cli_h3("with calib.lines")
 # 
-# cli::cli_process_start("No val.list ; No bm.format ; calib.lines = Presence-Absence")
+# cli::cli_process_start("No user.val ; No bm.format ; calib.lines = Presence-Absence")
 # this_try <- try({
 #   invisible(
 #     capture.output({
@@ -101,7 +101,7 @@ if (inherits(this_try, "try-error")) {
 #                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
 #                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
 #                            , strategy = "default"
-#                            , val.list = NULL, bm.format = NULL
+#                            , user.val = NULL, bm.format = NULL
 #                            , calib.lines = myBiomodCV)
 #       myBiomodOptions
 #       names(myBiomodOptions@options$ANN.binary.nnet.nnet@args.values)
@@ -120,7 +120,7 @@ if (inherits(this_try, "try-error")) {
 ## with bm.format -------------------------------
 cli::cli_h3("with bm.format")
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines")
 this_try <- try({
   invisible(
     capture.output({
@@ -129,7 +129,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "default"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData ## useless here
                            , calib.lines = NULL)
       myBiomodOptions
@@ -146,7 +146,7 @@ if (inherits(this_try, "try-error")) {
 }
 
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines")
 this_try <- try({
   invisible(
     capture.output({
@@ -155,7 +155,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "default"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
@@ -175,7 +175,7 @@ if (inherits(this_try, "try-error")) {
 ## with bm.format ; with calib.lines ------------
 cli::cli_h3("with bm.format")
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; calib.lines = Presence-Absence")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; calib.lines = Presence-Absence")
 this_try <- try({
   invisible(
     capture.output({
@@ -184,7 +184,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "default"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData ## useless here
                            , calib.lines = myBiomodCV) ## does not work with myBiomodCVPA !
       myBiomodOptions
@@ -201,7 +201,7 @@ if (inherits(this_try, "try-error")) {
 }
 
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; calib.lines = Presence-Only")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; calib.lines = Presence-Only")
 this_try <- try({
   invisible(
     capture.output({
@@ -210,7 +210,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "default"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = myBiomodCVPA) ## works with myBiomodCV !
       myBiomodOptions
@@ -231,7 +231,7 @@ if (inherits(this_try, "try-error")) {
 cli::cli_h2("strategy = bigboss")
 
 
-cli::cli_process_start("No val.list ; No bm.format ; No calib.lines")
+cli::cli_process_start("No user.val ; No bm.format ; No calib.lines")
 this_try <- try({
   invisible(
     capture.output({
@@ -240,7 +240,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "bigboss"
-                           , val.list = NULL, bm.format = NULL, calib.lines = NULL)
+                           , user.val = NULL, bm.format = NULL, calib.lines = NULL)
       myBiomodOptions
       names(myBiomodOptions@options$ANN.binary.nnet.nnet@args.values)
     })
@@ -260,7 +260,7 @@ if (inherits(this_try, "try-error")) {
 # cli::cli_h3("with calib.lines")
 # 
 # 
-# cli::cli_process_start("No val.list ; No bm.format ; calib.lines = Presence-Absence")
+# cli::cli_process_start("No user.val ; No bm.format ; calib.lines = Presence-Absence")
 # this_try <- try({
 #   invisible(
 #     capture.output({
@@ -269,7 +269,7 @@ if (inherits(this_try, "try-error")) {
 #                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
 #                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
 #                            , strategy = "bigboss"
-#                            , val.list = NULL, bm.format = NULL
+#                            , user.val = NULL, bm.format = NULL
 #                            , calib.lines = myBiomodCV)
 #       myBiomodOptions
 #       names(myBiomodOptions@options$ANN.binary.nnet.nnet@args.values)
@@ -288,7 +288,7 @@ if (inherits(this_try, "try-error")) {
 cli::cli_h3("with bm.format")
 
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines")
 this_try <- try({
   invisible(
     capture.output({
@@ -297,7 +297,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "bigboss"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData ## useless here
                            , calib.lines = NULL)
       myBiomodOptions
@@ -314,7 +314,7 @@ if (inherits(this_try, "try-error")) {
 }
 
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines")
 this_try <- try({
   invisible(
     capture.output({
@@ -323,7 +323,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "bigboss"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
@@ -344,7 +344,7 @@ if (inherits(this_try, "try-error")) {
 cli::cli_h3("with bm.format")
 
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; calib.lines = Presence-Absence")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; calib.lines = Presence-Absence")
 this_try <- try({
   invisible(
     capture.output({
@@ -353,7 +353,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "bigboss"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData ## useless here
                            , calib.lines = myBiomodCV) ## does not work with myBiomodCVPA !
       myBiomodOptions
@@ -370,7 +370,7 @@ if (inherits(this_try, "try-error")) {
 }
 
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; calib.lines = Presence-Only")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; calib.lines = Presence-Only")
 this_try <- try({
   invisible(
     capture.output({
@@ -379,7 +379,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "bigboss"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = myBiomodCVPA) ## works with myBiomodCV !
       myBiomodOptions
@@ -408,7 +408,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "user.defined"
-                           , val.list = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
+                           , user.val = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
                                              , XGBOOST.binary.xgboost.xgboost = list('_allData_allRun' = list(nrounds = 10)))
                            , bm.format = NULL, calib.lines = NULL)
       myBiomodOptions
@@ -429,7 +429,7 @@ if (inherits(this_try, "try-error")) {
 # cli::cli_h3("with calib.lines")
 # 
 # 
-# cli::cli_process_start("No val.list ; No bm.format ; calib.lines = Presence-Absence")
+# cli::cli_process_start("No user.val ; No bm.format ; calib.lines = Presence-Absence")
 # this_try <- try({
 #   invisible(
 #     capture.output({
@@ -438,7 +438,7 @@ if (inherits(this_try, "try-error")) {
 #                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
 #                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
 #                            , strategy = "user.defined"
-#                            , val.list = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
+#                            , user.val = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
 #                                              , XGBOOST.binary.xgboost.xgboost = list('_allData_allRun' = list(nrounds = 10)))
 #                            , bm.format = NULL
 #                            , calib.lines = myBiomodCV) ## does not work with myBiomodCVPA !
@@ -461,7 +461,7 @@ if (inherits(this_try, "try-error")) {
 ## with bm.format -------------------------------
 cli::cli_h3("with bm.format")
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines")
 this_try <- try({
   invisible(
     capture.output({
@@ -470,7 +470,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "user.defined"
-                           , val.list = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
+                           , user.val = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
                                              , XGBOOST.binary.xgboost.xgboost = list('_allData_allRun' = list(nrounds = 10)))
                            , bm.format = myBiomodData ## useless here
                            , calib.lines = NULL)
@@ -488,7 +488,7 @@ if (inherits(this_try, "try-error")) {
 }
 
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines")
 this_try <- try({
   invisible(
     capture.output({
@@ -497,7 +497,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "user.defined"
-                           , val.list = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
+                           , user.val = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
                                              , XGBOOST.binary.xgboost.xgboost = list('_allData_allRun' = list(nrounds = 10)))
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
@@ -521,7 +521,7 @@ if (inherits(this_try, "try-error")) {
 cli::cli_h3("with bm.format")
 
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; calib.lines = Presence-Absence")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; calib.lines = Presence-Absence")
 this_try <- try({
   invisible(
     capture.output({
@@ -530,7 +530,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "user.defined"
-                           , val.list = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
+                           , user.val = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
                                              , XGBOOST.binary.xgboost.xgboost = list('_allData_allRun' = list(nrounds = 10)))
                            , bm.format = myBiomodData ## useless here
                            , calib.lines = myBiomodCV) ## does not work with myBiomodCVPA !
@@ -550,7 +550,7 @@ if (inherits(this_try, "try-error")) {
 }
 
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; calib.lines = Presence-Only")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; calib.lines = Presence-Only")
 this_try <- try({
   invisible(
     capture.output({
@@ -559,7 +559,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "user.defined"
-                           , val.list = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
+                           , user.val = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
                                              , XGBOOST.binary.xgboost.xgboost = list('_allData_allRun' = list(nrounds = 10)))
                            , bm.format = myBiomodDataPA
                            , calib.lines = myBiomodCVPA) ## works with myBiomodCV !
@@ -587,7 +587,7 @@ cli::cli_h3("Presence-Absence")
 
 ### ANN -------------------------------
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = ANN")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines ; model = ANN")
 this_try <- try({
   invisible(
     capture.output({
@@ -596,7 +596,7 @@ this_try <- try({
                            , models = c('ANN')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
@@ -617,7 +617,7 @@ if (inherits(this_try, "try-error")) {
 
 ### CTA -------------------------------
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = CTA")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines ; model = CTA")
 this_try <- try({
   invisible(
     capture.output({
@@ -626,7 +626,7 @@ this_try <- try({
                            , models = c('CTA')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
@@ -646,7 +646,7 @@ if (inherits(this_try, "try-error")) {
 
 ### FDA -------------------------------
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = FDA")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines ; model = FDA")
 this_try <- try({
   invisible(
     capture.output({
@@ -655,7 +655,7 @@ this_try <- try({
                            , models = c('FDA')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
@@ -673,9 +673,9 @@ if (inherits(this_try, "try-error")) {
 }
 
 
-### GAM-mgcv -------------------------------
+### GAM-mgcv-gam -------------------------------
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = GAM")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines ; model = GAM-mgcv-gam")
 this_try <- try({
   invisible(
     capture.output({
@@ -683,12 +683,12 @@ this_try <- try({
         bm_ModelingOptions(data.type = "binary"
                            , models = c('GAM.mgcv.gam')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
-      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
-      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      myBiomodOptions@options$GAM.binary.mgcv.gam@args.values
+      names(myBiomodOptions@options$GAM.binary.mgcv.gam@args.values)
     })
   )
 }, silent = TRUE)
@@ -700,10 +700,35 @@ if (inherits(this_try, "try-error")) {
   cli::cli_process_done()
 }
 
+### GAM-mgcv-bam -------------------------------
 
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines ; model = GAM.mgcv.bam")
+this_try <- try({
+  invisible(
+    capture.output({
+      myBiomodOptions <-
+        bm_ModelingOptions(data.type = "binary"
+                           , models = c('GAM.mgcv.bam')
+                           , strategy = "tuned"
+                           , user.val = NULL
+                           , bm.format = myBiomodData
+                           , calib.lines = NULL)
+      myBiomodOptions
+      myBiomodOptions@options$GAM.binary.mgcv.bam@args.values
+      names(myBiomodOptions@options$GAM.binary.mgcv.bam@args.values)
+    })
+  )
+}, silent = TRUE)
+
+if (inherits(this_try, "try-error")) {
+  Error_ModelingOptions <- Error_ModelingOptions + 1
+  cli::cli_process_failed()
+} else {
+  cli::cli_process_done()
+}
 ### GAM-gam -------------------------------
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = GAM")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines ; model = GAM")
 this_try <- try({
   invisible(
     capture.output({
@@ -711,12 +736,12 @@ this_try <- try({
         bm_ModelingOptions(data.type = "binary"
                            , models = c('GAM.gam.gam')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
-      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
-      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+        myBiomodOptions@options$GAM.binary.gam.gam@args.values
+      names(myBiomodOptions@options$GAM.binary.gam.gam@args.values)
     })
   )
 }, silent = TRUE)
@@ -727,9 +752,10 @@ if (inherits(this_try, "try-error")) {
 } else {
   cli::cli_process_done()
 }
+
 ### GBM -------------------------------
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = GBM")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines ; model = GBM")
 this_try <- try({
   invisible(
     capture.output({
@@ -738,12 +764,12 @@ this_try <- try({
                            , models = c('GBM')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
-      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
-      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      myBiomodOptions@options$GBM.binary.gbm.gbm@args.values
+      names(myBiomodOptions@options$GBM.binary.gbm.gbm@args.values)
     })
   )
 }, silent = TRUE)
@@ -758,7 +784,7 @@ if (inherits(this_try, "try-error")) {
 
 ### GLM -------------------------------
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = GLM")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines ; model = GLM")
 this_try <- try({
   invisible(
     capture.output({
@@ -767,12 +793,12 @@ this_try <- try({
                            , models = c('GLM')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
-      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
-      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      myBiomodOptions@options$GLM.binary.stats.glm@args.values
+      names(myBiomodOptions@options$GLM.binary.stats.glm@args.values)
     })
   )
 }, silent = TRUE)
@@ -787,7 +813,7 @@ if (inherits(this_try, "try-error")) {
 
 ### MARS -------------------------------
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = MARS")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines ; model = MARS")
 this_try <- try({
   invisible(
     capture.output({
@@ -796,12 +822,12 @@ this_try <- try({
                            , models = c('MARS')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
-      # myBiomodOptions@options$FDA.binary.mda.fda@args.values
-      # names(myBiomodOptions@options$SRE.binary.biomod2.bm_SRE@args.values)
+      myBiomodOptions@options$MARS.binary.earth.earth@args.values
+      names(myBiomodOptions@options$MARS.binary.earth.earth@args.values)
     })
   )
 }, silent = TRUE)
@@ -816,7 +842,7 @@ if (inherits(this_try, "try-error")) {
 
 ### MAXENT -------------------------------
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = MAXENT")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines ; model = MAXENT")
 this_try <- try({
   invisible(
     capture.output({
@@ -825,7 +851,7 @@ this_try <- try({
                            , models = c('MAXENT')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
@@ -845,7 +871,7 @@ if (inherits(this_try, "try-error")) {
 
 ### MAXNET -------------------------------
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = MAXNET")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines ; model = MAXNET")
 this_try <- try({
   invisible(
     capture.output({
@@ -854,7 +880,7 @@ this_try <- try({
                            , models = c('MAXNET')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
@@ -874,7 +900,7 @@ if (inherits(this_try, "try-error")) {
 
 ### RF -------------------------------
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = RF")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines ; model = RF")
 this_try <- try({
   invisible(
     capture.output({
@@ -883,7 +909,7 @@ this_try <- try({
                            , models = c('RF')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
@@ -903,7 +929,7 @@ if (inherits(this_try, "try-error")) {
 
 ### SRE -------------------------------
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = SRE")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines ; model = SRE")
 this_try <- try({
   invisible(
     capture.output({
@@ -912,7 +938,7 @@ this_try <- try({
                            , models = c('SRE')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
@@ -931,7 +957,7 @@ if (inherits(this_try, "try-error")) {
 
 ### XGBOOST -------------------------------
 
-cli::cli_process_start("No val.list ; bm.format = Presence-Absence ; No calib.lines ; model = XGBOOST")
+cli::cli_process_start("No user.val ; bm.format = Presence-Absence ; No calib.lines ; model = XGBOOST")
 this_try <- try({
   invisible(
     capture.output({
@@ -940,7 +966,7 @@ this_try <- try({
                            , models = c('XGBOOST')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
       myBiomodOptions
@@ -964,7 +990,7 @@ cli::cli_h3("Presence-Only")
 
 
 ### ANN ---------------------------------------------------------------
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = ANN")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines ; model = ANN")
 this_try <- try({
   invisible(
     capture.output({
@@ -973,7 +999,7 @@ this_try <- try({
                            , models = c('ANN')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
@@ -994,7 +1020,7 @@ if (inherits(this_try, "try-error")) {
 
 
 ### CTA ---------------------------------------------------------------
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = CTA")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines ; model = CTA")
 this_try <- try({
   invisible(
     capture.output({
@@ -1003,7 +1029,7 @@ this_try <- try({
                            , models = c('CTA')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
@@ -1024,7 +1050,7 @@ if (inherits(this_try, "try-error")) {
 
 
 ### FDA ---------------------------------------------------------------
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = FDA")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines ; model = FDA")
 this_try <- try({
   invisible(
     capture.output({
@@ -1033,7 +1059,7 @@ this_try <- try({
                            , models = c('FDA')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
@@ -1054,7 +1080,7 @@ if (inherits(this_try, "try-error")) {
 
 
 ### GAM ---------------------------------------------------------------
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = GAM")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines ; model = GAM")
 this_try <- try({
   invisible(
     capture.output({
@@ -1063,7 +1089,7 @@ this_try <- try({
                            , models = c('GAM')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
@@ -1084,7 +1110,7 @@ if (inherits(this_try, "try-error")) {
 
 
 ### GBM ---------------------------------------------------------------
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = GBM")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines ; model = GBM")
 this_try <- try({
   invisible(
     capture.output({
@@ -1093,7 +1119,7 @@ this_try <- try({
                            , models = c('GBM')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
@@ -1114,7 +1140,7 @@ if (inherits(this_try, "try-error")) {
 
 
 ### GLM ---------------------------------------------------------------
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = GLM")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines ; model = GLM")
 this_try <- try({
   invisible(
     capture.output({
@@ -1123,7 +1149,7 @@ this_try <- try({
                            , models = c('GLM')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
@@ -1144,7 +1170,7 @@ if (inherits(this_try, "try-error")) {
 
 
 ### MARS ---------------------------------------------------------------
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = MARS")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines ; model = MARS")
 this_try <- try({
   invisible(
     capture.output({
@@ -1153,7 +1179,7 @@ this_try <- try({
                            , models = c('MARS')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
@@ -1174,7 +1200,7 @@ if (inherits(this_try, "try-error")) {
 
 
 ### MAXENT ---------------------------------------------------------------
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = MAXENT")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines ; model = MAXENT")
 this_try <- try({
   invisible(
     capture.output({
@@ -1183,7 +1209,7 @@ this_try <- try({
                            , models = c('MAXENT')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
@@ -1204,7 +1230,7 @@ if (inherits(this_try, "try-error")) {
 
 
 ### MAXNET ---------------------------------------------------------------
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = MAXNET")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines ; model = MAXNET")
 this_try <- try({
   invisible(
     capture.output({
@@ -1213,7 +1239,7 @@ this_try <- try({
                            , models = c('MAXNET')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
@@ -1234,7 +1260,7 @@ if (inherits(this_try, "try-error")) {
 
 
 ### RF ---------------------------------------------------------------
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = RF")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines ; model = RF")
 this_try <- try({
   invisible(
     capture.output({
@@ -1243,7 +1269,7 @@ this_try <- try({
                            , models = c('RF')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
@@ -1264,7 +1290,7 @@ if (inherits(this_try, "try-error")) {
 
 
 ### SRE ---------------------------------------------------------------
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = SRE")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines ; model = SRE")
 this_try <- try({
   invisible(
     capture.output({
@@ -1273,7 +1299,7 @@ this_try <- try({
                            , models = c('SRE')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
@@ -1294,7 +1320,7 @@ if (inherits(this_try, "try-error")) {
 
 
 ### XGBOOST ---------------------------------------------------------------
-cli::cli_process_start("No val.list ; bm.format = Presence-Only ; No calib.lines ; model = XGBOOST")
+cli::cli_process_start("No user.val ; bm.format = Presence-Only ; No calib.lines ; model = XGBOOST")
 this_try <- try({
   invisible(
     capture.output({
@@ -1303,7 +1329,7 @@ this_try <- try({
                            , models = c('XGBOOST')
                            # 'ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM', 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "tuned"
-                           , val.list = NULL
+                           , user.val = NULL
                            , bm.format = myBiomodDataPA
                            , calib.lines = NULL)
       myBiomodOptions
