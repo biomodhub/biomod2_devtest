@@ -172,7 +172,7 @@ this_try <- try({
           CV.nb.rep = 2,
           CV.perc = 0.8,
           OPT.strategy = 'user.defined',
-          OPT.val.list = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
+          OPT.user.val = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
                               , XGBOOST.binary.xgboost.xgboost = list('_allData_allRun' = list(nrounds = 10))),
           var.import = 2,
           metric.eval = c('TSS','ROC'),
@@ -211,7 +211,7 @@ this_try <- try({
                            , models = c('ANN', 'CTA', 'FDA', 'GAM', 'GBM', 'GLM'
                                         , 'MARS', 'MAXENT', 'MAXNET', 'RF', 'SRE', 'XGBOOST')
                            , strategy = "user.defined"
-                           , val.list = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
+                           , user.val = list(SRE.binary.biomod2.bm_SRE = list('_allData_allRun' = list(quant = 0.01))
                                              , XGBOOST.binary.xgboost.xgboost = list('_allData_allRun' = list(nrounds = 10)))
                            , bm.format = myBiomodData
                            , calib.lines = NULL)
