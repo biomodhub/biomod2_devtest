@@ -30,8 +30,24 @@ tic("Test_bm_CrossValidation.R")
 source("R/Test_bm_CrossValidation.R")
 toc()
 
-tic("Test_BIOMOD_Modeling.R")
-source("R/Test_BIOMOD_Modeling.R")
+tic("Test_bm_ModelingOptions.R")
+source("R/Test_bm_ModelingOptions.R")
+toc()
+
+tic("Test_BIOMOD_Modeling_NoCategoricalVar.R")
+source("R/Test_BIOMOD_Modeling_NoCategoricalVar.R")
+toc()
+
+tic("Test_BIOMOD_Modeling_CategoricalVar.R")
+source("R/Test_BIOMOD_Modeling_CategoricalVar.R")
+toc()
+
+tic("Test_BIOMOD_Modeling_OneNonCategoricalVar.R")
+source("R/Test_BIOMOD_Modeling_OneNonCategoricalVar.R")
+toc()
+
+tic("Test_BIOMOD_Modeling_CrossValidation.R")
+source("R/Test_BIOMOD_Modeling_CrossValidation.R")
 toc()
 
 tic("Test_BIOMOD_EnsembleModeling.R")
@@ -82,7 +98,11 @@ dfres <- data.frame(
     "BIOMOD_Formating",
     "bm_PseudoAbsences",
     "bm_CrossValidation",
-    "BIOMOD_Modeling",
+    "bm_ModelingOptions",
+    "BIOMOD_Modeling NoCat",
+    "BIOMOD_Modeling Cat",
+    "BIOMOD_Modeling OneVarNoCat",
+    "BIOMOD_Modeling CV",
     "BIOMOD_EnsembleModeling",
     "bm_BinaryTransformation",
     "bm_PlotResponseCurves", 
@@ -98,7 +118,11 @@ dfres <- data.frame(
     Error_Formating, 
     Error_PseudoAbsences,
     Error_CV,
-    Error_Modeling, 
+    Error_ModelingOptions,
+    Error_Modeling_NoCat, 
+    Error_Modeling_Cat, 
+    Error_Modeling_OneVarNoCat, 
+    Error_Modeling_CV, 
     Error_EnsembleModeling,
     Error_BinaryTransformation, 
     Error_PlotResponseCurves,

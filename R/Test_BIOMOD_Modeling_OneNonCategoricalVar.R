@@ -1,6 +1,6 @@
 cli::cli_h1("BIOMOD_Modeling")
 
-Error_Modeling <- 0
+Error_Modeling_OneVarNoCat <- 0
 
 # Preparation -------------------------------------------------------------
 
@@ -107,7 +107,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -146,7 +146,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -189,7 +189,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -231,7 +231,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -274,7 +274,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -317,7 +317,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -360,7 +360,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -402,7 +402,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -446,7 +446,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -489,7 +489,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -535,7 +535,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -577,7 +577,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -623,7 +623,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -668,7 +668,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -715,7 +715,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -761,7 +761,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -807,7 +807,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -852,7 +852,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -899,7 +899,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
@@ -945,7 +945,7 @@ this_try <- try({
 }, silent = TRUE)
 
 if(inherits(this_try, "try-error")){
-  Error_Modeling <- Error_Modeling + 1
+  Error_Modeling_OneVarNoCat <- Error_Modeling_OneVarNoCat + 1
   cli::cli_process_failed()
 } else {
   cli::cli_process_done()
