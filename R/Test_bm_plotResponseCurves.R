@@ -81,8 +81,9 @@ myResp.SpatVector <- vect(x = data.frame("presence" = myResp,
                                          "x" = DataSpecies[,'X_WGS84'], 
                                          "y" = DataSpecies[,'Y_WGS84']), 
                           geom = c('x', 'y') )
-myExpl.df <- extract(myExpl, y = myResp.SpatVector)
-myExpl.cat.df <- extract(myExpl.cat, y = myResp.SpatVector, ID =FALSE)
+myExpl.df <- extract(myExpl, y = myResp.SpatVector, ID = FALSE)
+myExpl.cat.df <- extract(myExpl.cat, y = myResp.SpatVector, ID = FALSE)
+
 
 
 # Single Model ; No Categorical Variables --------------------------------------
@@ -103,11 +104,11 @@ invisible(
       myBiomodModelOut <- 
         BIOMOD_Modeling(
           bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'NoCat_NoEval_Presence-Absence',
           CV.strategy = 'random',
           CV.nb.rep = 2,
           CV.perc = 0.8,
+          OPT.strategy = 'bigboss',
           var.import = 2,
           metric.eval = c('TSS','ROC'),
           seed.val = 42
@@ -764,11 +765,11 @@ invisible(
       myBiomodModelOut <- 
         BIOMOD_Modeling(
           bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Cat_NoEval_Presence-Absence',
           CV.strategy = 'random',
           CV.nb.rep = 2,
           CV.perc = 0.8,
+          OPT.strategy = 'bigboss',
           var.import = 2,
           metric.eval = c('TSS','ROC'),
           seed.val = 42

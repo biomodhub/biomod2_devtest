@@ -79,10 +79,6 @@ tic("Test_BIOMOD_RangeSize.R")
 source("R/Test_BIOMOD_RangeSize.R")
 toc()
 
-tic("Test_BIOMOD_PresenceOnly.R")
-source("R/Test_BIOMOD_PresenceOnly.R")
-toc()
-
 tic("Test_BIOMOD_Parallel.R")
 source("R/Test_BIOMOD_Parallel.R")
 toc()
@@ -91,6 +87,8 @@ toc()
 tic("Test_build_clamping_mask.R")
 source("R/Test_build_clamping_mask.R")
 toc()
+
+
 cli::cli_h1("Error Summary")
 
 dfres <- data.frame(

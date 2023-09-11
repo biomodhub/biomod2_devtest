@@ -76,11 +76,11 @@ this_try <- try({
       myBiomodModelOut <- 
         BIOMOD_Modeling(
           bm.format = myBiomodData,
-          bm.options = BIOMOD_ModelingOptions(),
           modeling.id = 'Parallel',
           CV.strategy = 'random',
           CV.nb.rep = 2,
           CV.perc = 0.8,
+          OPT.strategy = 'bigboss',
           var.import = 2,
           metric.eval = c('TSS','ROC'),
           seed.val = 42,

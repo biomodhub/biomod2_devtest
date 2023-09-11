@@ -111,7 +111,6 @@ myExpl.cat.spdf <- as(myExpl.cat.SpatVector, "Spatial")
 
 ## Load Models -------------------------------------------------------------
 
-
 file.out <- paste0(myRespName, "/", myRespName, ".NoCat_NoEval_Presence-Absence.ensemble.models.out")
 myBiomodModelOut_noCat <- 
   try(suppressWarnings(
@@ -135,6 +134,7 @@ myBiomodModelOut_noCat_PO <-
   try(suppressWarnings(
     get(load(file.out))
   ), silent = TRUE)
+
 
 # No Categorical Variables ------------------------------------------------
 
